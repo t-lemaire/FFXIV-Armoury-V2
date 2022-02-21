@@ -1,0 +1,115 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>FFXIV_Armoury_V2</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Icons\Crafters\Alchemist.png" />
+    <None Remove="Images\Icons\Crafters\Armorer.png" />
+    <None Remove="Images\Icons\Crafters\Blacksmith.png" />
+    <None Remove="Images\Icons\Crafters\Carpenter.png" />
+    <None Remove="Images\Icons\Crafters\Culinarian.png" />
+    <None Remove="Images\Icons\Crafters\Goldsmith.png" />
+    <None Remove="Images\Icons\Crafters\Leatherworker.png" />
+    <None Remove="Images\Icons\Crafters\Weaver.png" />
+    <None Remove="Images\Icons\DPS\Arcanist.png" />
+    <None Remove="Images\Icons\DPS\Archer.png" />
+    <None Remove="Images\Icons\DPS\Bard.png" />
+    <None Remove="Images\Icons\DPS\BlackMage.png" />
+    <None Remove="Images\Icons\DPS\BlueMage.png" />
+    <None Remove="Images\Icons\DPS\Dancer.png" />
+    <None Remove="Images\Icons\DPS\Dragoon.png" />
+    <None Remove="Images\Icons\DPS\Lancer.png" />
+    <None Remove="Images\Icons\DPS\Machinist.png" />
+    <None Remove="Images\Icons\DPS\Monk.png" />
+    <None Remove="Images\Icons\DPS\Ninja.png" />
+    <None Remove="Images\Icons\DPS\Pugilist.png" />
+    <None Remove="Images\Icons\DPS\Reaper.png" />
+    <None Remove="Images\Icons\DPS\RedMage.png" />
+    <None Remove="Images\Icons\DPS\Rogue.png" />
+    <None Remove="Images\Icons\DPS\Samurai.png" />
+    <None Remove="Images\Icons\DPS\Summoner.png" />
+    <None Remove="Images\Icons\DPS\Thaumaturge.png" />
+    <None Remove="Images\Icons\Gatherers\Botanist.png" />
+    <None Remove="Images\Icons\Gatherers\Fisher.png" />
+    <None Remove="Images\Icons\Gatherers\Miner.png" />
+    <None Remove="Images\Icons\Healers\Astrologian.png" />
+    <None Remove="Images\Icons\Healers\Conjurer.png" />
+    <None Remove="Images\Icons\Healers\Sage.png" />
+    <None Remove="Images\Icons\Healers\Scholar.png" />
+    <None Remove="Images\Icons\Healers\WhiteMage.png" />
+    <None Remove="Images\Icons\Roles\DPSRole.png" />
+    <None Remove="Images\Icons\Roles\HealerRole.png" />
+    <None Remove="Images\Icons\Roles\Magic Ranged DPS.png" />
+    <None Remove="Images\Icons\Roles\Meelee DPS.png" />
+    <None Remove="Images\Icons\Roles\Ranged DPS.png" />
+    <None Remove="Images\Icons\Roles\TankRole.png" />
+    <None Remove="Images\Icons\Tanks\DarkKnight.png" />
+    <None Remove="Images\Icons\Tanks\Gladiator.png" />
+    <None Remove="Images\Icons\Tanks\Gunbreaker.png" />
+    <None Remove="Images\Icons\Tanks\Marauder.png" />
+    <None Remove="Images\Icons\Tanks\Paladin.png" />
+    <None Remove="Images\Icons\Tanks\Warrior.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MVVM\Model\" />
+    <Folder Include="MVVM\ViewModel\" />
+    <Folder Include="MVVM\View\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Icons\Crafters\Alchemist.png" />
+    <Resource Include="Images\Icons\Crafters\Armorer.png" />
+    <Resource Include="Images\Icons\Crafters\Blacksmith.png" />
+    <Resource Include="Images\Icons\Crafters\Carpenter.png" />
+    <Resource Include="Images\Icons\Crafters\Culinarian.png" />
+    <Resource Include="Images\Icons\Crafters\Goldsmith.png" />
+    <Resource Include="Images\Icons\Crafters\Leatherworker.png" />
+    <Resource Include="Images\Icons\Crafters\Weaver.png" />
+    <Resource Include="Images\Icons\DPS\Arcanist.png" />
+    <Resource Include="Images\Icons\DPS\Archer.png" />
+    <Resource Include="Images\Icons\DPS\Bard.png" />
+    <Resource Include="Images\Icons\DPS\BlackMage.png" />
+    <Resource Include="Images\Icons\DPS\BlueMage.png" />
+    <Resource Include="Images\Icons\DPS\Dancer.png" />
+    <Resource Include="Images\Icons\DPS\Dragoon.png" />
+    <Resource Include="Images\Icons\DPS\Lancer.png" />
+    <Resource Include="Images\Icons\DPS\Machinist.png" />
+    <Resource Include="Images\Icons\DPS\Monk.png" />
+    <Resource Include="Images\Icons\DPS\Ninja.png" />
+    <Resource Include="Images\Icons\DPS\Pugilist.png" />
+    <Resource Include="Images\Icons\DPS\Reaper.png" />
+    <Resource Include="Images\Icons\DPS\RedMage.png" />
+    <Resource Include="Images\Icons\DPS\Rogue.png" />
+    <Resource Include="Images\Icons\DPS\Samurai.png" />
+    <Resource Include="Images\Icons\DPS\Summoner.png" />
+    <Resource Include="Images\Icons\DPS\Thaumaturge.png" />
+    <Resource Include="Images\Icons\Gatherers\Botanist.png" />
+    <Resource Include="Images\Icons\Gatherers\Fisher.png" />
+    <Resource Include="Images\Icons\Gatherers\Miner.png" />
+    <Resource Include="Images\Icons\Healers\Astrologian.png" />
+    <Resource Include="Images\Icons\Healers\Conjurer.png" />
+    <Resource Include="Images\Icons\Healers\Sage.png" />
+    <Resource Include="Images\Icons\Healers\Scholar.png" />
+    <Resource Include="Images\Icons\Healers\WhiteMage.png" />
+    <Resource Include="Images\Icons\Roles\DPSRole.png" />
+    <Resource Include="Images\Icons\Roles\HealerRole.png" />
+    <Resource Include="Images\Icons\Roles\Magic Ranged DPS.png" />
+    <Resource Include="Images\Icons\Roles\Meelee DPS.png" />
+    <Resource Include="Images\Icons\Roles\Ranged DPS.png" />
+    <Resource Include="Images\Icons\Roles\TankRole.png" />
+    <Resource Include="Images\Icons\Tanks\DarkKnight.png" />
+    <Resource Include="Images\Icons\Tanks\Gladiator.png" />
+    <Resource Include="Images\Icons\Tanks\Gunbreaker.png" />
+    <Resource Include="Images\Icons\Tanks\Marauder.png" />
+    <Resource Include="Images\Icons\Tanks\Paladin.png" />
+    <Resource Include="Images\Icons\Tanks\Warrior.png" />
+  </ItemGroup>
+
+</Project>
