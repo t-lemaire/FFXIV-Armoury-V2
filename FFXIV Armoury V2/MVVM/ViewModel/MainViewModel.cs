@@ -10,8 +10,10 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
     class MainViewModel: ObservableObject
     {
         public RelayCommand GearListVewCommand { get; set; }
+        public RelayCommand CharacterInfoVewCommand { get; set; }
 
         public GearListViewModel GearListVM { get; set; }
+        public CharacterInfoViewModel CharacterInfoVM { get; set; }
 
         private object _currentView;
 
@@ -28,12 +30,18 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public MainViewModel()
         {
             GearListVM = new GearListViewModel();
+            CharacterInfoVM = new CharacterInfoViewModel();
 
             CurrentView = GearListVM;
 
             GearListVewCommand = new RelayCommand(o =>
             {
                 CurrentView = GearListVM;
+            });
+
+            CharacterInfoVewCommand = new RelayCommand(o =>
+            {
+                CurrentView = CharacterInfoVM;
             });
         }
     }

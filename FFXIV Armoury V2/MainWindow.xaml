@@ -61,7 +61,8 @@
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MainMenuButtonTheme}"/>
+                             Style="{StaticResource MainMenuButtonTheme}"
+                             Command="{Binding CharacterInfoVewCommand}"/>
             </StackPanel>
 
             <TextBox Grid.Row="0"

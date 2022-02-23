@@ -14,6 +14,9 @@
             <DataTemplate DataType="{x:Type viewModel:GearListViewModel}">
                 <view:GearListView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:CharacterInfoViewModel}">
+                <view:CharacterInfoView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
