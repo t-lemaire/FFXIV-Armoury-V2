@@ -23,8 +23,9 @@ namespace FFXIV_Armoury_V2
     {
         public MainWindow()
         {
-            InitializeComponent();
             ApiHelper.InitializeClient();
+            InitializeComponent();
+            
         }
     }
 }

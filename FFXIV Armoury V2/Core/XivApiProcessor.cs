@@ -19,9 +19,9 @@ namespace FFXIV_Armoury_V2.Core
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    Character loadedCharacter = await response.Content.ReadAsAsync<Character>();
+                    ApiCharacterResult loadedCharacterResult = await response.Content.ReadAsAsync<ApiCharacterResult>();
 
-                    return loadedCharacter;
+                    return loadedCharacterResult.Character;
                 }
                 else
                 {

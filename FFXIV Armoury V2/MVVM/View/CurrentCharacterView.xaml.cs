@@ -18,9 +18,9 @@ namespace FFXIV_Armoury_V2.MVVM.View
     /// <summary>
     /// Interaction logic for CurrentCharacter.xaml
     /// </summary>
-    public partial class CurrentCharacter : UserControl
+    public partial class CurrentCharacterView : UserControl
     {
-        public CurrentCharacter()
+        public CurrentCharacterView()
         {
             InitializeComponent();
         }

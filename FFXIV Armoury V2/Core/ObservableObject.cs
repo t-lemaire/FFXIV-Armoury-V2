@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace FFXIV_Armoury_V2.Core
 {
-    internal class ObservableObject : INotifyPropertyChanged
+    public class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 

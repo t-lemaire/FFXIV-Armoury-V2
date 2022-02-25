@@ -10,6 +10,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
     {
         public string Avatar { get; set; }
         public string Dc { get; set; }
+        public string Server { get; set; }
         public string FreeCompanyName { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }

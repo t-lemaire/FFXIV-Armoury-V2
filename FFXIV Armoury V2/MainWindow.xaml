@@ -20,11 +20,11 @@
         </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="300" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="75" />
+                <RowDefinition Height="150" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 

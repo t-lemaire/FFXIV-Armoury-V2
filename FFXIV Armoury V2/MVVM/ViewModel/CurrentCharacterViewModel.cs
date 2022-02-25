@@ -8,13 +8,26 @@ using System.Threading.Tasks;
 
 namespace FFXIV_Armoury_V2.MVVM.ViewModel
 {
-    public class CurrentCharacterViewModel
+    public class CurrentCharacterViewModel: ObservableObject
     {
-        public Character CurrentCharacter { get; set; }
+        private Character _currentCharacter;
+
+        public Character CurrentCharacter
+        {
+            get { return _currentCharacter; }
+            set { 
+                _currentCharacter = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public CurrentCharacterViewModel()
         {
-
+            Task.Run(async () =>
+            {
+                await LoadCurrentCharacter(36894998);
+            });
         }
 
         private async Task LoadCurrentCharacter(int lodestoneId)

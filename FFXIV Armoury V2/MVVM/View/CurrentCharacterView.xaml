@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="FFXIV_Armoury_V2.MVVM.View.CurrentCharacter"
+﻿<UserControl x:Class="FFXIV_Armoury_V2.MVVM.View.CurrentCharacterView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,25 +11,50 @@
     <UserControl.DataContext>
         <viewModel:CurrentCharacterViewModel />
     </UserControl.DataContext>
-    <StackPanel Grid.Row="0"
-                        Grid.Column="0"
-                        Orientation="Horizontal">
-        <Image Grid.Column="0"
-                   Grid.Row="0"
-                   Width="30"
-                   Height="30"
-                   HorizontalAlignment="Left"
+    <StackPanel Orientation="Horizontal">
+        <Image Width="50"
+                   Height="50"
+                   HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Margin="10"
                    Source="{Binding CurrentCharacter.Avatar}"
-                   x:Name="characterPortrait"/>
-        <TextBlock Grid.Row="0"
-                   Grid.Column="0"
-                   VerticalAlignment="Center"
+                   x:Name="characterPortrait">
+            <Image.Clip>
+                <EllipseGeometry RadiusX="25"
+                                 RadiusY="25"
+                                 Center="25,25"/>
+            </Image.Clip>
+        </Image>
+        <StackPanel>
+            <TextBlock VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    Foreground="White"
                    FontSize="22"
-                   Text="{Binding CurrentCharacter.Name}"
-                   x:Name="characterName"/>
+                   Text="{Binding CurrentCharacter.Name}"/>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   FontSize="12"
+                   Text="{Binding CurrentCharacter.Server}"/>
+                <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   FontSize="12"
+                   Text=" ("/>
+                <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   FontSize="12"
+                   Text="{Binding CurrentCharacter.Dc}"/>
+                <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   FontSize="12"
+                   Text=")"/>
+            </StackPanel>
+        </StackPanel>
     </StackPanel>
 </UserControl>
