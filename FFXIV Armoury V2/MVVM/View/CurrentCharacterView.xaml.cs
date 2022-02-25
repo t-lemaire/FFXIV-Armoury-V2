@@ -1,5 +1,4 @@
-﻿using FFXIV_Armoury_V2.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FFXIV_Armoury_V2
+namespace FFXIV_Armoury_V2.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CurrentCharacter.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CurrentCharacter : UserControl
     {
-        public MainWindow()
+        public CurrentCharacter()
         {
             InitializeComponent();
-            ApiHelper.InitializeClient();
         }
     }
 }

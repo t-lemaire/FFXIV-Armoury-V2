@@ -13,5 +13,6 @@ namespace FFXIV_Armoury_V2
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }

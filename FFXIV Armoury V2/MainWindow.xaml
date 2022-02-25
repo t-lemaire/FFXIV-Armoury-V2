@@ -28,25 +28,10 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0"
-                        Grid.Column="0"
-                        Orientation="Horizontal">
-                <Image Grid.Column="0"
-                   Grid.Row="0"
-                   Width="30"
-                   Height="30"
-                   Source="/Images/Icons/Healers/Sage.png"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Margin="10" />
-                <TextBlock Grid.Row="0"
-                       Grid.Column="0"
-                       Text="Terriel Luse"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Foreground="White"
-                       FontSize="22" />
-            </StackPanel>
+            <ContentControl Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="10"
+                            Content="{Binding LoginView}" />
 
             <StackPanel Grid.Row="1"
                         Grid.Column="0">

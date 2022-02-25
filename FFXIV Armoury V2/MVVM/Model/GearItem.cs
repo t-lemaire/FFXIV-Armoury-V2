@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FFXIV_Armoury_V2.MVVM.Model
 {
-    class GearItem
+    public class GearItem
     {
         public string Name { get; set; }
         public int ItemLevel { get; set; }
