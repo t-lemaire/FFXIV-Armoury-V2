@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace FFXIV_Armoury_V2.Core
 {
@@ -22,6 +23,26 @@ namespace FFXIV_Armoury_V2.Core
                     ApiCharacterResult loadedCharacterResult = await response.Content.ReadAsAsync<ApiCharacterResult>();
 
                     return loadedCharacterResult.Character;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
+        public static async Task<ApiCharacterSearchResult> SearchCharacters(string searchText)
+        {
+            searchText = HttpUtility.UrlEncode(searchText.Trim());
+            string url = $"{_baseUrl}/character/search?name={searchText}";
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    ApiCharacterSearchResult loadedCharacterResult = await response.Content.ReadAsAsync<ApiCharacterSearchResult>();
+
+                    return loadedCharacterResult;
                 }
                 else
                 {

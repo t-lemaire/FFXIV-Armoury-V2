@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:FFXIV_Armoury_V2"
         xmlns:viewModel="clr-namespace:FFXIV_Armoury_V2.MVVM.ViewModel"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="FFXIV Armoury" Height="600" Width="800">
     <Window.DataContext>
         <viewModel:MainViewModel />
@@ -20,7 +21,7 @@
         </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="200" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -30,7 +31,7 @@
 
             <ContentControl Grid.Row="0"
                             Grid.Column="0"
-                            Margin="10"
+                            Margin="5"
                             Content="{Binding LoginView}" />
 
             <StackPanel Grid.Row="1"

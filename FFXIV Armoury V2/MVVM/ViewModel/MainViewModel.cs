@@ -13,10 +13,12 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public RelayCommand GearListVewCommand { get; set; }
         public RelayCommand CharacterInfoVewCommand { get; set; }
         public RelayCommand CurrentCharacterViewCommand { get; set; }
+        public RelayCommand SearchCharacterViewCommand { get; set; }
 
         public GearListViewModel GearListVM { get; set; }
         public CharacterInfoViewModel CharacterInfoVM { get; set; }
         public CurrentCharacterViewModel CurrentCharacterVM { get; set; }
+        public SearchCharacterViewModel SearchCharacterVM { get; set; }
 
         private object _currentView;
         private object _loginView;
@@ -47,12 +49,10 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             //Main view port
             GearListVM = new GearListViewModel();
             CharacterInfoVM = new CharacterInfoViewModel();
+            SearchCharacterVM = new SearchCharacterViewModel();
 
-            //Logged in section
-            CurrentCharacterVM = new CurrentCharacterViewModel();
-
-            CurrentView = GearListVM;
-            LoginView = CurrentCharacterVM;
+            CurrentView = SearchCharacterVM;
+            
 
             GearListVewCommand = new RelayCommand(o =>
             {
@@ -63,6 +63,15 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             {
                 CurrentView = CharacterInfoVM;
             });
+            SearchCharacterViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = SearchCharacterVM;
+            });
+
+            //Logged in section
+            CurrentCharacterVM = new CurrentCharacterViewModel();
+
+            LoginView = CurrentCharacterVM;
 
             CurrentCharacterViewCommand = new RelayCommand(o =>
             {

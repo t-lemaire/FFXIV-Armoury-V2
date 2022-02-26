@@ -17,6 +17,10 @@
             <DataTemplate DataType="{x:Type viewModel:CharacterInfoViewModel}">
                 <view:CharacterInfoView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:SearchCharacterViewModel}">
+                <view:SearchCharacterView />
+            </DataTemplate>
+            
             <DataTemplate DataType="{x:Type viewModel:CurrentCharacterViewModel}">
                 <view:CurrentCharacterView />
             </DataTemplate>
