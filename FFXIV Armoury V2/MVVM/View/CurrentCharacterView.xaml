@@ -12,20 +12,20 @@
         <viewModel:CurrentCharacterViewModel />
     </UserControl.DataContext>
     <StackPanel Orientation="Horizontal">
-        <Image Width="50"
-                   Height="50"
+        <Image Width="40"
+                   Height="40"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Margin="10"
                    Source="{Binding CurrentCharacter.Avatar}"
                    x:Name="characterPortrait">
             <Image.Clip>
-                <EllipseGeometry RadiusX="25"
-                                 RadiusY="25"
-                                 Center="25,25"/>
+                <EllipseGeometry RadiusX="20"
+                                 RadiusY="20"
+                                 Center="20,20"/>
             </Image.Clip>
         </Image>
-        <StackPanel>
+        <StackPanel VerticalAlignment="Center">
             <TextBlock VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    Foreground="White"
