@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,10 +43,12 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
-        private void SelectCharacter(ApiCharacterSearchResultProfile character)
+        private async void SelectCharacter(ApiCharacterSearchResultProfile character)
         {
             string json = JsonConvert.SerializeObject(character);
-            json = json;
+
+            string filePath = FileHelper.GetCurrentCharacterFilePath();
+            await FileHelper.WriteFile(filePath, json);
         }
     }
 }
