@@ -1,4 +1,5 @@
-﻿using FFXIV_Armoury_V2.MVVM.ViewModel;
+﻿using FFXIV_Armoury_V2.MVVM.Model;
+using FFXIV_Armoury_V2.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
