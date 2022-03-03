@@ -21,7 +21,7 @@
         </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="250" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -51,15 +51,8 @@
                              Command="{Binding CharacterInfoVewCommand}"/>
             </StackPanel>
 
-            <TextBox Grid.Row="0"
-                       Grid.Column="1"
-                       Width="300"
-                       Height="40"
-                       Margin="5"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left" />
-
-            <ContentControl Grid.Row="1"
+            <ContentControl Grid.Row="0"
+                            Grid.RowSpan="2"
                             Grid.Column="1"
                             Margin="10"
                             Content="{Binding CurrentView}" />
