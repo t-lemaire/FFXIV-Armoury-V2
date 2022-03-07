@@ -85,28 +85,5 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                 OnPropertyChanged();
             }
         }
-
-        public string? DcServer
-        {
-            get
-            {
-                if (!String.IsNullOrEmpty(Dc) && !String.IsNullOrEmpty(Server))
-                {
-                    return $"{Server} ({Dc})";
-                }
-                else if (!String.IsNullOrEmpty(Server) && String.IsNullOrEmpty(Dc))
-                {
-                    return Server;
-                }
-                else if (String.IsNullOrEmpty(Server) && !String.IsNullOrEmpty(Dc))
-                {
-                    return Dc;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-        }
     }
 }
