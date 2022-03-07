@@ -10,9 +10,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 {
     public class CurrentCharacterViewModel: ObservableObject
     {
-        private Character _currentCharacter;
+        private Character? _currentCharacter;
 
-        public Character CurrentCharacter
+        public Character? CurrentCharacter
         {
             get { return _currentCharacter; }
             set { 
@@ -21,13 +21,10 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
-
         public CurrentCharacterViewModel()
         {
-            Task.Run(async () =>
-            {
-                await LoadCurrentCharacter(36894998);
-            });
+            //CurrentCharacter = currentCharacter;
+            CurrentCharacter = CharacterHelper.CurrentCharacter;
         }
 
         private async Task LoadCurrentCharacter(int lodestoneId)

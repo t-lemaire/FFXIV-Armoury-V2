@@ -23,7 +23,6 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         private object _currentView;
         private object _loginView;
 
-
         public object CurrentView
         {
             get { return _currentView; }
@@ -46,6 +45,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
         public MainViewModel()
         {
+            CharacterHelper.CurrentCharacter = CharacterHelper.FetchCurrentCharacter();
+
+
             //Main view port
             GearListVM = new GearListViewModel();
             CharacterInfoVM = new CharacterInfoViewModel();
@@ -70,6 +72,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
             //Logged in section
             CurrentCharacterVM = new CurrentCharacterViewModel();
+
 
             LoginView = CurrentCharacterVM;
 

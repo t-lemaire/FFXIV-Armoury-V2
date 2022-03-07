@@ -14,15 +14,24 @@ namespace FFXIV_Armoury_V2.Core
             return Path.GetDirectoryName(Path.Combine(@Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)), "FFXIV Armory Manager", "test.json"));
         }
 
+        public static string GetFilePath(string filename)
+        {
+            return Path.Combine(GetBasePath(), filename);
+        }
+
         public static string GetCurrentCharacterFilePath()
         {
-            string basePath = GetBasePath();
-            return Path.Combine(basePath, "CurrentCharacter.json");
+            return GetFilePath("CurrentCharacter.json");
         }
 
         public async static Task WriteFile(string filePath, string content)
         {
             await File.WriteAllTextAsync(filePath, content);
+        }
+
+        public static string ReadFile(string filePath)
+        {
+            return File.ReadAllText(filePath);
         }
     }
 }

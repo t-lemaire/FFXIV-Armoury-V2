@@ -45,10 +45,11 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
         private async void SelectCharacter(ApiCharacterSearchResultProfile character)
         {
-            string json = JsonConvert.SerializeObject(character);
+            /*string json = JsonConvert.SerializeObject(character);
 
             string filePath = FileHelper.GetCurrentCharacterFilePath();
-            await FileHelper.WriteFile(filePath, json);
+            await FileHelper.WriteFile(filePath, json);*/
+            CharacterHelper.SaveCurrentCharacter(character);
         }
     }
 }
