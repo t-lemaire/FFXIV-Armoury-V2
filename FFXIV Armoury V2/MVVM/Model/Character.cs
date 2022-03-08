@@ -9,6 +9,8 @@ namespace FFXIV_Armoury_V2.MVVM.Model
 {
     public class Character: ObservableObject
     {
+
+
         private string? _avatar;
 
         public string? Avatar
@@ -28,6 +30,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             set { 
                 _server = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(ServerDc));
             }
         }
 
@@ -39,6 +42,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             set { 
                 _dc = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(ServerDc));
             }
         }
 

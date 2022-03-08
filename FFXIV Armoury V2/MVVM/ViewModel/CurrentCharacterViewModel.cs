@@ -15,7 +15,8 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public Character? CurrentCharacter
         {
             get { return _currentCharacter; }
-            set { 
+            set
+            {
                 _currentCharacter = value;
                 OnPropertyChanged();
             }
