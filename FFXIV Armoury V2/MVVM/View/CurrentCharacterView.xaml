@@ -11,21 +11,84 @@
     <UserControl.DataContext>
         <viewModel:CurrentCharacterViewModel />
     </UserControl.DataContext>
-    <StackPanel Orientation="Horizontal">
-        <Image Width="40"
-                   Height="40"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Margin="10"
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="96" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Width="100"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Margin="-40, 0, 0, 0"
+                   HorizontalAlignment="Left"
+                   StrokeThickness="3">
+            <Rectangle.RenderTransform>
+                <SkewTransform CenterX="0"
+                               CenterY="0"
+                               AngleX="-5"
+                               AngleY="0" />
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0.5,0"
+                                     EndPoint="0.5,1">
+                    <GradientStop Color="#2a661a" Offset="0.0" />
+                    <GradientStop Color="#468d32" Offset="1.0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.Stroke>
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,1">
+                    <GradientStop Color="#468d32" Offset="0.0" />
+                    <GradientStop Color="#2a661a" Offset="1.0" />
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+            
+        </Rectangle>
+
+        <Image HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
                    Source="{Binding CurrentCharacter.Avatar}"
-                   x:Name="characterPortrait">
-            <Image.Clip>
-                <EllipseGeometry RadiusX="20"
-                                 RadiusY="20"
-                                 Center="20,20"/>
-            </Image.Clip>
+                   Height="96"
+                   x:Name="characterPortrait"
+                   Grid.Column="1"
+                   Stretch="UniformToFill"
+                   Panel.ZIndex="-1"
+                   RenderOptions.BitmapScalingMode="Fant">
         </Image>
-        <StackPanel VerticalAlignment="Center">
+
+        <Rectangle Grid.Column="2"
+                   Grid.ColumnSpan="3"
+                   Margin="0, 0, -50, 0"
+                   StrokeThickness="3">
+            <Rectangle.RenderTransform>
+                <SkewTransform CenterX="0"
+                               CenterY="0"
+                               AngleX="-5"
+                               AngleY="0" />
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0.5,0"
+                                     EndPoint="0.5,1">
+                    <GradientStop Color="#2a661a" Offset="0.0" />
+                    <GradientStop Color="#468d32" Offset="1.0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.Stroke>
+                <LinearGradientBrush StartPoint="0,0"
+                                     EndPoint="1,1">
+                    <GradientStop Color="#468d32" Offset="0.0" />
+                    <GradientStop Color="#2a661a" Offset="1.0" />
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+        </Rectangle>
+
+        <StackPanel VerticalAlignment="Center"
+                    Grid.Column="2"
+                    Margin="15">
             <TextBlock VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    Foreground="White"
@@ -33,7 +96,7 @@
                    Text="{Binding CurrentCharacter.Name}"/>
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
+                        HorizontalAlignment="Left">
                 <TextBlock VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    Foreground="White"
@@ -41,5 +104,5 @@
                    Text="{Binding CurrentCharacter.ServerDc}"/>
             </StackPanel>
         </StackPanel>
-    </StackPanel>
+    </Grid>
 </UserControl>

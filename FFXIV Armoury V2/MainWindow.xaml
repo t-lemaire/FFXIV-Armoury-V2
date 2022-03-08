@@ -7,7 +7,7 @@
         xmlns:viewModel="clr-namespace:FFXIV_Armoury_V2.MVVM.ViewModel"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="FFXIV Armoury" Height="600" Width="800">
+        Title="FFXIV Armoury" Height="768" Width="1024">
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
@@ -25,13 +25,14 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80" />
+                <RowDefinition Height="96" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
             <ContentControl Grid.Row="0"
                             Grid.Column="0"
-                            Margin="5"
+                            Grid.ColumnSpan="2"
+                            Margin="0"
                             Content="{Binding LoginView}" />
 
             <StackPanel Grid.Row="1"
@@ -57,8 +58,7 @@
                              Command="{Binding SearchCharacterViewCommand}"/>
             </StackPanel>
 
-            <ContentControl Grid.Row="0"
-                            Grid.RowSpan="2"
+            <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="10"
                             Content="{Binding CurrentView}" />
