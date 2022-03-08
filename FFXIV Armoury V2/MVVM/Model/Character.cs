@@ -101,6 +101,16 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             }
         }
 
+        private List<ClassJob>? _classJobs;
+
+        public List<ClassJob>? ClassJobs
+        {
+            get { return _classJobs; }
+            set {
+                _classJobs = value;
+                OnPropertyChanged();
+            }
+        }
 
         public string ServerDc
         {
