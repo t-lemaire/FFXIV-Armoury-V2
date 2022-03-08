@@ -73,7 +73,6 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             //Logged in section
             CurrentCharacterVM = new CurrentCharacterViewModel();
 
-
             LoginView = CurrentCharacterVM;
 
             CurrentCharacterViewCommand = new RelayCommand(o =>

@@ -38,22 +38,7 @@
                    HorizontalAlignment="Left"
                    Foreground="White"
                    FontSize="12"
-                   Text="{Binding CurrentCharacter.Server}"/>
-                <TextBlock VerticalAlignment="Center"
-                   HorizontalAlignment="Left"
-                   Foreground="White"
-                   FontSize="12"
-                   Text=" ("/>
-                <TextBlock VerticalAlignment="Center"
-                   HorizontalAlignment="Left"
-                   Foreground="White"
-                   FontSize="12"
-                   Text="{Binding CurrentCharacter.Dc}"/>
-                <TextBlock VerticalAlignment="Center"
-                   HorizontalAlignment="Left"
-                   Foreground="White"
-                   FontSize="12"
-                   Text=")"/>
+                   Text="{Binding CurrentCharacter.ServerDc}"/>
             </StackPanel>
         </StackPanel>
     </StackPanel>

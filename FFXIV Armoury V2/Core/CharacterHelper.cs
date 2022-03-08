@@ -32,8 +32,9 @@ namespace FFXIV_Armoury_V2.Core
             CurrentCharacter.Name = character.Name;
             CurrentCharacter.Server = character.Server;
             CurrentCharacter.Dc = character.Dc;
-            CurrentCharacter.Id = characterProfile.Id;
+            CurrentCharacter.Id = character.Id;
             CurrentCharacter.FreeCompanyName = character.FreeCompanyName;
+            CurrentCharacter.Portrait = character.Portrait;
 
             FileHelper.WriteFile(FileHelper.GetFilePath(_currentCharacterFileName), JsonSerializer.Serialize(character));
         }

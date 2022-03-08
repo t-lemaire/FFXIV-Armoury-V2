@@ -85,5 +85,40 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                 OnPropertyChanged();
             }
         }
+
+        private string? _portrait;
+
+        public string? Portrait
+        {
+            get { return _portrait; }
+            set { 
+                _portrait = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public string ServerDc
+        {
+            get
+            {
+                if (!String.IsNullOrEmpty(Server) && !String.IsNullOrEmpty(Dc))
+                {
+                    return $"{Server} ({Dc})";
+                }
+                else if (!String.IsNullOrEmpty(Server))
+                {
+                    return Server;
+                }
+                else if (!String.IsNullOrEmpty(Dc))
+                {
+                    return Dc;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+        }
     }
 }

@@ -4,12 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FFXIV_Armoury_V2.MVVM.View"
+             xmlns:fModel="clr-namespace:FFXIV_Armoury_V2.MVVM.Model"
+             xmlns:viewModel="clr-namespace:FFXIV_Armoury_V2.MVVM.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Orientation="Vertical">
-        <TextBlock Text="Terriel"
-                   Foreground="White"/>
-        <TextBlock Text="Race: Viera"
-                   Foreground="White"/>
-    </StackPanel>
+    <UserControl.DataContext>
+        <viewModel:CharacterInfoViewModel />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image Source="{Binding CurrentCharacter.Portrait}"
+               Grid.Column="0"/>
+        <StackPanel Grid.Column="1">
+            <TextBlock Foreground="White"
+                       Text="{Binding CurrentCharacter.Name}" />
+            <TextBlock Foreground="White"
+                       Text="{Binding CurrentCharacter.ServerDc}" />
+        </StackPanel>
+    </Grid>
 </UserControl>

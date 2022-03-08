@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FFXIV_Armoury_V2.Core;
+using FFXIV_Armoury_V2.MVVM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,23 @@ using System.Threading.Tasks;
 
 namespace FFXIV_Armoury_V2.MVVM.ViewModel
 {
-    class CharacterInfoViewModel
+    public class CharacterInfoViewModel: ObservableObject
     {
+        private Character? _currentCharacter;
+
+        public Character? CurrentCharacter
+        {
+            get { return _currentCharacter; }
+            set
+            {
+                _currentCharacter = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public CharacterInfoViewModel()
+        {
+            CurrentCharacter = CharacterHelper.CurrentCharacter;
+        }
     }
 }

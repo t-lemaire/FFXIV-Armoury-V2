@@ -40,7 +40,6 @@
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             IsChecked="True"
                              Style="{StaticResource MainMenuButtonTheme}"
                              Command="{Binding GearListVewCommand}"/>
                 <RadioButton Content="Character Info"
@@ -49,6 +48,13 @@
                              FontSize="14"
                              Style="{StaticResource MainMenuButtonTheme}"
                              Command="{Binding CharacterInfoVewCommand}"/>
+                <RadioButton Content="Select Character"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             IsChecked="True"
+                             Style="{StaticResource MainMenuButtonTheme}"
+                             Command="{Binding SearchCharacterViewCommand}"/>
             </StackPanel>
 
             <ContentControl Grid.Row="0"

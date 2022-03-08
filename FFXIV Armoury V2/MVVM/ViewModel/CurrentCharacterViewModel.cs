@@ -23,15 +23,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
         public CurrentCharacterViewModel()
         {
-            //CurrentCharacter = currentCharacter;
             CurrentCharacter = CharacterHelper.CurrentCharacter;
-        }
-
-        private async Task LoadCurrentCharacter(int lodestoneId)
-        {
-            var character = await XivApiProcessor.LoadCharacter(lodestoneId);
-
-            CurrentCharacter = character;
         }
     }
 }
