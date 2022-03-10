@@ -1,6 +1,7 @@
 ﻿using FFXIV_Armoury_V2.Core;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -101,9 +102,9 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             }
         }
 
-        private List<ClassJob>? _classJobs;
+        private ObservableCollection<ClassJob>? _classJobs;
 
-        public List<ClassJob>? ClassJobs
+        public ObservableCollection<ClassJob>? ClassJobs
         {
             get { return _classJobs; }
             set {
@@ -111,6 +112,18 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                 OnPropertyChanged();
             }
         }
+
+        private ClassJob? _activeClassJob;
+
+        public ClassJob? ActiveClassJob
+        {
+            get { return _activeClassJob; }
+            set {
+                _activeClassJob = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public string ServerDc
         {

@@ -97,5 +97,109 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             }
         }
 
+        public string JobIcon
+        {
+            get
+            {
+                int? classJobId = null;
+
+                if (!UnlockedState.Equals(null))
+                {
+                    if (UnlockedState.Id == null)
+                    {
+                        classJobId = ClassId;
+                    } else
+                    {
+                        classJobId = JobId;
+                    }
+                }
+
+                switch (classJobId)
+                {
+                    case 1:
+                        return "/Images/Icons/Tanks/Gladiator.png";
+                    case 2:
+                        return "/Images/Icons/DPS/Pugilist.png";
+                    case 3:
+                        return "/Images/Icons/Tanks/Marauder.png";
+                    case 4:
+                        return "/Images/Icons/DPS/Lancer.png";
+                    case 5:
+                        return "/Images/Icons/DPS/Archer.png";
+                    case 6:
+                        return "/Images/Icons/Healers/Conjurer.png";
+                    case 7:
+                        return "/Images/Icons/DPS/Thaumaturge.png";
+                    case 8:
+                        return "/Images/Icons/Crafters/Carpenter.png";
+                    case 9:
+                        return "/Images/Icons/Crafters/Blacksmith.png";
+                    case 10:
+                        return "/Images/Icons/Crafters/Armorer.png";
+                    case 11:
+                        return "/Images/Icons/Crafters/Goldsmith.png";
+                    case 12:
+                        return "/Images/Icons/Crafters/Leatherworker.png";
+                    case 13:
+                        return "/Images/Icons/Crafters/Weaver.png";
+                    case 14:
+                        return "/Images/Icons/Crafters/Alchemist.png";
+                    case 15:
+                        return "/Images/Icons/Crafters/Culinarian.png";
+                    case 16:
+                        return "/Images/Icons/Gatherers/Miner.png";
+                    case 17:
+                        return "/Images/Icons/Gatherers/Botanist.png";
+                    case 18:
+                        return "/Images/Icons/Gatherers/Fisher.png";
+                    case 19:
+                        return "/Images/Icons/Tanks/Paladin.png";
+                    case 20:
+                        return "/Images/Icons/DPS/Monk.png";
+                    case 21:
+                        return "/Images/Icons/Tanks/Warrior.png";
+                    case 22:
+                        return "/Images/Icons/DPS/Dragoon.png";
+                    case 23:
+                        return "/Images/Icons/DPS/Bard.png";
+                    case 24:
+                        return "/Images/Icons/Healers/WhiteMage.png";
+                    case 25:
+                        return "/Images/Icons/DPS/BlackMage.png";
+                    case 26:
+                        return "/Images/Icons/DPS/Arcanist.png";
+                    case 27:
+                        return "/Images/Icons/DPS/Summoner.png";
+                    case 28:
+                        return "/Images/Icons/Healers/Scholar.png";
+                    case 29:
+                        return "/Images/Icons/DPS/Rogue.png";
+                    case 30:
+                        return "/Images/Icons/DPS/Ninja.png";
+                    case 31:
+                        return "/Images/Icons/DPS/Machinist.png";
+                    case 32:
+                        return "/Images/Icons/Tanks/DarkKnight.png";
+                    case 33:
+                        return "/Images/Icons/Healers/Astrologian.png";
+                    case 34:
+                        return "/Images/Icons/DPS/Samurai.png";
+                    case 35:
+                        return "/Images/Icons/DPS/RedMage.png";
+                    case 36:
+                        return "/Images/Icons/DPS/BlueMage.png";
+                    case 37:
+                        return "/Images/Icons/Tanks/Gunbreaker.png";
+                    case 38:
+                        return "/Images/Icons/DPS/Dancer.png";
+                    case 39:
+                        return "/Images/Icons/DPS/Reaper.png";
+                    case 40:
+                        return "/Images/Icons/Healers/Sage.png";
+                    default:
+                        return "/Images/Icons/meteor_flat.png";
+                }
+            }
+        }
     }
 }

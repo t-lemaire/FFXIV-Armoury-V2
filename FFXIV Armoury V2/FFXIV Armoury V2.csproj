@@ -38,11 +38,13 @@
     <None Remove="Images\Icons\Gatherers\Botanist.png" />
     <None Remove="Images\Icons\Gatherers\Fisher.png" />
     <None Remove="Images\Icons\Gatherers\Miner.png" />
+    <None Remove="Images\Icons\Healers\AST.png" />
     <None Remove="Images\Icons\Healers\Astrologian.png" />
     <None Remove="Images\Icons\Healers\Conjurer.png" />
     <None Remove="Images\Icons\Healers\Sage.png" />
     <None Remove="Images\Icons\Healers\Scholar.png" />
     <None Remove="Images\Icons\Healers\WhiteMage.png" />
+    <None Remove="Images\Icons\meteor_flat.png" />
     <None Remove="Images\Icons\Roles\DPSRole.png" />
     <None Remove="Images\Icons\Roles\HealerRole.png" />
     <None Remove="Images\Icons\Roles\Magic Ranged DPS.png" />
@@ -92,11 +94,13 @@
     <Resource Include="Images\Icons\Gatherers\Botanist.png" />
     <Resource Include="Images\Icons\Gatherers\Fisher.png" />
     <Resource Include="Images\Icons\Gatherers\Miner.png" />
+    <Resource Include="Images\Icons\Healers\AST.png" />
     <Resource Include="Images\Icons\Healers\Astrologian.png" />
     <Resource Include="Images\Icons\Healers\Conjurer.png" />
     <Resource Include="Images\Icons\Healers\Sage.png" />
     <Resource Include="Images\Icons\Healers\Scholar.png" />
     <Resource Include="Images\Icons\Healers\WhiteMage.png" />
+    <Resource Include="Images\Icons\meteor_flat.png" />
     <Resource Include="Images\Icons\Roles\DPSRole.png" />
     <Resource Include="Images\Icons\Roles\HealerRole.png" />
     <Resource Include="Images\Icons\Roles\Magic Ranged DPS.png" />

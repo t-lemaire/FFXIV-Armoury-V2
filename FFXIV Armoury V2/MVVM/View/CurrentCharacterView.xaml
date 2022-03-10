@@ -104,5 +104,305 @@
                    Text="{Binding CurrentCharacter.ServerDc}"/>
             </StackPanel>
         </StackPanel>
+
+        <Image Source="/Images/Icons/Healers/AST.png"
+               Grid.Column="4"
+               Width="175"
+               Height="175"
+               Margin="0, -25, 0, 0"
+               HorizontalAlignment="Right"
+               Opacity="0.1"/>
+
+        <!--#region ClassJobs -->
+        <Grid Grid.Column="3"
+              Grid.ColumnSpan="2"
+              HorizontalAlignment="Center"
+              Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--#region Tanks -->
+            <Image Grid.Row="0"
+                   Grid.Column="0"
+                   Source="{Binding CurrentCharacter.ClassJobs[0].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="0"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[0].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="1"
+                   Source="{Binding CurrentCharacter.ClassJobs[1].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[1].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="2"
+                   Source="{Binding CurrentCharacter.ClassJobs[2].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="2"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[2].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="3"
+                   Source="{Binding CurrentCharacter.ClassJobs[3].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="3"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[3].Level}" />
+            <!--#endregion-->
+
+            <!--#region Healers -->
+            <Image Grid.Row="0"
+                   Grid.Column="4"
+                   Source="{Binding CurrentCharacter.ClassJobs[4].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="4"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[4].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="5"
+                   Source="{Binding CurrentCharacter.ClassJobs[5].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="5"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[5].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="6"
+                   Source="{Binding CurrentCharacter.ClassJobs[6].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="6"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[6].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="7"
+                   Source="{Binding CurrentCharacter.ClassJobs[7].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="7"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[7].Level}" />
+            <!--#endregion-->
+
+            <!--#region DPS -->
+            <Image Grid.Row="0"
+                   Grid.Column="8"
+                   Source="{Binding CurrentCharacter.ClassJobs[8].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="8"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[8].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="9"
+                   Source="{Binding CurrentCharacter.ClassJobs[9].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="9"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[9].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="10"
+                   Source="{Binding CurrentCharacter.ClassJobs[10].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="10"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[10].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="11"
+                   Source="{Binding CurrentCharacter.ClassJobs[11].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="11"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[11].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="12"
+                   Source="{Binding CurrentCharacter.ClassJobs[12].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="12"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[12].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="13"
+                   Source="{Binding CurrentCharacter.ClassJobs[13].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="13"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[13].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="14"
+                   Source="{Binding CurrentCharacter.ClassJobs[14].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="14"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[14].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="15"
+                   Source="{Binding CurrentCharacter.ClassJobs[15].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="15"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[15].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="16"
+                   Source="{Binding CurrentCharacter.ClassJobs[16].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="16"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[16].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="17"
+                   Source="{Binding CurrentCharacter.ClassJobs[17].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="17"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[17].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="18"
+                   Source="{Binding CurrentCharacter.ClassJobs[18].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="18"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[18].Level}" />
+            <Image Grid.Row="0"
+                   Grid.Column="19"
+                   Source="{Binding CurrentCharacter.ClassJobs[19].JobIcon}" />
+            <TextBlock Grid.Row="1"
+                       Grid.Column="19"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[19].Level}" />
+            <!--#endregion-->
+
+            <!--#region Crafter -->
+            <Image Grid.Row="2"
+                   Grid.Column="0"
+                   Source="{Binding CurrentCharacter.ClassJobs[20].JobIcon}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="0"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[20].Level}" />
+            <Image Grid.Row="2"
+                   Grid.Column="1"
+                   Source="{Binding CurrentCharacter.ClassJobs[21].JobIcon}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="1"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[21].Level}" />
+            <Image Grid.Row="2"
+                   Grid.Column="2"
+                   Source="{Binding CurrentCharacter.ClassJobs[22].JobIcon}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="2"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[22].Level}" />
+            <Image Grid.Row="2"
+                   Grid.Column="3"
+                   Source="{Binding CurrentCharacter.ClassJobs[23].JobIcon}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="3"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[24].Level}" />
+            <Image Grid.Row="2"
+                   Grid.Column="4"
+                   Source="{Binding CurrentCharacter.ClassJobs[25].JobIcon}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="4"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[25].Level}" />
+            <Image Grid.Row="2"
+                   Grid.Column="5"
+                   Source="{Binding CurrentCharacter.ClassJobs[26].JobIcon}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="5"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[26].Level}" />
+            <Image Grid.Row="2"
+                   Grid.Column="6"
+                   Source="{Binding CurrentCharacter.ClassJobs[27].JobIcon}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="6"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[27].Level}" />
+            <!--#endregion-->
+
+            <!--#region Gatherers -->
+            <Image Grid.Row="2"
+                   Grid.Column="7"
+                   Source="{Binding CurrentCharacter.ClassJobs[28].JobIcon}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="7"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[28].Level}" />
+            <Image Grid.Row="2"
+                   Grid.Column="8"
+                   Source="{Binding CurrentCharacter.ClassJobs[29].JobIcon}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="8"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[29].Level}" />
+            <Image Grid.Row="2"
+                   Grid.Column="9"
+                   Source="{Binding CurrentCharacter.ClassJobs[30].JobIcon}" />
+            <TextBlock Grid.Row="3"
+                       Grid.Column="9"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Text="{Binding CurrentCharacter.ClassJobs[30].Level}" />
+            <!--#endregion-->
+
+        </Grid>
+        <!--#endregion-->
     </Grid>
 </UserControl>

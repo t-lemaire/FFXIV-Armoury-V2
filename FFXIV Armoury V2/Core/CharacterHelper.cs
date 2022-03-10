@@ -35,6 +35,8 @@ namespace FFXIV_Armoury_V2.Core
             CurrentCharacter.Id = character.Id;
             CurrentCharacter.FreeCompanyName = character.FreeCompanyName;
             CurrentCharacter.Portrait = character.Portrait;
+            CurrentCharacter.ClassJobs = character.ClassJobs;
+            CurrentCharacter.ActiveClassJob = character.ActiveClassJob;
 
             FileHelper.WriteFile(FileHelper.GetFilePath(_currentCharacterFileName), JsonSerializer.Serialize(character));
         }
