@@ -19,6 +19,8 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             {
                 _currentCharacter = value;
                 OnPropertyChanged();
+                OnPropertyChanged("BgColour1");
+                OnPropertyChanged("BgColour2");
             }
         }
 

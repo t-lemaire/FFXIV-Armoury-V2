@@ -97,7 +97,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             }
         }
 
-        public string JobIcon
+        private int? _classJobId
         {
             get
             {
@@ -108,13 +108,22 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                     if (UnlockedState.Id == null)
                     {
                         classJobId = ClassId;
-                    } else
+                    }
+                    else
                     {
                         classJobId = JobId;
                     }
                 }
 
-                switch (classJobId)
+                return classJobId;
+            }
+        }
+
+        public string JobIcon
+        {
+            get
+            {
+                switch (_classJobId)
                 {
                     case 1:
                         return "/Images/Icons/Tanks/Gladiator.png";
@@ -198,6 +207,206 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                         return "/Images/Icons/Healers/Sage.png";
                     default:
                         return "/Images/Icons/meteor_flat.png";
+                }
+            }
+        }
+
+        public bool IsTank
+        {
+            get
+            {
+                switch (_classJobId)
+                {
+                    case 1:
+                    case 3:
+                    case 19:
+                    case 21:
+                    case 32:
+                    case 37:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        }
+
+        public bool IsHealer
+        {
+            get
+            {
+                switch (_classJobId)
+                {
+                    case 6:
+                    case 24:
+                    case 28:
+                    case 33:
+                    case 40:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        }
+
+        public bool IsCrafter
+        {
+            get
+            {
+                switch (_classJobId)
+                {
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                    case 14:
+                    case 15:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        }
+
+        public bool IsGatherer
+        {
+            get
+            {
+                switch (_classJobId)
+                {
+                    case 16:
+                    case 17:
+                    case 18:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        }
+
+        public bool IsMeeleeDps
+        {
+            get
+            {
+                switch (_classJobId)
+                {
+                    case 2:
+                    case 4:
+                    case 20:
+                    case 22:
+                    case 29:
+                    case 30:
+                    case 34:
+                    case 39:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        }
+
+        public bool IsPhysicalRangedDps
+        {
+            get
+            {
+                switch (_classJobId)
+                {
+                    case 5:
+                    case 23:
+                    case 31:
+                    case 38:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        }
+
+        public bool IsMagicalRangedDps
+        {
+            get
+            {
+                switch (_classJobId)
+                {
+                    case 7:
+                    case 25:
+                    case 26:
+                    case 35:
+                    case 36:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        }
+
+        public bool IsDps
+        {
+            get
+            {
+                return IsMeeleeDps || IsPhysicalRangedDps || IsMagicalRangedDps;
+            }
+        }
+
+        public string Colour1
+        {
+            get
+            {
+                if (IsTank)
+                {
+                    return "#2e3c83";
+                }
+                else if (IsHealer)
+                {
+                    return "#2a661a";
+                }
+                else if (IsDps)
+                {
+                    return "#512727";
+                }
+                else if (IsCrafter)
+                {
+                    return "#37342f";
+                }
+                else if (IsGatherer)
+                {
+                    return "#37342f";
+                }
+                else
+                {
+                    return "#37342f";
+                }
+            }
+        }
+
+        public string Colour2
+        {
+            get
+            {
+                if (IsTank)
+                {
+                    return "#475dce";
+                }
+                else if (IsHealer)
+                {
+                    return "#468d32";
+                }
+                else if (IsDps)
+                {
+                    return "#813b3c";
+                }
+                else if (IsCrafter)
+                {
+                    return "#494949";
+                }
+                else if (IsGatherer)
+                {
+                    return "#494949";
+                }
+                else
+                {
+                    return "#494949";
                 }
             }
         }

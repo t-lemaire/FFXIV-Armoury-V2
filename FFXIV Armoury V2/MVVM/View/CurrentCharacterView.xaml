@@ -35,15 +35,15 @@
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0.5,0"
                                      EndPoint="0.5,1">
-                    <GradientStop Color="#2a661a" Offset="0.0" />
-                    <GradientStop Color="#468d32" Offset="1.0" />
+                    <GradientStop Color="{Binding CurrentCharacter.ActiveClassJob.Colour1}" Offset="0.0" />
+                    <GradientStop Color="{Binding CurrentCharacter.ActiveClassJob.Colour2}" Offset="1.0" />
                 </LinearGradientBrush>
             </Rectangle.Fill>
             <Rectangle.Stroke>
                 <LinearGradientBrush StartPoint="0,0"
                                      EndPoint="1,1">
-                    <GradientStop Color="#468d32" Offset="0.0" />
-                    <GradientStop Color="#2a661a" Offset="1.0" />
+                    <GradientStop Color="{Binding CurrentCharacter.ActiveClassJob.Colour2}" Offset="0.0" />
+                    <GradientStop Color="{Binding CurrentCharacter.ActiveClassJob.Colour1}" Offset="1.0" />
                 </LinearGradientBrush>
             </Rectangle.Stroke>
             
@@ -73,15 +73,15 @@
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0.5,0"
                                      EndPoint="0.5,1">
-                    <GradientStop Color="#2a661a" Offset="0.0" />
-                    <GradientStop Color="#468d32" Offset="1.0" />
+                    <GradientStop Color="{Binding CurrentCharacter.ActiveClassJob.Colour1}" Offset="0.0" />
+                    <GradientStop Color="{Binding CurrentCharacter.ActiveClassJob.Colour2}" Offset="1.0" />
                 </LinearGradientBrush>
             </Rectangle.Fill>
             <Rectangle.Stroke>
                 <LinearGradientBrush StartPoint="0,0"
                                      EndPoint="1,1">
-                    <GradientStop Color="#468d32" Offset="0.0" />
-                    <GradientStop Color="#2a661a" Offset="1.0" />
+                    <GradientStop Color="{Binding CurrentCharacter.ActiveClassJob.Colour2}" Offset="0.0" />
+                    <GradientStop Color="{Binding CurrentCharacter.ActiveClassJob.Colour1}" Offset="1.0" />
                 </LinearGradientBrush>
             </Rectangle.Stroke>
         </Rectangle>
