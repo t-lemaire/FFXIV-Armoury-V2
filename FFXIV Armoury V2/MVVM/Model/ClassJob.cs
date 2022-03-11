@@ -111,7 +111,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                     }
                     else
                     {
-                        classJobId = JobId;
+                        classJobId = UnlockedState.Id;
                     }
                 }
 
