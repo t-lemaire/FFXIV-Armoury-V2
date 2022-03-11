@@ -105,7 +105,7 @@
             </StackPanel>
         </StackPanel>
 
-        <Image Source="/Images/Icons/Healers/AST.png"
+        <Image Source="{Binding CurrentCharacter.ActiveClassJob.JobLogo}"
                Grid.Column="4"
                Width="175"
                Height="175"
@@ -117,7 +117,7 @@
         <Grid Grid.Column="3"
               Grid.ColumnSpan="2"
               HorizontalAlignment="Center"
-              Margin="5">
+              Margin="5, 5, 100, 5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />

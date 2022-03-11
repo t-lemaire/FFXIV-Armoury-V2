@@ -211,6 +211,98 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             }
         }
 
+        public string JobLogo
+        {
+            get
+            {
+                switch (_classJobId)
+                {
+                    case 1:
+                        return "/Images/Logos/Gladiator.png";
+                    case 2:
+                        return "/Images/Logos/Pugilist.png";
+                    case 3:
+                        return "/Images/Logos/Marauder.png";
+                    case 4:
+                        return "/Images/Logos/Lancer.png";
+                    case 5:
+                        return "/Images/Logos/Archer.png";
+                    case 6:
+                        return "/Images/Logos/Conjurer.png";
+                    case 7:
+                        return "/Images/Logos/Thaumaturge.png";
+                    case 8:
+                        return "/Images/Logos/Carpenter.png";
+                    case 9:
+                        return "/Images/Logos/Blacksmith.png";
+                    case 10:
+                        return "/Images/Logos/Armorer.png";
+                    case 11:
+                        return "/Images/Logos/Goldsmith.png";
+                    case 12:
+                        return "/Images/Logos/Leatherworker.png";
+                    case 13:
+                        return "/Images/Logos/Weaver.png";
+                    case 14:
+                        return "/Images/Icons/Crafters/Alchemist.png";
+                    case 15:
+                        return "/Images/Icons/Crafters/Culinarian.png";
+                    case 16:
+                        return "/Images/Icons/Gatherers/Miner.png";
+                    case 17:
+                        return "/Images/Icons/Gatherers/Botanist.png";
+                    case 18:
+                        return "/Images/Icons/Gatherers/Fisher.png";
+                    case 19:
+                        return "/Images/Logos/Paladin.png";
+                    case 20:
+                        return "/Images/Logos/Monk.png";
+                    case 21:
+                        return "/Images/Logos/Warrior.png";
+                    case 22:
+                        return "/Images/Logos/Dragoon.png";
+                    case 23:
+                        return "/Images/Logos/Bard.png";
+                    case 24:
+                        return "/Images/Logos/WhiteMage.png";
+                    case 25:
+                        return "/Images/Logos/BlackMage.png";
+                    case 26:
+                        return "/Images/Logos/Arcanist.png";
+                    case 27:
+                        return "/Images/Logos/Summoner.png";
+                    case 28:
+                        return "/Images/Logos/Scholar.png";
+                    case 29:
+                        return "/Images/Logos/Rogue.png";
+                    case 30:
+                        return "/Images/Logos/Ninja.png";
+                    case 31:
+                        return "/Images/Logos/Machinist.png";
+                    case 32:
+                        return "/Images/Logos/DarkKnight.png";
+                    case 33:
+                        return "/Images/Logos/Astrologian.png";
+                    case 34:
+                        return "/Images/Logos/Samurai.png";
+                    case 35:
+                        return "/Images/Logos/RedMage.png";
+                    case 36:
+                        return "/Images/Logos/BlueMage.png";
+                    case 37:
+                        return "/Images/Logos/Gunbreaker.png";
+                    case 38:
+                        return "/Images/Logos/Dancer.png";
+                    case 39:
+                        return "/Images/Logos/Reaper.png";
+                    case 40:
+                        return "/Images/Logos/Sage.png";
+                    default:
+                        return "/Images/Icons/meteor_flat.png";
+                }
+            }
+        }
+
         public bool IsTank
         {
             get
@@ -332,6 +424,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                     case 7:
                     case 25:
                     case 26:
+                    case 27:
                     case 35:
                     case 36:
                         return true;
