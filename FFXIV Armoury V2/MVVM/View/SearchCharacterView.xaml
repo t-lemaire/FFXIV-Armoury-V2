@@ -17,21 +17,26 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
         <TextBox x:Name="SearchTerm"
-                    Width="250"
+                    Width="350"
+                    Margin="20, 0, 0, 0"
                     Grid.Row="0"
                     Grid.Column="0"/>
         <Button Content="Search"
                     Margin="20, 0, 0, 0"
+                    Width="150"
+                    HorizontalAlignment="Left"
                     x:Name="SearchButton"
                     Command="{Binding SearchCharacterCmd}"
                     CommandParameter="{Binding ElementName=SearchTerm,Path=Text}"
+                    Style="{StaticResource DarkGreyButton}"
                     Grid.Column="1"
-                    Grid.Row="0"/>
+                    Grid.Row="0" />
+
 
         <DataGrid ItemsSource="{Binding SearchResults}"
                   AutoGenerateColumns="False"
