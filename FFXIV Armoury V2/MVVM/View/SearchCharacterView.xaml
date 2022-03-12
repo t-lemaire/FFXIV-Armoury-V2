@@ -13,53 +13,63 @@
     </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300" />
             <ColumnDefinition />
+            <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Border Background="#555555"
-                CornerRadius="10"
-                BorderThickness="1"
-                Grid.Row="0"
-                Grid.Column="0">
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0.5,0"
+        <Grid Grid.Row="0"
+              Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+
+            <Border Background="#555555"
+                    CornerRadius="10"
+                    BorderThickness="1"
+                    Margin="20, 0, 0, 0"
+                    Grid.Row="0"
+                    Grid.Column="0">
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0.5,0"
                                      EndPoint="0.5,1">
-                    <GradientStop Color="#222222" Offset="0.0" />
-                    <GradientStop Color="#949494" Offset="1.0" />
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <TextBox x:Name="SearchTerm"
+                        <GradientStop Color="#222222" Offset="0.0" />
+                        <GradientStop Color="#949494" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <TextBox x:Name="SearchTerm"
                      Margin="10, 0, 10, 0"
                      Foreground="White"
                      BorderThickness="0"
                      Background="Transparent"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Stretch"/>
-        </Border>
-        <Button Content="Search"
+            </Border>
+            <Button Content="Search"
                     Margin="20, 0, 20, 0"
-                    Width="150"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Stretch"
                     x:Name="SearchButton"
                     Command="{Binding SearchCharacterCmd}"
                     CommandParameter="{Binding ElementName=SearchTerm, Path=Text}"
                     Style="{StaticResource DarkGreyButton}"
                     Grid.Column="1"
                     Grid.Row="0" />
-
+        </Grid>
 
         <DataGrid ItemsSource="{Binding SearchResults}"
                   AutoGenerateColumns="False"
                   Margin="20"
                   IsReadOnly="True"
+                  CanUserReorderColumns="False"
+                  HeadersVisibility="Column"
+                  CanUserSortColumns="False"
                   Grid.Column="0"
                   Grid.Row="1"
-                  Grid.ColumnSpan="2">
+                  Style="{StaticResource DarkDataGrid}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Avatar">
                     <DataGridTemplateColumn.CellTemplate>
@@ -84,12 +94,14 @@
                                     Binding="{Binding Server}" />
                 <DataGridTextColumn Header="Name"
                                     Binding="{Binding Name}" />
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="SelectCharacter"
+                                    Height="30"
                                     Command="{Binding Path=DataContext.SelectCurrentCharacter, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                    CommandParameter="{Binding}">
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource DarkGreyButton}">
                                 Select
                             </Button>
                         </DataTemplate>
