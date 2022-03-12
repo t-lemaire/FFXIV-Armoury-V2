@@ -21,18 +21,33 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="SearchTerm"
-                    Width="350"
-                    Margin="20, 0, 0, 0"
-                    Grid.Row="0"
-                    Grid.Column="0"/>
+        <Border Background="#555555"
+                CornerRadius="10"
+                BorderThickness="1"
+                Grid.Row="0"
+                Grid.Column="0">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0.5,0"
+                                     EndPoint="0.5,1">
+                    <GradientStop Color="#222222" Offset="0.0" />
+                    <GradientStop Color="#949494" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <TextBox x:Name="SearchTerm"
+                     Margin="10, 0, 10, 0"
+                     Foreground="White"
+                     BorderThickness="0"
+                     Background="Transparent"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Stretch"/>
+        </Border>
         <Button Content="Search"
-                    Margin="20, 0, 0, 0"
+                    Margin="20, 0, 20, 0"
                     Width="150"
                     HorizontalAlignment="Left"
                     x:Name="SearchButton"
                     Command="{Binding SearchCharacterCmd}"
-                    CommandParameter="{Binding ElementName=SearchTerm,Path=Text}"
+                    CommandParameter="{Binding ElementName=SearchTerm, Path=Text}"
                     Style="{StaticResource DarkGreyButton}"
                     Grid.Column="1"
                     Grid.Row="0" />
