@@ -97,6 +97,7 @@
                                      EndPoint="0.5,1">
                                         <GradientStop Color="#222222" Offset="0.0" />
                                         <GradientStop Color="#FF949494" Offset="1.0" />
+                                       
                                     </LinearGradientBrush>
                                 </Border.BorderBrush>
                                 <TextBlock Text="{TemplateBinding Property=Content}"
