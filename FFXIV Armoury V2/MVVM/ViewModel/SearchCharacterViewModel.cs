@@ -71,6 +71,18 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        private string? _searchTerm;
+
+        public string? SearchTerm
+        {
+            get { return _searchTerm; }
+            set { 
+                _searchTerm = value;
+                OnPropertyChanged();
+
+                IsSearchEnabled = !String.IsNullOrEmpty(value);
+            }
+        }
 
 
         public RelayCommand SearchCharacterCmd { get; set; }
@@ -81,12 +93,14 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public SearchCharacterViewModel()
         {
             CurrentPage = 1;
-            IsSearchEnabled = true;
+            IsSearchEnabled = false;
             IsNextPageEnabled = false;
 
             SearchCharacterCmd = new RelayCommand(async o =>
             {
                 IsSearchEnabled = false;
+                IsNextPageEnabled = false;
+                IsPrevPageEnabled = false;
                 CurrentPage = 1;
                 await SearchCharacters(o.ToString());
                 IsSearchEnabled = true;
@@ -95,6 +109,8 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             SearchCharacterNextCmd = new RelayCommand(async o =>
             {
                 IsSearchEnabled = false;
+                IsNextPageEnabled = false;
+                IsPrevPageEnabled = false;
                 CurrentPage++;
                 await SearchCharacters(o.ToString(), CurrentPage);
                 IsSearchEnabled = true;
@@ -103,6 +119,8 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             SearchCharacterPrevCmd = new RelayCommand(async o =>
             {
                 IsSearchEnabled = false;
+                IsNextPageEnabled = false;
+                IsPrevPageEnabled = false;
                 CurrentPage--;
                 await SearchCharacters(o.ToString(), CurrentPage);
                 IsSearchEnabled = true;
@@ -118,9 +136,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         {
             var searchResults = await XivApiProcessor.SearchCharacters(searchTerm, page);
 
-            IsNextPageEnabled = searchResults.Pagination.PageNext != null;
-            IsPrevPageEnabled = searchResults.Pagination.PagePrev != null;
             MaxPage = (int)searchResults.Pagination.PageTotal;
+            IsNextPageEnabled = searchResults.Pagination.PageNext != null && page < MaxPage;
+            IsPrevPageEnabled = searchResults.Pagination.PagePrev != null;
 
             SearchResults.Clear();
             foreach (var result in searchResults.Results)
@@ -131,10 +149,6 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
         private async void SelectCharacter(ApiCharacterSearchResultProfile character)
         {
-            /*string json = JsonConvert.SerializeObject(character);
-
-            string filePath = FileHelper.GetCurrentCharacterFilePath();
-            await FileHelper.WriteFile(filePath, json);*/
             CharacterHelper.SaveCurrentCharacter(character);
         }
     }

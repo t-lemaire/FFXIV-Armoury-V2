@@ -48,7 +48,8 @@
                      BorderThickness="0"
                      Background="Transparent"
                      VerticalAlignment="Center"
-                     HorizontalAlignment="Stretch"/>
+                     HorizontalAlignment="Stretch"
+                     Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </Border>
             <Button Content="Search"
                     Margin="20, 0, 20, 0"
