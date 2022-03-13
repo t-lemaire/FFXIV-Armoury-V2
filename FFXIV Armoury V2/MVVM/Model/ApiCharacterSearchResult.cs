@@ -9,5 +9,6 @@ namespace FFXIV_Armoury_V2.MVVM.Model
     public class ApiCharacterSearchResult
     {
         public List<ApiCharacterSearchResultProfile> Results { get; set; }
+        public ApiPagination Pagination { get; set; }
     }
 }

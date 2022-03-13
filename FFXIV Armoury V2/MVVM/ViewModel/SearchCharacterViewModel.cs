@@ -26,6 +26,52 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        private int _maxPage;
+
+        public int MaxPage
+        {
+            get { return _maxPage; }
+            set { 
+                _maxPage = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private bool _isSearchEnabled;
+
+        public bool IsSearchEnabled
+        {
+            get { return _isSearchEnabled; }
+            set { 
+                _isSearchEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isNextPageEnabled;
+
+        public bool IsNextPageEnabled
+        {
+            get { return _isNextPageEnabled; }
+            set { 
+                _isNextPageEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isPrevPageEnabled;
+
+        public bool IsPrevPageEnabled
+        {
+            get { return _isPrevPageEnabled; }
+            set { 
+                _isPrevPageEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+
 
         public RelayCommand SearchCharacterCmd { get; set; }
         public RelayCommand SearchCharacterNextCmd { get; set; }
@@ -35,23 +81,31 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public SearchCharacterViewModel()
         {
             CurrentPage = 1;
+            IsSearchEnabled = true;
+            IsNextPageEnabled = false;
 
             SearchCharacterCmd = new RelayCommand(async o =>
             {
+                IsSearchEnabled = false;
                 CurrentPage = 1;
                 await SearchCharacters(o.ToString());
+                IsSearchEnabled = true;
             });
 
             SearchCharacterNextCmd = new RelayCommand(async o =>
             {
+                IsSearchEnabled = false;
                 CurrentPage++;
                 await SearchCharacters(o.ToString(), CurrentPage);
+                IsSearchEnabled = true;
             });
 
             SearchCharacterPrevCmd = new RelayCommand(async o =>
             {
+                IsSearchEnabled = false;
                 CurrentPage--;
                 await SearchCharacters(o.ToString(), CurrentPage);
+                IsSearchEnabled = true;
             });
 
             SelectCurrentCharacter = new RelayCommand(o =>
@@ -63,6 +117,10 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public async Task SearchCharacters(string searchTerm, int page=1)
         {
             var searchResults = await XivApiProcessor.SearchCharacters(searchTerm, page);
+
+            IsNextPageEnabled = searchResults.Pagination.PageNext != null;
+            IsPrevPageEnabled = searchResults.Pagination.PagePrev != null;
+            MaxPage = (int)searchResults.Pagination.PageTotal;
 
             SearchResults.Clear();
             foreach (var result in searchResults.Results)
