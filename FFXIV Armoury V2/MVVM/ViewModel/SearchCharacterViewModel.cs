@@ -38,6 +38,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
             SearchCharacterCmd = new RelayCommand(async o =>
             {
+                CurrentPage = 1;
                 await SearchCharacters(o.ToString());
             });
 
