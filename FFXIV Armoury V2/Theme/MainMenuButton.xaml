@@ -30,7 +30,7 @@
                         <LinearGradientBrush StartPoint="0,0.5"
                                      EndPoint="1,0.5">
                             <GradientStop Color="#FF63533e" Offset="0.0" />
-                            <GradientStop Color="#0063533e" Offset="0.75" />
+                            <GradientStop Color="#0063533e" Offset="0.9" />
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>

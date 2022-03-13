@@ -15,6 +15,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
     public class SearchCharacterViewModel: ObservableObject
     {
         public ObservableCollection<ApiCharacterSearchResultProfile> SearchResults{ get; set; } = new ObservableCollection<ApiCharacterSearchResultProfile>();
+        public ObservableCollection<Character> CharactersList { get; set; }
         private int _currentPage;
 
         public int CurrentPage
@@ -128,8 +129,16 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
             SelectCurrentCharacter = new RelayCommand(o =>
             {
-                SelectCharacter((ApiCharacterSearchResultProfile)o);
+                if (o.GetType() == typeof(Character))
+                {
+                    SelectCharacter((Character)o);
+                } else
+                {
+                    SelectCharacter((ApiCharacterSearchResultProfile)o);
+                }
             });
+
+            CharactersList = CharacterHelper.CharactersList;
         }
 
         public async Task SearchCharacters(string searchTerm, int page=1)
@@ -148,6 +157,11 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         }
 
         private async void SelectCharacter(ApiCharacterSearchResultProfile character)
+        {
+            CharacterHelper.SaveCurrentCharacter(character);
+        }
+
+        private async void SelectCharacter(Character character)
         {
             CharacterHelper.SaveCurrentCharacter(character);
         }

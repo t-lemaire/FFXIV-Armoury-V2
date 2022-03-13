@@ -24,6 +24,11 @@ namespace FFXIV_Armoury_V2.Core
             return GetFilePath("CurrentCharacter.json");
         }
 
+        public static string GetCharactersListFilePath()
+        {
+            return GetFilePath("CharactersList.json");
+        }
+
         public async static Task WriteFile(string filePath, string content)
         {
             await File.WriteAllTextAsync(filePath, content);
@@ -31,6 +36,11 @@ namespace FFXIV_Armoury_V2.Core
 
         public static string ReadFile(string filePath)
         {
+            if (!File.Exists(filePath))
+            {
+                return "";
+            }
+
             return File.ReadAllText(filePath);
         }
     }

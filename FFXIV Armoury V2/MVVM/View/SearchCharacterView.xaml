@@ -14,7 +14,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="400" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -142,5 +142,60 @@
                     Style="{StaticResource DarkGreyButton}"
                     IsEnabled="{Binding IsPrevPageEnabled}"/>
         </StackPanel>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="1"
+                   Foreground="White"
+                   Text="Previously Selected Characters" />
+        <DataGrid ItemsSource="{Binding CharactersList}"
+                  AutoGenerateColumns="False"
+                  Margin="20"
+                  IsReadOnly="True"
+                  CanUserReorderColumns="False"
+                  HeadersVisibility="Column"
+                  CanUserSortColumns="False"
+                  Grid.Column="1"
+                  Grid.Row="1"
+                  Grid.RowSpan="2"
+                  Style="{StaticResource DarkDataGrid}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Avatar">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="40"
+                                   Height="40"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="5"
+                                   Source="{Binding Avatar}"
+                                   x:Name="characterPortrait">
+                                <Image.Clip>
+                                    <EllipseGeometry RadiusX="20"
+                                        RadiusY="20"
+                                        Center="20,20"/>
+                                </Image.Clip>
+                            </Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Server"
+                                    Binding="{Binding Server}" />
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding Name}" />
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="SelectCharacter"
+                                    Height="30"
+                                    Command="{Binding Path=DataContext.SelectCurrentCharacter, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource DarkGreyButton}">
+                                Select
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

@@ -46,7 +46,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public MainViewModel()
         {
             CharacterHelper.CurrentCharacter = CharacterHelper.FetchCurrentCharacter();
-
+            CharacterHelper.CharactersList = CharacterHelper.FetchCharactersList();
 
             //Main view port
             GearListVM = new GearListViewModel();
@@ -78,6 +78,13 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             CurrentCharacterViewCommand = new RelayCommand(o =>
             {
                 LoginView = CurrentCharacterVM;
+            });
+
+            Task.Run(async () =>
+            {
+
+                CharacterHelper.SaveCurrentCharacter(CharacterHelper.CurrentCharacter);
+                Console.WriteLine("Saved new character");
             });
         }
     }
