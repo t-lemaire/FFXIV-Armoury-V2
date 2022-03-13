@@ -19,6 +19,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition />
+            <RowDefinition Height="30" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0"
@@ -108,7 +109,34 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-            <!-- <DataGrid.GroupStyle></DataGrid.GroupStyle> -->
         </DataGrid>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    FlowDirection="RightToLeft">
+            <Button Content="Next"
+                    HorizontalAlignment="Right"
+                    Width="75"
+                    Style="{StaticResource DarkGreyButton}"
+                    x:Name="NextPageButton"
+                    Command="{Binding SearchCharacterNextCmd}"
+                    CommandParameter="{Binding ElementName=SearchTerm, Path=Text}"/>
+            <TextBlock Text="{Binding CurrentPage}"
+                       Foreground="White"
+                       Margin="20, 0, 5, 0"
+                       VerticalAlignment="Center"/>
+            <TextBlock Text="Page"
+                       Foreground="White"
+                       Margin="5, 0, 20, 0"
+                       VerticalAlignment="Center"/>
+            <Button Content="Previous"
+                    HorizontalAlignment="Right"
+                    Width="75"
+                    x:Name="PrevPageButton"
+                    Command="{Binding SearchCharacterPrevCmd}"
+                    CommandParameter="{Binding ElementName=SearchTerm, Path=Text}"
+                    Style="{StaticResource DarkGreyButton}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

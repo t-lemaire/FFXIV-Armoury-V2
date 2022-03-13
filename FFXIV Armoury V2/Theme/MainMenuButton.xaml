@@ -25,7 +25,15 @@
 
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#FF63533e" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0.5"
+                                     EndPoint="1,0.5">
+                            <GradientStop Color="#FF63533e" Offset="0.0" />
+                            <GradientStop Color="#0063533e" Offset="0.75" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
             </Trigger>
         </Style.Triggers>
     </Style>

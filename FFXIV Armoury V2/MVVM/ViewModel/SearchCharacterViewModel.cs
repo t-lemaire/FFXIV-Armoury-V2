@@ -15,15 +15,42 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
     public class SearchCharacterViewModel: ObservableObject
     {
         public ObservableCollection<ApiCharacterSearchResultProfile> SearchResults{ get; set; } = new ObservableCollection<ApiCharacterSearchResultProfile>();
+        private int _currentPage;
+
+        public int CurrentPage
+        {
+            get { return _currentPage; }
+            set { 
+                _currentPage = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public RelayCommand SearchCharacterCmd { get; set; }
+        public RelayCommand SearchCharacterNextCmd { get; set; }
+        public RelayCommand SearchCharacterPrevCmd { get; set; }
         public RelayCommand SelectCurrentCharacter { get; set; }
 
         public SearchCharacterViewModel()
         {
+            CurrentPage = 1;
+
             SearchCharacterCmd = new RelayCommand(async o =>
             {
                 await SearchCharacters(o.ToString());
+            });
+
+            SearchCharacterNextCmd = new RelayCommand(async o =>
+            {
+                CurrentPage++;
+                await SearchCharacters(o.ToString(), CurrentPage);
+            });
+
+            SearchCharacterPrevCmd = new RelayCommand(async o =>
+            {
+                CurrentPage--;
+                await SearchCharacters(o.ToString(), CurrentPage);
             });
 
             SelectCurrentCharacter = new RelayCommand(o =>
@@ -32,11 +59,11 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             });
         }
 
-        public async Task SearchCharacters(string searchTerm)
+        public async Task SearchCharacters(string searchTerm, int page=1)
         {
-            SearchResults.Clear();
-            var searchResults = await XivApiProcessor.SearchCharacters(searchTerm);
+            var searchResults = await XivApiProcessor.SearchCharacters(searchTerm, page);
 
+            SearchResults.Clear();
             foreach (var result in searchResults.Results)
             {
                 SearchResults.Add(result);

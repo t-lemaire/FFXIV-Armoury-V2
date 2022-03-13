@@ -31,10 +31,16 @@ namespace FFXIV_Armoury_V2.Core
             }
         }
 
-        public static async Task<ApiCharacterSearchResult> SearchCharacters(string searchText)
+        public static async Task<ApiCharacterSearchResult> SearchCharacters(string searchText, int page=1)
         {
             searchText = HttpUtility.UrlEncode(searchText.Trim());
-            string url = $"{_baseUrl}/character/search?name={searchText}";
+
+            if (page < 1)
+            {
+                page = 1;
+            }
+
+            string url = $"{_baseUrl}/character/search?name={searchText}&page={page}";
 
             using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
             {
