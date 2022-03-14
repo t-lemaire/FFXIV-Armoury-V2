@@ -29,6 +29,11 @@ namespace FFXIV_Armoury_V2.Core
             return GetFilePath("CharactersList.json");
         }
 
+        public static string GetRetainersListFilePath()
+        {
+            return GetFilePath("Retainers.json");
+        }
+
         public async static Task WriteFile(string filePath, string content)
         {
             await File.WriteAllTextAsync(filePath, content);

@@ -56,6 +56,12 @@
                              IsChecked="True"
                              Style="{StaticResource MainMenuButtonTheme}"
                              Command="{Binding SearchCharacterViewCommand}"/>
+                <RadioButton Content="Retainers"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MainMenuButtonTheme}"
+                             Command="{Binding ManageRetainersViewCommand}"/>
             </StackPanel>
 
             <ContentControl Grid.Row="1"

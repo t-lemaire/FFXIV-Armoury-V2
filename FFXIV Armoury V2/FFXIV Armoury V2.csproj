@@ -96,6 +96,7 @@
     <None Remove="Images\Logos\Warrior.png" />
     <None Remove="Images\Logos\Weaver.png" />
     <None Remove="Images\Logos\Whitemage.png" />
+    <None Remove="Theme\eorzea.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -191,6 +192,7 @@
     <Resource Include="Images\Logos\Warrior.png" />
     <Resource Include="Images\Logos\Weaver.png" />
     <Resource Include="Images\Logos\Whitemage.png" />
+    <Resource Include="Theme\eorzea.ttf" />
   </ItemGroup>
 
 </Project>

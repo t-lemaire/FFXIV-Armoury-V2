@@ -14,11 +14,13 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public RelayCommand CharacterInfoVewCommand { get; set; }
         public RelayCommand CurrentCharacterViewCommand { get; set; }
         public RelayCommand SearchCharacterViewCommand { get; set; }
+        public RelayCommand ManageRetainersViewCommand { get; set; }
 
         public GearListViewModel GearListVM { get; set; }
         public CharacterInfoViewModel CharacterInfoVM { get; set; }
         public CurrentCharacterViewModel CurrentCharacterVM { get; set; }
         public SearchCharacterViewModel SearchCharacterVM { get; set; }
+        public ManageRetainersViewModel ManageRetainersVM { get; set; }
 
         private object _currentView;
         private object _loginView;
@@ -47,11 +49,13 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         {
             CharacterHelper.CurrentCharacter = CharacterHelper.FetchCurrentCharacter();
             CharacterHelper.CharactersList = CharacterHelper.FetchCharactersList();
+            CharacterHelper.RetainersList = CharacterHelper.FetchRetainers();
 
             //Main view port
             GearListVM = new GearListViewModel();
             CharacterInfoVM = new CharacterInfoViewModel();
             SearchCharacterVM = new SearchCharacterViewModel();
+            ManageRetainersVM = new ManageRetainersViewModel();
 
             CurrentView = SearchCharacterVM;
             
@@ -69,6 +73,10 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             {
                 CurrentView = SearchCharacterVM;
             });
+            ManageRetainersViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = ManageRetainersVM;
+            });
 
             //Logged in section
             CurrentCharacterVM = new CurrentCharacterViewModel();
@@ -82,9 +90,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
             Task.Run(async () =>
             {
-
                 CharacterHelper.SaveCurrentCharacter(CharacterHelper.CurrentCharacter);
-                Console.WriteLine("Saved new character");
             });
         }
     }

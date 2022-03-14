@@ -14,6 +14,7 @@ namespace FFXIV_Armoury_V2.Core
         private const string _currentCharacterFileName = "CurrentCharacter.json";
         private static Character character = new Character();
         private static ObservableCollection<Character> charactersList = new ObservableCollection<Character>();
+        private static ObservableCollection<Inventory> retainersList = new ObservableCollection<Inventory>();
 
         public static Character CurrentCharacter
         {
@@ -25,6 +26,12 @@ namespace FFXIV_Armoury_V2.Core
         {
             get { return charactersList; }
             set { charactersList = value; }
+        }
+
+        public static ObservableCollection<Inventory> RetainersList
+        {
+            get { return retainersList; }
+            set { retainersList = value; }
         }
 
         public static Character? FetchCurrentCharacter()
@@ -105,6 +112,52 @@ namespace FFXIV_Armoury_V2.Core
             string filePath = FileHelper.GetCharactersListFilePath();
 
             FileHelper.WriteFile(FileHelper.GetFilePath(filePath), JsonSerializer.Serialize(charactersList));
+        }
+
+        public static ObservableCollection<Inventory>? FetchRetainers()
+        {
+            string filePath = FileHelper.GetRetainersListFilePath();
+            string fileContents = FileHelper.ReadFile(FileHelper.GetFilePath(filePath));
+
+            if (String.IsNullOrEmpty(fileContents))
+            {
+                return new ObservableCollection<Inventory>();
+            }
+
+            return JsonSerializer.Deserialize<ObservableCollection<Inventory>>(fileContents);
+        }
+
+        public static void SaveRetainersList()
+        {
+            string filePath = FileHelper.GetCharactersListFilePath();
+
+            FileHelper.WriteFile(FileHelper.GetFilePath(filePath), JsonSerializer.Serialize(retainersList));
+        }
+
+        public static void AddRetainer(Inventory retainer)
+        {
+            if (retainer.InvType != Inventory.InventoryType.Retainer)
+            {
+                throw new ArgumentException("Inventory type must be a retainer.");
+            }
+
+            retainersList.Add(retainer);
+
+            Task.Run(() =>
+            {
+                SaveRetainersList();
+            });
+        }
+
+        public static void RemoveRetainer(Inventory retainer)
+        {
+            int nbRetainers = retainersList.Count(i => i.Id == retainer.Id && i.InvType == retainer.InvType);
+            if (nbRetainers != null && nbRetainers > 0)
+            {
+                Inventory selectedRetainer = retainersList.Where(i => i.Id == retainer.Id && i.InvType == retainer.InvType).First();
+                retainersList.Remove(selectedRetainer);
+                SaveRetainersList();
+            }
         }
     }
 }
