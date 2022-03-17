@@ -95,7 +95,7 @@ namespace FFXIV_Armoury_V2.Core
             }
         }
 
-        public static async void RemoveCharacterToList(Character character)
+        public static async void RemoveCharacterFromList(Character character)
         {
             var nbCharactersInList = charactersList.Count(i => i.Id == character.Id);
 
@@ -129,19 +129,26 @@ namespace FFXIV_Armoury_V2.Core
 
         public static void SaveRetainersList()
         {
-            string filePath = FileHelper.GetCharactersListFilePath();
+            string filePath = FileHelper.GetRetainersListFilePath();
 
             FileHelper.WriteFile(FileHelper.GetFilePath(filePath), JsonSerializer.Serialize(retainersList));
         }
 
-        public static void AddRetainer(Inventory retainer)
+        public static void SaveRetainer(Inventory retainer)
         {
             if (retainer.InvType != Inventory.InventoryType.Retainer)
             {
                 throw new ArgumentException("Inventory type must be a retainer.");
             }
 
-            retainersList.Add(retainer);
+            Inventory existingRetainer = retainersList.Where(o => o.InvType == Inventory.InventoryType.Retainer && o.Id == retainer.Id).FirstOrDefault();
+            if (existingRetainer != null)
+            {
+                existingRetainer = retainer;
+            } else
+            {
+                retainersList.Add(retainer);
+            }
 
             Task.Run(() =>
             {

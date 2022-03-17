@@ -90,6 +90,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public RelayCommand SearchCharacterNextCmd { get; set; }
         public RelayCommand SearchCharacterPrevCmd { get; set; }
         public RelayCommand SelectCurrentCharacter { get; set; }
+        public RelayCommand RemoveCharacter { get; set; }
 
         public SearchCharacterViewModel()
         {
@@ -138,6 +139,11 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 }
             });
 
+            RemoveCharacter = new RelayCommand(o =>
+            {
+                RemoveSelectedCharacter((Character)o);
+            });
+
             CharactersList = CharacterHelper.CharactersList;
         }
 
@@ -156,6 +162,8 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        
+
         private async void SelectCharacter(ApiCharacterSearchResultProfile character)
         {
             CharacterHelper.SaveCurrentCharacter(character);
@@ -164,6 +172,12 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         private async void SelectCharacter(Character character)
         {
             CharacterHelper.SaveCurrentCharacter(character);
+        }
+
+        private async void RemoveSelectedCharacter(Character character)
+        {
+            CharacterHelper.CharactersList.Remove(character);
+            CharacterHelper.SaveCharactersList();
         }
     }
 }

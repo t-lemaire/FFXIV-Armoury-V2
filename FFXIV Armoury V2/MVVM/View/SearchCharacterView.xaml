@@ -185,13 +185,20 @@
                 <DataGridTemplateColumn Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="SelectCharacter"
-                                    Height="30"
+                            <StackPanel>
+                                <Button Height="30"
                                     Command="{Binding Path=DataContext.SelectCurrentCharacter, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                     CommandParameter="{Binding}"
                                     Style="{StaticResource DarkGreyButton}">
-                                Select
-                            </Button>
+                                    Select
+                                </Button>
+                                <Button Height="30"
+                                    Command="{Binding Path=DataContext.RemoveCharacter, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource DarkGreyButton}">
+                                    Remove
+                                </Button>
+                            </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
