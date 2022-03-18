@@ -36,6 +36,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
         public RelayCommand RemoveRetainerCmd { get; set; }
         public RelayCommand SaveRetainerCmd { get; set; }
+        public RelayCommand AddRetainer { get; set; }
 
         public ManageRetainersViewModel()
         {
@@ -47,9 +48,13 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 if (!(o is Inventory))
                 {
                     return;
+                } else if (Retainers == null || Retainers.Count == 0) {
+                    return;
                 }
 
-                RemoveRetainer((Inventory)o);
+                Retainers.Remove((Inventory)o);
+                CharacterHelper.RemoveRetainer((Inventory)o);
+                CharacterHelper.SaveRetainersList();
             });
 
             SaveRetainerCmd = new RelayCommand(async o =>
@@ -62,13 +67,20 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 Inventory newRetainer = (Inventory)o;
                 newRetainer.Id = String.IsNullOrEmpty(newRetainer.Id) ? Guid.NewGuid().ToString() : newRetainer.Id;
                 newRetainer.InvType = Inventory.InventoryType.Retainer;
+                newRetainer.CharacterId = newRetainer.CharacterId == null ? CurrentCharacter.Id : newRetainer.CharacterId;
+                
                 CharacterHelper.SaveRetainer(newRetainer);
             });
-        }
 
-        public void RemoveRetainer(Inventory retainer)
-        {
-            CharacterHelper.RemoveRetainer(retainer);
+            AddRetainer = new RelayCommand(async o =>
+            {
+                Inventory newRetainer = new Inventory();
+                newRetainer.Id = Guid.NewGuid().ToString();
+                newRetainer.InvType = Inventory.InventoryType.Retainer;
+                newRetainer.CharacterId = CurrentCharacter.Id;
+
+                Retainers.Add(newRetainer);
+            });
         }
     }
 }

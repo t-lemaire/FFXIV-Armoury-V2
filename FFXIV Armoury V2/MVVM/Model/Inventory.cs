@@ -50,5 +50,17 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             }
         }
 
+        private int? _characterId;
+
+        public int? CharacterId
+        {
+            get { return _characterId; }
+            set { 
+                _characterId = value;
+                OnPropertyChanged();
+            }
+        }
+
+
     }
 }
