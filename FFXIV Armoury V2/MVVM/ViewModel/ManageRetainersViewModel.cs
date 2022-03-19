@@ -73,6 +73,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 Retainers.Remove((Inventory)o);
                 CharacterHelper.RemoveRetainer((Inventory)o);
                 CharacterHelper.SaveRetainersList();
+                OnPropertyChanged("FilteredRetainers");
             });
 
             SaveRetainerCmd = new RelayCommand(async o =>
@@ -88,6 +89,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 newRetainer.CharacterId = newRetainer.CharacterId == null ? CurrentCharacter.Id : newRetainer.CharacterId;
                 
                 CharacterHelper.SaveRetainer(newRetainer);
+                OnPropertyChanged("FilteredRetainers");
             });
 
             AddRetainer = new RelayCommand(async o =>
