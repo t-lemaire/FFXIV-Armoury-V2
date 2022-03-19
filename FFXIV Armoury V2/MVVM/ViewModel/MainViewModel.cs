@@ -15,12 +15,14 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public RelayCommand CurrentCharacterViewCommand { get; set; }
         public RelayCommand SearchCharacterViewCommand { get; set; }
         public RelayCommand ManageRetainersViewCommand { get; set; }
+        public RelayCommand AboutViewCommand { get; set; }
 
         public GearListViewModel GearListVM { get; set; }
         public CharacterInfoViewModel CharacterInfoVM { get; set; }
         public CurrentCharacterViewModel CurrentCharacterVM { get; set; }
         public SearchCharacterViewModel SearchCharacterVM { get; set; }
         public ManageRetainersViewModel ManageRetainersVM { get; set; }
+        public AboutViewModel AboutVM { get; set; }
 
         private object _currentView;
         private object _loginView;
@@ -56,6 +58,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             CharacterInfoVM = new CharacterInfoViewModel();
             SearchCharacterVM = new SearchCharacterViewModel();
             ManageRetainersVM = new ManageRetainersViewModel();
+            AboutVM = new AboutViewModel();
 
             CurrentView = SearchCharacterVM;
             
@@ -76,6 +79,10 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             ManageRetainersViewCommand = new RelayCommand(o =>
             {
                 CurrentView = ManageRetainersVM;
+            });
+            AboutViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = AboutVM;
             });
 
             //Logged in section

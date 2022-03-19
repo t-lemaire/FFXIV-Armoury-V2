@@ -62,6 +62,12 @@
                              FontSize="14"
                              Style="{StaticResource MainMenuButtonTheme}"
                              Command="{Binding ManageRetainersViewCommand}"/>
+                <RadioButton Content="About"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MainMenuButtonTheme}"
+                             Command="{Binding AboutViewCommand}"/>
             </StackPanel>
 
             <ContentControl Grid.Row="1"
