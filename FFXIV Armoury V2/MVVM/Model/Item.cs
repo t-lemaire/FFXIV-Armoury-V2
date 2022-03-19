@@ -15,5 +15,23 @@ namespace FFXIV_Armoury_V2.MVVM.Model
         public ApiEquipSlotCategory EquipSlotCategory { get; set; }
 
         public ApiClassJobCategory ClassJobCategory { get; set; }
+
+        public string IconUrl
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(IconHd))
+                {
+                    return $"https://xivapi.com/{IconHd}";
+                }
+                else if (!string.IsNullOrEmpty(Icon))
+                {
+                    return $"https://xivapi.com/{Icon}";
+                } else
+                {
+                    return "";
+                }
+            }
+        }
     }
 }

@@ -82,5 +82,24 @@ namespace FFXIV_Armoury_V2.Core
                 }
             }
         }
+
+        public static async Task<Item> LoadItem(int lodestoneId)
+        {
+            string url = $"{_baseUrl}/item/{lodestoneId}";
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    Item selectedItem = await response.Content.ReadAsAsync<Item>();
+
+                    return selectedItem;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
     }
 }

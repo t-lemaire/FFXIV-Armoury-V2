@@ -120,6 +120,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         }
 
         public RelayCommand SearchItemCmd { get; set; }
+        public RelayCommand SearchItemNextCmd { get; set; }
+        public RelayCommand SearchItemPrevCmd { get; set; }
+        public RelayCommand AddItem { get; set; }
 
         public GearListViewModel()
         {
@@ -136,6 +139,33 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 CurrentPage = 1;
                 await SearchItems(o.ToString());
                 IsSearchEnabled = true;
+            });
+
+            SearchItemNextCmd = new RelayCommand(async o =>
+            {
+                IsSearchEnabled = false;
+                IsNextPageEnabled = false;
+                IsPrevPageEnabled = false;
+                CurrentPage++;
+                await SearchItems(o.ToString(), CurrentPage);
+                IsSearchEnabled = true;
+            });
+
+            SearchItemPrevCmd = new RelayCommand(async o =>
+            {
+                IsSearchEnabled = false;
+                IsNextPageEnabled = false;
+                IsPrevPageEnabled = false;
+                CurrentPage--;
+                await SearchItems(o.ToString(), CurrentPage);
+                IsSearchEnabled = true;
+            });
+
+            AddItem = new RelayCommand(async o =>
+            {
+                Item givenItem = (Item)o;
+                Item selectedItem = await XivApiProcessor.LoadItem(givenItem.Id);
+                Items.Add(selectedItem);
             });
         }
 

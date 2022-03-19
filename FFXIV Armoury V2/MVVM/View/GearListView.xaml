@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="350" />
         </Grid.ColumnDefinitions>
 
         <!--#region Jobs-->
@@ -251,7 +251,7 @@
         <!--#endregion Jobs-->
 
         <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding GearItems}"
+                  ItemsSource="{Binding Items}"
                   HeadersVisibility="Column"
                   Style="{StaticResource DarkDataGrid}"
                   AutoGenerateColumns="False"
@@ -265,29 +265,33 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Row="0"
-                    Grid.Column="1"
-                    Grid.RowSpan="2">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="100" />
-                </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0"
+              Grid.Column="1"
+              Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="100" />
+            </Grid.ColumnDefinitions>
 
-                <Border Background="#555555"
+            <Border Background="#555555"
                     CornerRadius="10"
                     BorderThickness="1"
                     Margin="20, 0, 0, 0"
                     Grid.Row="0"
                     Grid.Column="0">
-                    <Border.BorderBrush>
-                        <LinearGradientBrush StartPoint="0.5,0"
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0.5,0"
                                      EndPoint="0.5,1">
-                            <GradientStop Color="#222222" Offset="0.0" />
-                            <GradientStop Color="#949494" Offset="1.0" />
-                        </LinearGradientBrush>
-                    </Border.BorderBrush>
-                    <TextBox x:Name="SearchTerm"
+                        <GradientStop Color="#222222" Offset="0.0" />
+                        <GradientStop Color="#949494" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <TextBox x:Name="SearchTerm"
                      Margin="10, 0, 10, 0"
                      Foreground="White"
                      BorderThickness="0"
@@ -295,8 +299,8 @@
                      VerticalAlignment="Center"
                      HorizontalAlignment="Stretch"
                      Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                </Border>
-                <Button Content="Search"
+            </Border>
+            <Button Content="Search"
                     Margin="20, 0, 20, 0"
                     HorizontalAlignment="Stretch"
                     x:Name="SearchButton"
@@ -306,22 +310,91 @@
                     Grid.Column="1"
                     Grid.Row="0"
                     IsEnabled="{Binding IsSearchEnabled}"/>
-            </Grid>
 
             <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding SearchResults}"
-                  HeadersVisibility="Column"
-                  Style="{StaticResource DarkDataGrid}"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False"
-                  Margin="20">
+                      Grid.ColumnSpan="2"
+                      ItemsSource="{Binding SearchResults}"
+                      HeadersVisibility="Column"
+                      Style="{StaticResource DarkDataGrid}"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      IsReadOnly="True"
+                      Margin="10">
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Icon">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Width="40"
+                                   Height="40"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="5"
+                                   Source="{Binding IconUrl}"
+                                   x:Name="characterPortrait">
+                                    <Image.Clip>
+                                        <EllipseGeometry RadiusX="20"
+                                        RadiusY="20"
+                                        Center="20,20"/>
+                                    </Image.Clip>
+                                </Image>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Name"
-                                    Binding="{Binding Name}" />
-                    <DataGridTextColumn Header="Item Level"
-                                    Binding="{Binding ItemLevel}" />
+                                        Binding="{Binding Name}"
+                                        Width="150">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style>
+                                <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn Width="75">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="SelectCharacter"
+                                    Height="30"
+                                    Command="{Binding Path=DataContext.AddItem, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource DarkGreyButton}">
+                                    Add
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    FlowDirection="RightToLeft">
+                <Button Content="Next"
+                    HorizontalAlignment="Right"
+                    Width="75"
+                    Style="{StaticResource DarkGreyButton}"
+                    x:Name="NextPageButton"
+                    Command="{Binding SearchItemNextCmd}"
+                    CommandParameter="{Binding ElementName=SearchTerm, Path=Text}"
+                    IsEnabled="{Binding IsNextPageEnabled}"/>
+                <TextBlock Text="{Binding CurrentPage}"
+                       Foreground="White"
+                       Margin="20, 0, 5, 0"
+                       VerticalAlignment="Center"/>
+                <TextBlock Text="Page"
+                       Foreground="White"
+                       Margin="5, 0, 20, 0"
+                       VerticalAlignment="Center"/>
+                <Button Content="Previous"
+                    HorizontalAlignment="Right"
+                    Width="75"
+                    x:Name="PrevPageButton"
+                    Command="{Binding SearchItemPrevCmd}"
+                    CommandParameter="{Binding ElementName=SearchTerm, Path=Text}"
+                    Style="{StaticResource DarkGreyButton}"
+                    IsEnabled="{Binding IsPrevPageEnabled}"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

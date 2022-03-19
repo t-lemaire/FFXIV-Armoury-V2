@@ -18,5 +18,8 @@
         <TextBlock Text="© SQUARE ENIX CO., LTD. All Rights Reserved."
                    Foreground="White"
                    HorizontalAlignment="Center"/>
+        <TextBlock Text="Powered by XIVAPI"
+                   Foreground="White"
+                   HorizontalAlignment="Center"/>
     </StackPanel>
 </UserControl>
