@@ -8,8 +8,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
 {
     public class ApiItemSearchResult
     {
-        public int Id { get; set; }
-        public string Icon { get; set; }
-        public string Name { get; set; }
+        public List<Item> Results { get; set; }
+        public ApiPagination Pagination { get; set; }
     }
 }

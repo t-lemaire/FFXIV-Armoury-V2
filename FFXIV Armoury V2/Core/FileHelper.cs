@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FFXIV_Armoury_V2.MVVM.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -32,6 +33,16 @@ namespace FFXIV_Armoury_V2.Core
         public static string GetRetainersListFilePath()
         {
             return GetFilePath("Retainers.json");
+        }
+        
+        public static string GetCharacterGearFilePath(Character selectedCharacter)
+        {
+            return GetFilePath($"GearList_{selectedCharacter.Id}.json");
+        }
+
+        public static string GetCharacterGearFilePath(int characterId)
+        {
+            return GetFilePath($"GearList_{characterId}.json");
         }
 
         public async static Task WriteFile(string filePath, string content)

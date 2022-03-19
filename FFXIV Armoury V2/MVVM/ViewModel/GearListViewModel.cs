@@ -4,31 +4,154 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FFXIV_Armoury_V2.Core;
 using FFXIV_Armoury_V2.MVVM.Model;
 
 namespace FFXIV_Armoury_V2.MVVM.ViewModel
 {
-    class GearListViewModel
+    class GearListViewModel: ObservableObject
     {
-        public ObservableCollection<GearItem> GearItems { get; set; }
+        private ObservableCollection<Item> _items;
+        public ObservableCollection<Item> Items { 
+            get { return _items; }
+            set
+            {
+                _items = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Item> _searchResults;
+        public ObservableCollection<Item> SearchResults
+        {
+            get { return _searchResults; }
+            set
+            {
+                _searchResults = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Character? _currentCharacter;
+
+        public Character? CurrentCharacter
+        {
+            get { return _currentCharacter; }
+            set
+            {
+                _currentCharacter = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _currentPage;
+
+        public int CurrentPage
+        {
+            get { return _currentPage; }
+            set
+            {
+                _currentPage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _maxPage;
+
+        public int MaxPage
+        {
+            get { return _maxPage; }
+            set
+            {
+                _maxPage = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        private bool _isSearchEnabled;
+
+        public bool IsSearchEnabled
+        {
+            get { return _isSearchEnabled; }
+            set
+            {
+                _isSearchEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isNextPageEnabled;
+
+        public bool IsNextPageEnabled
+        {
+            get { return _isNextPageEnabled; }
+            set
+            {
+                _isNextPageEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isPrevPageEnabled;
+
+        public bool IsPrevPageEnabled
+        {
+            get { return _isPrevPageEnabled; }
+            set
+            {
+                _isPrevPageEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string? _searchTerm;
+
+        public string? SearchTerm
+        {
+            get { return _searchTerm; }
+            set
+            {
+                _searchTerm = value;
+                OnPropertyChanged();
+
+                IsSearchEnabled = !String.IsNullOrEmpty(value);
+            }
+        }
+
+        public RelayCommand SearchItemCmd { get; set; }
 
         public GearListViewModel()
         {
-            LoadGearItems();
+            //LoadGearItems();
+            CurrentCharacter = CharacterHelper.CurrentCharacter;
+            Items = ItemHelper.FetchItems(CurrentCharacter);
+            SearchResults = new ObservableCollection<Item>();
+
+            SearchItemCmd = new RelayCommand(async o =>
+            {
+                IsSearchEnabled = false;
+                IsNextPageEnabled = false;
+                IsPrevPageEnabled = false;
+                CurrentPage = 1;
+                await SearchItems(o.ToString());
+                IsSearchEnabled = true;
+            });
         }
 
-        private void LoadGearItems()
+        public async Task SearchItems(string searchTerm, int page = 1)
         {
-            GearItems = new ObservableCollection<GearItem>();
-            //ObservableCollection<GearItem> gearItems = new ObservableCollection<GearItem>();
+            var searchResults = await XivApiProcessor.SearchItems(searchTerm, page);
 
-            GearItem gearItem1 = new GearItem("Staff", 50);
-            GearItem gearItem2 = new GearItem("Helmet", 1);
-            GearItem gearItem3 = new GearItem("Ring", 35);
+            MaxPage = (int)searchResults.Pagination.PageTotal;
+            IsNextPageEnabled = searchResults.Pagination.PageNext != null && page < MaxPage;
+            IsPrevPageEnabled = searchResults.Pagination.PagePrev != null;
 
-            GearItems.Add(gearItem1);
-            GearItems.Add(gearItem2);
-            GearItems.Add(gearItem3);
+            SearchResults.Clear();
+            foreach (var result in searchResults.Results)
+            {
+                SearchResults.Add(result);
+            }
         }
     }
 }

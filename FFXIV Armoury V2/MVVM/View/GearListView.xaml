@@ -13,9 +13,15 @@
             <RowDefinition Height="100" />
             <RowDefinition />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
 
         <!--#region Jobs-->
-        <Grid>
+        <Grid Grid.Row="0"
+              Grid.Column="0"
+              Grid.RowSpan="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -246,7 +252,10 @@
 
         <DataGrid Grid.Row="1"
                   ItemsSource="{Binding GearItems}"
+                  HeadersVisibility="Column"
+                  Style="{StaticResource DarkDataGrid}"
                   AutoGenerateColumns="False"
+                  CanUserAddRows="False"
                   Margin="20">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
@@ -255,5 +264,64 @@
                                     Binding="{Binding ItemLevel}" />
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.RowSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+
+                <Border Background="#555555"
+                    CornerRadius="10"
+                    BorderThickness="1"
+                    Margin="20, 0, 0, 0"
+                    Grid.Row="0"
+                    Grid.Column="0">
+                    <Border.BorderBrush>
+                        <LinearGradientBrush StartPoint="0.5,0"
+                                     EndPoint="0.5,1">
+                            <GradientStop Color="#222222" Offset="0.0" />
+                            <GradientStop Color="#949494" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.BorderBrush>
+                    <TextBox x:Name="SearchTerm"
+                     Margin="10, 0, 10, 0"
+                     Foreground="White"
+                     BorderThickness="0"
+                     Background="Transparent"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Stretch"
+                     Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+                <Button Content="Search"
+                    Margin="20, 0, 20, 0"
+                    HorizontalAlignment="Stretch"
+                    x:Name="SearchButton"
+                    Command="{Binding SearchItemCmd}"
+                    CommandParameter="{Binding ElementName=SearchTerm, Path=Text}"
+                    Style="{StaticResource DarkGreyButton}"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    IsEnabled="{Binding IsSearchEnabled}"/>
+            </Grid>
+
+            <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding SearchResults}"
+                  HeadersVisibility="Column"
+                  Style="{StaticResource DarkDataGrid}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  Margin="20">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"
+                                    Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Item Level"
+                                    Binding="{Binding ItemLevel}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </Grid>
 </UserControl>

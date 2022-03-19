@@ -56,5 +56,31 @@ namespace FFXIV_Armoury_V2.Core
                 }
             }
         }
+
+        public static async Task<ApiItemSearchResult> SearchItems(string searchText, int page = 1)
+        {
+            searchText = HttpUtility.UrlEncode(searchText.Trim());
+
+            if (page < 1)
+            {
+                page = 1;
+            }
+
+            string url = $"{_baseUrl}/search?indexes=item&string={searchText}&page={page}";
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    ApiItemSearchResult loadedCharacterResult = await response.Content.ReadAsAsync<ApiItemSearchResult>();
+
+                    return loadedCharacterResult;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
     }
 }
