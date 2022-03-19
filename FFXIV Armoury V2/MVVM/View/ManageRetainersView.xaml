@@ -24,7 +24,7 @@
                 HorizontalAlignment="Left"
                 Margin="0, 10, 0, 10"
                 Style="{StaticResource DarkGreyButton}"/>
-        <DataGrid ItemsSource="{Binding Retainers}"
+        <DataGrid ItemsSource="{Binding FilteredRetainers}"
                   HeadersVisibility="Column"
                   Style="{StaticResource DarkDataGrid}"
                   AutoGenerateColumns="False"

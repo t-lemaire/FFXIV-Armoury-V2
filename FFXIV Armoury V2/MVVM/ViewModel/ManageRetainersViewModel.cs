@@ -3,6 +3,7 @@ using FFXIV_Armoury_V2.MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,25 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             set { 
                 _retainersList = value;
                 OnPropertyChanged();
+                OnPropertyChanged("FilteredRetainers");
             }
         }
+
+        private ObservableCollection<Inventory>? _filteredRetainers;
+
+        public ObservableCollection<Inventory>? FilteredRetainers
+        {
+            get { 
+                if (Retainers.Count == 0 || CurrentCharacter == null)
+                {
+                    return new ObservableCollection<Inventory>();
+                } else
+                {
+                    return new ObservableCollection<Inventory>(Retainers.Where(r => r.CharacterId == CurrentCharacter.Id));
+                }
+            }
+        }
+
 
         private Character? _currentCharacter;
 
@@ -80,6 +98,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 newRetainer.CharacterId = CurrentCharacter.Id;
 
                 Retainers.Add(newRetainer);
+                OnPropertyChanged("FilteredRetainers");
             });
         }
     }
