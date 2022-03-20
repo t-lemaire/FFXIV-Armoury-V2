@@ -23,7 +23,9 @@ namespace FFXIV_Armoury_V2.Core
                 return new ObservableCollection<InventoryItem>();
             }
 
-            return JsonSerializer.Deserialize<ObservableCollection<InventoryItem>>(fileContents);
+            Items =  JsonSerializer.Deserialize<ObservableCollection<InventoryItem>>(fileContents);
+
+            return Items;
         }
 
         public static void SaveItems(Character selectedCharacter)

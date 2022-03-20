@@ -172,6 +172,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 newInventoryItem.GearInventory = new Inventory();
 
                 ItemHelper.AddItem(newInventoryItem, CurrentCharacter);
+                OnPropertyChanged("Items");
 
                 //ItemHelper.SaveItems(CurrentCharacter);
             });

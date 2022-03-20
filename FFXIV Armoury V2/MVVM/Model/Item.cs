@@ -12,6 +12,8 @@ namespace FFXIV_Armoury_V2.MVVM.Model
         public int Id { get; set; }
         public string Icon { get; set; }
         public string IconHd { get; set; }
+        public int? LevelEquip { get; set; }
+        public int? LevelItem { get; set; }
         public ApiEquipSlotCategory EquipSlotCategory { get; set; }
 
         public ApiClassJobCategory ClassJobCategory { get; set; }

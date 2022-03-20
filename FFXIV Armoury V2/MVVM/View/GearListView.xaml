@@ -258,10 +258,31 @@
                   CanUserAddRows="False"
                   Margin="20">
             <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Icon">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="40"
+                                   Height="40"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="5"
+                                   Source="{Binding GearItem.IconUrl}"
+                                   x:Name="characterPortrait">
+                                <Image.Clip>
+                                    <EllipseGeometry RadiusX="20"
+                                        RadiusY="20"
+                                        Center="20,20"/>
+                                </Image.Clip>
+                            </Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Name"
                                     Binding="{Binding GearItem.Name}" />
                 <DataGridTextColumn Header="Item Level"
-                                    Binding="{Binding GearItem.ItemLevel}" />
+                                    Binding="{Binding GearItem.LevelItem}" />
+                <DataGridTextColumn Header="Min Level"
+                                    Binding="{Binding GearItem.LevelEquip}" />
             </DataGrid.Columns>
         </DataGrid>
 
