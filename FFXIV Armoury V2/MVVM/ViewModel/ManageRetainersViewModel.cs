@@ -85,7 +85,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
                 Inventory newRetainer = (Inventory)o;
                 newRetainer.Id = String.IsNullOrEmpty(newRetainer.Id) ? Guid.NewGuid().ToString() : newRetainer.Id;
-                newRetainer.InvType = Inventory.InventoryType.Retainer;
+                newRetainer.InvType = InventoryType.Retainer;
                 newRetainer.CharacterId = newRetainer.CharacterId == null ? CurrentCharacter.Id : newRetainer.CharacterId;
                 
                 CharacterHelper.SaveRetainer(newRetainer);
@@ -96,7 +96,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             {
                 Inventory newRetainer = new Inventory();
                 newRetainer.Id = Guid.NewGuid().ToString();
-                newRetainer.InvType = Inventory.InventoryType.Retainer;
+                newRetainer.InvType = InventoryType.Retainer;
                 newRetainer.CharacterId = CurrentCharacter.Id;
 
                 Retainers.Add(newRetainer);

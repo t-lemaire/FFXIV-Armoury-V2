@@ -136,12 +136,12 @@ namespace FFXIV_Armoury_V2.Core
 
         public static void SaveRetainer(Inventory retainer)
         {
-            if (retainer.InvType != Inventory.InventoryType.Retainer)
+            if (retainer.InvType != InventoryType.Retainer)
             {
                 throw new ArgumentException("Inventory type must be a retainer.");
             }
 
-            Inventory existingRetainer = retainersList.Where(o => o.InvType == Inventory.InventoryType.Retainer && o.Id == retainer.Id).FirstOrDefault();
+            Inventory existingRetainer = retainersList.Where(o => o.InvType == InventoryType.Retainer && o.Id == retainer.Id).FirstOrDefault();
             if (existingRetainer != null)
             {
                 existingRetainer = retainer;

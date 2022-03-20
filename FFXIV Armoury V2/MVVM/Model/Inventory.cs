@@ -9,17 +9,6 @@ namespace FFXIV_Armoury_V2.MVVM.Model
 {
     public class Inventory: ObservableObject
     {
-        public enum InventoryType
-        {
-            None = 0,
-            CharacterInventory = 1,
-            ChocoboSaddleBag = 2,
-            Retainer = 3,
-            GlamourDresser = 4,
-            Armoire = 5,
-            ArmouryChest = 6
-        }
-
         private InventoryType _invType;
 
         public InventoryType InvType
@@ -61,6 +50,38 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             }
         }
 
-
+        public string NameLabel
+        {
+            get
+            {
+                if (InvType == InventoryType.Retainer)
+                {
+                    return $"{Name} (Retainer)";
+                } else
+                {
+                    switch (InvType)
+                    {
+                        case InventoryType.GlamourDresser:
+                            return "Glamour Dresser";
+                            break;
+                        case InventoryType.Armoire:
+                            return "Armoire";
+                            break;
+                        case InventoryType.CharacterInventory:
+                            return "Personal Inventory";
+                            break;
+                        case InventoryType.ChocoboSaddleBag:
+                            return "Chocobo Saddlebag";
+                            break;
+                        case InventoryType.ArmouryChest:
+                            return "Armoury Chest";
+                            break;
+                        default:
+                            return "Unknown Inventory";
+                            break;
+                    }
+                }
+            }
+        }
     }
 }
