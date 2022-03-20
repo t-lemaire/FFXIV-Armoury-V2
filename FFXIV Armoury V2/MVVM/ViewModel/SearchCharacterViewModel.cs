@@ -16,6 +16,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
     {
         public ObservableCollection<ApiCharacterSearchResultProfile> SearchResults{ get; set; } = new ObservableCollection<ApiCharacterSearchResultProfile>();
         public ObservableCollection<Character> CharactersList { get; set; }
+
         private int _currentPage;
 
         public int CurrentPage

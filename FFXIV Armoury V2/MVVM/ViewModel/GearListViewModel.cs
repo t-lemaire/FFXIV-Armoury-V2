@@ -13,7 +13,14 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
     {
         private ObservableCollection<InventoryItem> _items;
         public ObservableCollection<InventoryItem> Items { 
-            get { return _items; }
+            get { 
+                if (_itemsCharacterId != CurrentCharacter.Id)
+                {
+                    _items = ItemHelper.FetchItems(CurrentCharacter);
+                    _itemsCharacterId = CurrentCharacter.Id;
+                }
+                return _items;
+            }
             set
             {
                 _items = value;
@@ -43,6 +50,8 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        private int? _itemsCharacterId { get; set; }
 
         private int _currentPage;
 
@@ -129,6 +138,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             //LoadGearItems();
             CurrentCharacter = CharacterHelper.CurrentCharacter;
             Items = ItemHelper.FetchItems(CurrentCharacter);
+            _itemsCharacterId = CurrentCharacter.Id;
             SearchResults = new ObservableCollection<Item>();
 
             SearchItemCmd = new RelayCommand(async o =>
