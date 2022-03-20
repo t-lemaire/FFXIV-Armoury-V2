@@ -165,7 +165,10 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             {
                 Item givenItem = (Item)o;
                 Item selectedItem = await XivApiProcessor.LoadItem(givenItem.Id);
-                Items.Add(selectedItem);
+                //Items.Add(selectedItem);
+                ItemHelper.AddItem(selectedItem, CurrentCharacter);
+
+                //ItemHelper.SaveItems(CurrentCharacter);
             });
         }
 
