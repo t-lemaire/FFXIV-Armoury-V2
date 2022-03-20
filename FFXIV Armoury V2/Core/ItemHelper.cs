@@ -11,19 +11,19 @@ namespace FFXIV_Armoury_V2.Core
 {
     public static class ItemHelper
     {
-        public static ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
+        public static ObservableCollection<InventoryItem> Items { get; set; } = new ObservableCollection<InventoryItem>();
 
-        public static ObservableCollection<Item> FetchItems(Character selectedCharacter)
+        public static ObservableCollection<InventoryItem> FetchItems(Character selectedCharacter)
         {
             string inventoryFilePath = FileHelper.GetCharacterGearFilePath(selectedCharacter);
             string fileContents = FileHelper.ReadFile(FileHelper.GetFilePath(inventoryFilePath));
 
             if (String.IsNullOrEmpty(fileContents))
             {
-                return new ObservableCollection<Item>();
+                return new ObservableCollection<InventoryItem>();
             }
 
-            return JsonSerializer.Deserialize<ObservableCollection<Item>>(fileContents);
+            return JsonSerializer.Deserialize<ObservableCollection<InventoryItem>>(fileContents);
         }
 
         public static void SaveItems(Character selectedCharacter)
@@ -32,7 +32,7 @@ namespace FFXIV_Armoury_V2.Core
             FileHelper.WriteFile(FileHelper.GetFilePath(inventoryFilePath), JsonSerializer.Serialize(Items));
         }
 
-        public static void AddItem(Item newItem, Character selectedCharacter)
+        public static void AddItem(InventoryItem newItem, Character selectedCharacter)
         {
             if (Items.Count == 0 || !Items.Contains(newItem))
             {

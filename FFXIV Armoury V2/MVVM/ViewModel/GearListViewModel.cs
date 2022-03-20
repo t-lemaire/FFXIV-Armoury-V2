@@ -11,8 +11,8 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 {
     class GearListViewModel: ObservableObject
     {
-        private ObservableCollection<Item> _items;
-        public ObservableCollection<Item> Items { 
+        private ObservableCollection<InventoryItem> _items;
+        public ObservableCollection<InventoryItem> Items { 
             get { return _items; }
             set
             {
@@ -166,7 +166,12 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 Item givenItem = (Item)o;
                 Item selectedItem = await XivApiProcessor.LoadItem(givenItem.Id);
                 //Items.Add(selectedItem);
-                ItemHelper.AddItem(selectedItem, CurrentCharacter);
+
+                InventoryItem newInventoryItem = new InventoryItem();
+                newInventoryItem.GearItem = selectedItem;
+                newInventoryItem.GearInventory = new Inventory();
+
+                ItemHelper.AddItem(newInventoryItem, CurrentCharacter);
 
                 //ItemHelper.SaveItems(CurrentCharacter);
             });

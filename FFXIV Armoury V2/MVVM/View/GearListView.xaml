@@ -259,9 +259,9 @@
                   Margin="20">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"
-                                    Binding="{Binding Name}" />
+                                    Binding="{Binding GearItem.Name}" />
                 <DataGridTextColumn Header="Item Level"
-                                    Binding="{Binding ItemLevel}" />
+                                    Binding="{Binding GearItem.ItemLevel}" />
             </DataGrid.Columns>
         </DataGrid>
 
