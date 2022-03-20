@@ -261,19 +261,14 @@
                 <DataGridTemplateColumn Header="Icon">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Width="40"
-                                   Height="40"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Margin="5"
-                                   Source="{Binding GearItem.IconUrl}"
-                                   x:Name="characterPortrait">
-                                <Image.Clip>
-                                    <EllipseGeometry RadiusX="20"
-                                        RadiusY="20"
-                                        Center="20,20"/>
-                                </Image.Clip>
-                            </Image>
+                            <Border CornerRadius="10, 10, 10, 10"
+                                    Height="40"
+                                    Width="40">
+                                <Border.Background>
+                                    <ImageBrush Stretch="Fill"
+                                                    ImageSource="{Binding GearItem.IconUrl}" />
+                                </Border.Background>
+                            </Border>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -345,19 +340,14 @@
                     <DataGridTemplateColumn Header="Icon">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Width="40"
-                                   Height="40"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Margin="5"
-                                   Source="{Binding IconUrl}"
-                                   x:Name="characterPortrait">
-                                    <Image.Clip>
-                                        <EllipseGeometry RadiusX="20"
-                                        RadiusY="20"
-                                        Center="20,20"/>
-                                    </Image.Clip>
-                                </Image>
+                                <Border CornerRadius="10, 10, 10, 10"
+                                        Height="40"
+                                        Width="40">
+                                    <Border.Background>
+                                        <ImageBrush Stretch="Fill"
+                                                    ImageSource="{Binding IconUrl}" />
+                                    </Border.Background>
+                                </Border>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
