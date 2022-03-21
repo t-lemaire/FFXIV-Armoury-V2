@@ -14,7 +14,11 @@ namespace FFXIV_Armoury_V2.MVVM.Model
         public InventoryType InvType
         {
             get { return _invType; }
-            set { _invType = value; }
+            set { 
+                _invType = value;
+                OnPropertyChanged("NameLabel");
+            }
+
         }
 
         private string? _id;
@@ -25,6 +29,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             set {
                 _id = value;
                 OnPropertyChanged();
+                OnPropertyChanged("NameLabel");
             }
         }
 
@@ -36,6 +41,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             set { 
                 _name = value;
                 OnPropertyChanged();
+                OnPropertyChanged("NameLabel");
             }
         }
 
@@ -70,7 +76,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                         case InventoryType.CharacterInventory:
                             return "Personal Inventory";
                             break;
-                        case InventoryType.ChocoboSaddleBag:
+                        case InventoryType.ChocoboSaddlebag:
                             return "Chocobo Saddlebag";
                             break;
                         case InventoryType.ArmouryChest:

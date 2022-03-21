@@ -128,6 +128,80 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        private ObservableCollection<Inventory> _retainers;
+
+        public ObservableCollection<Inventory> Retainers
+        {
+            get { return _retainers; }
+            set { 
+                _retainers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Inventory> _currentCharacterInventories;
+
+        public ObservableCollection<Inventory> CurrentCharacterInventories
+        {
+            get { 
+                ObservableCollection<Inventory> ret = new ObservableCollection<Inventory>();
+
+                Inventory armoury = new Inventory();
+                armoury.Name = "Armoury";
+                armoury.InvType = InventoryType.ArmouryChest;
+                armoury.CharacterId = CurrentCharacter.Id;
+                armoury.Id = "Armoury";
+                ret.Add(armoury);
+
+                Inventory armoire = new Inventory();
+                armoire.Name = "Armoire";
+                armoire.InvType = InventoryType.Armoire;
+                armoury.CharacterId = CurrentCharacter.Id;
+                armoury.Id = "Armoire";
+                ret.Add(armoire);
+
+                Inventory characterInventory = new Inventory();
+                characterInventory.Name = "Inventory";
+                characterInventory.InvType = InventoryType.CharacterInventory;
+                characterInventory.CharacterId = CurrentCharacter.Id;
+                characterInventory.Id = "Inventory";
+                ret.Add(characterInventory);
+
+                Inventory chocoboSaddlebag = new Inventory();
+                chocoboSaddlebag.Name = "Chocobo Saddlebag";
+                chocoboSaddlebag.InvType = InventoryType.ChocoboSaddlebag;
+                chocoboSaddlebag.CharacterId = CurrentCharacter.Id;
+                chocoboSaddlebag.Id = "Chocobo Saddlebag";
+                ret.Add(chocoboSaddlebag);
+
+                Inventory glamourDresser = new Inventory();
+                glamourDresser.Name = "Glamour Dresser";
+                glamourDresser.InvType = InventoryType.GlamourDresser;
+                glamourDresser.CharacterId = CurrentCharacter.Id;
+                glamourDresser.Id = "Glamour Dresser";
+                ret.Add(glamourDresser);
+
+                ObservableCollection<Inventory> retainers = CharacterHelper.FetchRetainers();
+
+                if (retainers.Count > 0)
+                {
+                    foreach (Inventory item in retainers)
+                    {
+                        if (item.CharacterId == CurrentCharacter.Id)
+                        {
+                            ret.Add(item);
+                        }
+                    }
+                }
+
+                ret = new ObservableCollection<Inventory>(ret.OrderBy(x => x.Name));
+
+                return ret;
+            }
+        }
+
+
+
         public RelayCommand SearchItemCmd { get; set; }
         public RelayCommand SearchItemNextCmd { get; set; }
         public RelayCommand SearchItemPrevCmd { get; set; }

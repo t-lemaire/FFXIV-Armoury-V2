@@ -114,7 +114,7 @@ namespace FFXIV_Armoury_V2.Core
             FileHelper.WriteFile(FileHelper.GetFilePath(filePath), JsonSerializer.Serialize(charactersList));
         }
 
-        public static ObservableCollection<Inventory>? FetchRetainers()
+        public static ObservableCollection<Inventory> FetchRetainers()
         {
             string filePath = FileHelper.GetRetainersListFilePath();
             string fileContents = FileHelper.ReadFile(FileHelper.GetFilePath(filePath));

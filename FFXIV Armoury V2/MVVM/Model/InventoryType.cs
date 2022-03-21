@@ -10,7 +10,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
     {
         None = 0,
         CharacterInventory = 1,
-        ChocoboSaddleBag = 2,
+        ChocoboSaddlebag = 2,
         Retainer = 3,
         GlamourDresser = 4,
         Armoire = 5,

@@ -6,9 +6,13 @@
              xmlns:fModel="clr-namespace:FFXIV_Armoury_V2.MVVM.Model"
              xmlns:local="clr-namespace:FFXIV_Armoury_V2.MVVM.View"
              xmlns:fCore="clr-namespace:FFXIV_Armoury_V2.Core"
+             xmlns:viewModel="clr-namespace:FFXIV_Armoury_V2.MVVM.ViewModel"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
-
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="GearListViewControl">
+    <UserControl.DataContext>
+        <viewModel:GearListViewModel />
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
@@ -252,7 +256,7 @@
         <!--#endregion Jobs-->
 
         <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding Items}"
+                  ItemsSource="{Binding Items, Mode=TwoWay}"
                   HeadersVisibility="Column"
                   Style="{StaticResource DarkDataGrid}"
                   AutoGenerateColumns="False"
@@ -277,9 +281,21 @@
                                     Binding="{Binding GearItem.Name}" />
                 <DataGridTextColumn Header="Min Level"
                                     Binding="{Binding GearItem.LevelEquip}" />
-                <DataGridComboBoxColumn Header="Location"
-                                        SelectedItemBinding="{Binding GearInventory.InvType}"
-                                        ItemsSource="{Binding Source={fCore:EnumBindingSource {x:Type fModel:InventoryType}}}"/>
+                <DataGridTemplateColumn Header="Location">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding GearInventory.NameLabel}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Source={x:Reference GearListViewControl}, Path=DataContext.CurrentCharacterInventories}"
+                                      DisplayMemberPath="NameLabel"
+                                      SelectedValue="{Binding GearInventory, UpdateSourceTrigger=PropertyChanged}"
+                                      IsSynchronizedWithCurrentItem="True"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
