@@ -6,7 +6,7 @@
              xmlns:fModel="clr-namespace:FFXIV_Armoury_V2.MVVM.Model"
              xmlns:local="clr-namespace:FFXIV_Armoury_V2.MVVM.View"
              xmlns:fCore="clr-namespace:FFXIV_Armoury_V2.Core"
-             xmlns:viewModel="clr-namespace:FFXIV_Armoury_V2.MVVM.ViewModel"
+             xmlns:viewModel="clr-namespace:FFXIV_Armoury_V2.MVVM.ViewModel" xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="GearListViewControl">
@@ -292,7 +292,15 @@
                             <ComboBox ItemsSource="{Binding Source={x:Reference GearListViewControl}, Path=DataContext.CurrentCharacterInventories}"
                                       DisplayMemberPath="NameLabel"
                                       SelectedValue="{Binding GearInventory, UpdateSourceTrigger=PropertyChanged}"
-                                      IsSynchronizedWithCurrentItem="True"/>
+                                      IsSynchronizedWithCurrentItem="True">
+                                <b:Interaction.Triggers>
+                                    <b:EventTrigger EventName="SelectionChanged">
+                                        <b:InvokeCommandAction 
+                                            Command="{Binding Path=DataContext.SaveItems, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                            CommandParameter="{Binding}"/>
+                                    </b:EventTrigger>
+                                </b:Interaction.Triggers>
+                            </ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>

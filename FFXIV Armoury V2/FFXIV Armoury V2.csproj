@@ -96,11 +96,11 @@
     <None Remove="Images\Logos\Warrior.png" />
     <None Remove="Images\Logos\Weaver.png" />
     <None Remove="Images\Logos\Whitemage.png" />
-    <None Remove="Theme\eorzea.ttf" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
@@ -192,7 +192,6 @@
     <Resource Include="Images\Logos\Warrior.png" />
     <Resource Include="Images\Logos\Weaver.png" />
     <Resource Include="Images\Logos\Whitemage.png" />
-    <Resource Include="Theme\eorzea.ttf" />
   </ItemGroup>
 
 </Project>

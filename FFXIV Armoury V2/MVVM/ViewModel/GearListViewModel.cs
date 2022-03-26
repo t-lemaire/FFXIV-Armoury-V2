@@ -206,6 +206,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public RelayCommand SearchItemNextCmd { get; set; }
         public RelayCommand SearchItemPrevCmd { get; set; }
         public RelayCommand AddItem { get; set; }
+        public RelayCommand SaveItems { get; set; }
 
         public GearListViewModel()
         {
@@ -249,7 +250,6 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             {
                 Item givenItem = (Item)o;
                 Item selectedItem = await XivApiProcessor.LoadItem(givenItem.Id);
-                //Items.Add(selectedItem);
 
                 InventoryItem newInventoryItem = new InventoryItem();
                 newInventoryItem.GearItem = selectedItem;
@@ -257,8 +257,12 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
                 ItemHelper.AddItem(newInventoryItem, CurrentCharacter);
                 OnPropertyChanged("Items");
+            });
 
-                //ItemHelper.SaveItems(CurrentCharacter);
+            SaveItems = new RelayCommand(async o =>
+            {
+                ItemHelper.SaveItems(CurrentCharacter);
+                OnPropertyChanged("Items");
             });
         }
 
