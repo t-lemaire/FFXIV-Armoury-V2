@@ -263,7 +263,8 @@
                   CanUserAddRows="False"
                   Margin="20">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Icon">
+                <DataGridTemplateColumn Header="Icon"
+                                        IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Border CornerRadius="10, 10, 10, 10"
@@ -278,9 +279,11 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Name"
-                                    Binding="{Binding GearItem.Name}" />
+                                    Binding="{Binding GearItem.Name}"
+                                    IsReadOnly="True"/>
                 <DataGridTextColumn Header="Min Level"
-                                    Binding="{Binding GearItem.LevelEquip}" />
+                                    Binding="{Binding GearItem.LevelEquip}"
+                                    IsReadOnly="True"/>
                 <DataGridTemplateColumn Header="Location">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
