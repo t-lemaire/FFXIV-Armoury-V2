@@ -73,6 +73,19 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 Retainers.Remove((Inventory)o);
                 CharacterHelper.RemoveRetainer((Inventory)o);
                 CharacterHelper.SaveRetainersList();
+
+                ObservableCollection<InventoryItem> items = ItemHelper.FetchItems(CurrentCharacter);
+                if (items.Count > 0)
+                {
+                    foreach (InventoryItem item in items)
+                    {
+                        item.GearInventory = new Inventory();
+                        item.GearInventory.CharacterId = CurrentCharacter.Id;
+                    }
+
+                    ItemHelper.SaveItems(CurrentCharacter);
+                }
+
                 OnPropertyChanged("FilteredRetainers");
             });
 
