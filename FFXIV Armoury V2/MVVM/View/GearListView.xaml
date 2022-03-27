@@ -282,7 +282,19 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type GroupItem}">
-                                        <Expander IsExpanded="True" Header="{Binding }">
+                                        <Expander IsExpanded="True">
+                                            <Expander.Header>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Path=Name}"
+                                                               Foreground="White"
+                                                               FontWeight="Bold"/>
+                                                    <TextBlock Text="{Binding Path=ItemCount}"
+                                                               Foreground="White"
+                                                               Margin="20,0,0,0"/>
+                                                    <TextBlock Text=" item(s)"
+                                                               Foreground="White"/>
+                                                </StackPanel>
+                                            </Expander.Header>
                                             <Expander.Content>
                                                 <ItemsPresenter />
                                             </Expander.Content>
