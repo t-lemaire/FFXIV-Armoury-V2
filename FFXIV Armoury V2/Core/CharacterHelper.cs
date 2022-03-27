@@ -92,6 +92,24 @@ namespace FFXIV_Armoury_V2.Core
             {
                 charactersList.Add(character);
                 SaveCharactersList();
+            } else
+            {
+                Character foundCharacter = charactersList.FirstOrDefault(i => i.Id == character.Id);
+
+                if (foundCharacter != null)
+                {
+                    foundCharacter.Avatar = character.Avatar;
+                    foundCharacter.Name = character.Name;
+                    foundCharacter.Server = character.Server;
+                    foundCharacter.Dc = character.Dc;
+                    foundCharacter.Id = character.Id;
+                    foundCharacter.FreeCompanyName = character.FreeCompanyName;
+                    foundCharacter.Portrait = character.Portrait;
+                    foundCharacter.ClassJobs = character.ClassJobs;
+                    foundCharacter.ActiveClassJob = character.ActiveClassJob;
+
+                    SaveCharactersList();
+                }
             }
         }
 

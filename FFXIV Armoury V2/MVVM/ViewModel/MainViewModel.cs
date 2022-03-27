@@ -97,7 +97,26 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
             Task.Run(async () =>
             {
-                CharacterHelper.SaveCurrentCharacter(CharacterHelper.CurrentCharacter);
+                if (CharacterHelper.CurrentCharacter != null)
+                {
+                    Character character = await XivApiProcessor.LoadCharacter((int)CharacterHelper.CurrentCharacter.Id);
+                    CharacterHelper.SaveCurrentCharacter(character);
+
+                    OnPropertyChanged("CurrentCharacter");
+                }
+            });
+
+            Task.Run(async () =>
+            {
+                if (CharacterHelper.CharactersList.Count > 0)
+                {
+                    foreach (var character in CharacterHelper.CharactersList)
+                    {
+                        Character foundCharacter = await XivApiProcessor.LoadCharacter((int)character.Id);
+
+                        CharacterHelper.AddCharacterToList(foundCharacter);
+                    }
+                }
             });
         }
     }
