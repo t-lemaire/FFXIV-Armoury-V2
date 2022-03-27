@@ -20,5 +20,58 @@ namespace FFXIV_Armoury_V2.MVVM.Model
         public int Neck { get; set; }
         public int OffHand { get; set; }
         public int Wrists { get; set; }
+
+        public string SlotName
+        {
+            get
+            {
+                if (Body == 1)
+                {
+                    return "Body";
+                } else if (Ears == 1)
+                {
+                    return "Earring";
+                }
+                else if (Feet == 1)
+                {
+                    return "Feet";
+                }
+                else if (FingerL == 1 || FingerR == 1)
+                {
+                    return "Ring";
+                }
+                else if (Gloves == 1)
+                {
+                    return "Gloves";
+                }
+                else if (Head == 1)
+                {
+                    return "Head";
+                }
+                else if (Legs == 1)
+                {
+                    return "Legs";
+                }
+                else if (MainHand == 1)
+                {
+                    return "Main Hand";
+                }
+                else if (Neck == 1)
+                {
+                    return "Necklace";
+                }
+                else if (OffHand == 1)
+                {
+                    return "Offhand";
+                }
+                else if (Wrists == 1)
+                {
+                    return "Bracelets";
+                } else
+                {
+                    return "Unknown";
+                }
+            }
+        }
     }
 }

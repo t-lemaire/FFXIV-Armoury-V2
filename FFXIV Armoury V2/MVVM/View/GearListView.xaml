@@ -256,12 +256,45 @@
         <!--#endregion Jobs-->
 
         <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding Items, Mode=TwoWay}"
                   HeadersVisibility="Column"
                   Style="{StaticResource DarkDataGrid}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
-                  Margin="20">
+                  Margin="20"
+                  EnableRowVirtualization="True"
+                  VirtualizingPanel.IsVirtualizingWhenGrouping="True">
+            <DataGrid.Resources>
+                <CollectionViewSource x:Key="FilteredItems"
+                                      Source="{Binding Items, Mode=TwoWay}">
+                    <CollectionViewSource.GroupDescriptions>
+                        <PropertyGroupDescription PropertyName="GearItem.EquipSlotCategory.SlotName" />
+                    </CollectionViewSource.GroupDescriptions>
+                </CollectionViewSource>
+            </DataGrid.Resources>
+            <DataGrid.ItemsSource>
+                <Binding Source="{StaticResource FilteredItems}" />
+            </DataGrid.ItemsSource>
+
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Expander IsExpanded="True" Header="{Binding }">
+                                            <Expander.Content>
+                                                <ItemsPresenter />
+                                            </Expander.Content>
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
+            
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Icon"
                                         IsReadOnly="True">

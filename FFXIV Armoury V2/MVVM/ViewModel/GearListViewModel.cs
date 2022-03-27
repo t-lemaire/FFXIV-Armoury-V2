@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 using FFXIV_Armoury_V2.Core;
 using FFXIV_Armoury_V2.MVVM.Model;
 
@@ -199,8 +200,6 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 return ret;
             }
         }
-
-
 
         public RelayCommand SearchItemCmd { get; set; }
         public RelayCommand SearchItemNextCmd { get; set; }
