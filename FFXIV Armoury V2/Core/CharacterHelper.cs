@@ -121,6 +121,21 @@ namespace FFXIV_Armoury_V2.Core
             {
                 Character selectedCharacter = charactersList.Where(i => i.Id == character.Id).First();
                 charactersList.Remove(selectedCharacter);
+
+                if (CurrentCharacter != null && character.Id == CurrentCharacter.Id)
+                {
+                    CurrentCharacter.Avatar = null;
+                    CurrentCharacter.Name = null;
+                    CurrentCharacter.Server = null;
+                    CurrentCharacter.Dc = null;
+                    CurrentCharacter.Id = null;
+                    CurrentCharacter.FreeCompanyName = null;
+                    CurrentCharacter.Portrait = null;
+                    CurrentCharacter.ClassJobs = null;
+                    CurrentCharacter.ActiveClassJob = null;
+                    FileHelper.DeleteFile(FileHelper.GetFilePath(_currentCharacterFileName));
+                }
+
                 SaveCharactersList();
             }
         }
@@ -129,7 +144,13 @@ namespace FFXIV_Armoury_V2.Core
         {
             string filePath = FileHelper.GetCharactersListFilePath();
 
-            FileHelper.WriteFile(FileHelper.GetFilePath(filePath), JsonSerializer.Serialize(charactersList));
+            if (charactersList.Count > 0)
+            {
+                FileHelper.WriteFile(FileHelper.GetFilePath(filePath), JsonSerializer.Serialize(charactersList));
+            } else
+            {
+                FileHelper.DeleteFile(filePath);
+            }
         }
 
         public static ObservableCollection<Inventory> FetchRetainers()

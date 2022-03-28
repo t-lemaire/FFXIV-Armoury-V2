@@ -177,8 +177,13 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
         private async void RemoveSelectedCharacter(Character character)
         {
-            CharacterHelper.CharactersList.Remove(character);
+            CharacterHelper.RemoveCharacterFromList(character);
             CharacterHelper.SaveCharactersList();
+
+            if (CharacterHelper.CurrentCharacter != null && CharacterHelper.CurrentCharacter.Id == character.Id && CharacterHelper.CharactersList.Count > 0)
+            {
+                CharacterHelper.SaveCurrentCharacter(CharacterHelper.CharactersList.First());
+            }
         }
     }
 }

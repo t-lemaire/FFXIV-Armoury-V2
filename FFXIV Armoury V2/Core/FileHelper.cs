@@ -59,5 +59,13 @@ namespace FFXIV_Armoury_V2.Core
 
             return File.ReadAllText(filePath);
         }
+
+        public static void DeleteFile(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
     }
 }
