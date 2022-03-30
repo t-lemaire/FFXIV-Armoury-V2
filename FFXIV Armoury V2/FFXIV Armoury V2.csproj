@@ -6,6 +6,11 @@
     <RootNamespace>FFXIV_Armoury_V2</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <Authors>Terry Lemaire</Authors>
+    <PackageProjectUrl>https://github.com/t-lemaire/FFXIV-Armoury-V2</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/t-lemaire/FFXIV-Armoury-V2</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>0.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -99,6 +104,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Clowd.Squirrel" Version="2.8.40" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

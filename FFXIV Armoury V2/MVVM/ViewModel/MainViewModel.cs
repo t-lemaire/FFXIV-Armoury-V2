@@ -1,5 +1,6 @@
 ﻿using FFXIV_Armoury_V2.Core;
 using FFXIV_Armoury_V2.MVVM.Model;
+using Squirrel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,12 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
         public MainViewModel()
         {
+            SquirrelAwareApp.HandleEvents(
+                onInitialInstall: OnAppInstall,
+                onAppUninstall: OnAppUninstall,
+                onEveryRun: OnAppRun
+                );
+
             CharacterHelper.CurrentCharacter = CharacterHelper.FetchCurrentCharacter();
             CharacterHelper.CharactersList = CharacterHelper.FetchCharactersList();
             CharacterHelper.RetainersList = CharacterHelper.FetchRetainers();
@@ -118,6 +125,23 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                     }
                 }
             });
+        }
+
+        private static void OnAppInstall(SemanticVersion version, IAppTools tools)
+        {
+            tools.CreateShortcutForThisExe(ShortcutLocation.StartMenu | ShortcutLocation.Desktop);
+        }
+
+        private static void OnAppUninstall(SemanticVersion version, IAppTools tools)
+        {
+            tools.RemoveShortcutForThisExe(ShortcutLocation.StartMenu | ShortcutLocation.Desktop);
+        }
+
+        private static void OnAppRun(SemanticVersion version, IAppTools tools, bool firstRun)
+        {
+            tools.SetProcessAppUserModelId();
+            // show a welcome message when the app is first installed
+            
         }
     }
 }
