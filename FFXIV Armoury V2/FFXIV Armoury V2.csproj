@@ -10,7 +10,7 @@
     <PackageProjectUrl>https://github.com/t-lemaire/FFXIV-Armoury-V2</PackageProjectUrl>
     <RepositoryUrl>https://github.com/t-lemaire/FFXIV-Armoury-V2</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>0.1.2</AssemblyVersion>
+    <AssemblyVersion>0.1.2.1</AssemblyVersion>
     <PackageIcon>FFXIV Armoury.png</PackageIcon>
     <ApplicationIcon>Images\Icons\FFXIV Armoury.ico</ApplicationIcon>
   </PropertyGroup>

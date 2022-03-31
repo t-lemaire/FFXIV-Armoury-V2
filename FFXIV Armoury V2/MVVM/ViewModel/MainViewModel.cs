@@ -128,8 +128,10 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
             Task.Run(async () =>
             {
-                using var mgr = new UpdateManager("https://github.com/t-lemaire/FFXIV-Armoury-V2");
-                var newVersion = await mgr.UpdateApp();
+                using (var mgr = UpdateManager.GitHubUpdateManager("https://github.com/t-lemaire/FFXIV-Armoury-V2"))
+                {
+                    await mgr.Result.UpdateApp();
+                }
             });
         }
 
