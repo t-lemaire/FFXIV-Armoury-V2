@@ -11,6 +11,8 @@
     <RepositoryUrl>https://github.com/t-lemaire/FFXIV-Armoury-V2</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <AssemblyVersion>0.1.0</AssemblyVersion>
+    <PackageIcon>FFXIV Armoury.png</PackageIcon>
+    <ApplicationIcon>Images\Icons\FFXIV Armoury.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -101,6 +103,10 @@
     <None Remove="Images\Logos\Warrior.png" />
     <None Remove="Images\Logos\Weaver.png" />
     <None Remove="Images\Logos\Whitemage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Icons\FFXIV Armoury.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -198,6 +204,13 @@
     <Resource Include="Images\Logos\Warrior.png" />
     <Resource Include="Images\Logos\Weaver.png" />
     <Resource Include="Images\Logos\Whitemage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Images\Logos\FFXIV Armoury.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
