@@ -125,6 +125,12 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                     }
                 }
             });
+
+            Task.Run(async () =>
+            {
+                using var mgr = new UpdateManager("https://github.com/t-lemaire/FFXIV-Armoury-V2");
+                var newVersion = await mgr.UpdateApp();
+            });
         }
 
         private static void OnAppInstall(SemanticVersion version, IAppTools tools)

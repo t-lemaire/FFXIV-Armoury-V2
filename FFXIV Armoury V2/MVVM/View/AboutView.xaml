@@ -21,5 +21,15 @@
         <TextBlock Text="Powered by XIVAPI"
                    Foreground="White"
                    HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Application Version"
+                   Foreground="White"
+                   HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding AppVersion}"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="20, 0, 0, 0"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>
