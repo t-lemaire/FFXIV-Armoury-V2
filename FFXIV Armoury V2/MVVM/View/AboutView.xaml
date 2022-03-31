@@ -29,7 +29,7 @@
             <TextBlock Text="{Binding AppVersion}"
                    Foreground="White"
                    HorizontalAlignment="Center"
-                   Margin="20, 0, 0, 0"/>
+                   Margin="10, 0, 0, 0"/>
         </StackPanel>
     </StackPanel>
 </UserControl>
