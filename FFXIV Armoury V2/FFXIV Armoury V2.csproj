@@ -6,6 +6,14 @@
     <RootNamespace>FFXIV_Armoury_V2</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Icons\FFXIV Armoury.ico</ApplicationIcon>
+    <AssemblyVersion>0.1.0</AssemblyVersion>
+    <PackageIcon>FFXIV Armoury.png</PackageIcon>
+    <Authors>Terry Lemaire</Authors>
+    <Product>FFXIV Armoury</Product>
+    <PackageProjectUrl>https://github.com/t-lemaire/FFXIV-Armoury-V2</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/t-lemaire/FFXIV-Armoury-V2</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,6 +43,7 @@
     <None Remove="Images\Icons\DPS\Samurai.png" />
     <None Remove="Images\Icons\DPS\Summoner.png" />
     <None Remove="Images\Icons\DPS\Thaumaturge.png" />
+    <None Remove="Images\Icons\FFXIV Armoury.ico" />
     <None Remove="Images\Icons\Gatherers\Botanist.png" />
     <None Remove="Images\Icons\Gatherers\Fisher.png" />
     <None Remove="Images\Icons\Gatherers\Miner.png" />
@@ -99,6 +108,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Images\Icons\FFXIV Armoury.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -131,6 +144,8 @@
     <Resource Include="Images\Icons\DPS\Samurai.png" />
     <Resource Include="Images\Icons\DPS\Summoner.png" />
     <Resource Include="Images\Icons\DPS\Thaumaturge.png" />
+    <Resource Include="Images\Icons\FFXIV Armoury.ico" />
+    <Resource Include="Images\Icons\FFXIV Armoury.png" />
     <Resource Include="Images\Icons\Gatherers\Botanist.png" />
     <Resource Include="Images\Icons\Gatherers\Fisher.png" />
     <Resource Include="Images\Icons\Gatherers\Miner.png" />
@@ -192,6 +207,13 @@
     <Resource Include="Images\Logos\Warrior.png" />
     <Resource Include="Images\Logos\Weaver.png" />
     <Resource Include="Images\Logos\Whitemage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Images\Icons\FFXIV Armoury.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
