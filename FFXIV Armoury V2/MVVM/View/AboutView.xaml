@@ -22,7 +22,8 @@
                    Foreground="White"
                    HorizontalAlignment="Center"/>
         <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center">
+                    HorizontalAlignment="Center"
+                    Margin="0, 15, 0, 0">
             <TextBlock Text="Application Version"
                    Foreground="White"
                    HorizontalAlignment="Center"/>
