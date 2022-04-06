@@ -100,9 +100,13 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 if (CharacterHelper.CurrentCharacter != null)
                 {
                     Character character = await XivApiProcessor.LoadCharacter((int)CharacterHelper.CurrentCharacter.Id);
-                    CharacterHelper.SaveCurrentCharacter(character);
 
-                    OnPropertyChanged("CurrentCharacter");
+                    if (character.Name != null)
+                    {
+                        CharacterHelper.SaveCurrentCharacter(character);
+
+                        OnPropertyChanged("CurrentCharacter");
+                    }
                 }
             });
 
@@ -114,7 +118,11 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                     {
                         Character foundCharacter = await XivApiProcessor.LoadCharacter((int)character.Id);
 
-                        CharacterHelper.AddCharacterToList(foundCharacter);
+                        
+                        if (foundCharacter.Name != null)
+                        {
+                            CharacterHelper.AddCharacterToList(foundCharacter);
+                        }
                     }
                 }
             });
