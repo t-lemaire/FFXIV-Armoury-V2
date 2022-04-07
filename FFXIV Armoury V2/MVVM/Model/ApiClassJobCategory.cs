@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,5 +51,20 @@ namespace FFXIV_Armoury_V2.MVVM.Model
         public int War { get; set; }
         public int Whm { get; set; }
         public int Wvr { get; set; }
+
+        public ObservableCollection<ClassJob> AvailableClassJobs()
+        {
+            ObservableCollection<ClassJob> classJobs = new ObservableCollection<ClassJob>();
+
+            foreach (PropertyInfo propertyInfo in this.GetType().GetProperties())
+            {
+                if (propertyInfo.GetValue(this) is int && (int)propertyInfo.GetValue(this) == 1)
+                {
+                    classJobs.Add(ClassJob.ClassJobFromAccronym((string)propertyInfo.Name));
+                }
+            }
+
+            return classJobs;
+        }
     }
 }

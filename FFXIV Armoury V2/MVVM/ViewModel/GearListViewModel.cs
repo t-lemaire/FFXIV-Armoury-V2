@@ -201,6 +201,35 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        public int GearItemNumberJobRows
+        {
+            get
+            {
+                if (CurrentCharacter == null)
+                {
+                    return 1;
+                } else
+                {
+                    return (int)Math.Floor((double)CurrentCharacter.ClassJobs.Count());
+                }
+            }
+        }
+
+        public int GearItemNumberJobColumns
+        {
+            get
+            {
+                if (CurrentCharacter == null)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return (int)Math.Ceiling((double)(CurrentCharacter.ClassJobs.Count() / GearItemNumberJobRows));
+                }
+            }
+        }
+
         public RelayCommand SearchItemCmd { get; set; }
         public RelayCommand SearchItemNextCmd { get; set; }
         public RelayCommand SearchItemPrevCmd { get; set; }

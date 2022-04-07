@@ -101,9 +101,9 @@ namespace FFXIV_Armoury_V2.MVVM.Model
         {
             get
             {
-                int? classJobId = null;
+                int? classJobId = ClassId;
 
-                if (!UnlockedState.Equals(null))
+                if (UnlockedState != null)
                 {
                     if (UnlockedState.Id == null)
                     {
@@ -502,6 +502,103 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                     return "#494949";
                 }
             }
+        }
+
+        public static int ClassJobIdFromAccronym(string accronym)
+        {
+            switch (accronym.ToUpper())
+            {
+                case "ACN":
+                    return 26;
+                case "ALC":
+                    return 14;
+                case "ARC":
+                    return 5;
+                case "ARM":
+                    return 10;
+                case "AST":
+                    return 33;
+                case "BLM":
+                    return 25;
+                case "BLU":
+                    return 36;
+                case "BRD":
+                    return 23;
+                case "BSM":
+                    return 9;
+                case "BTN":
+                    return 17;
+                case "CNJ":
+                    return 6;
+                case "CRP":
+                    return 8;
+                case "CUL":
+                    return 15;
+                case "DNC":
+                    return 38;
+                case "DRG":
+                    return 22;
+                case "DRK":
+                    return 32;
+                case "FSH":
+                    return 18;
+                case "GLA":
+                    return 1;
+                case "GNB":
+                    return 37;
+                case "GSM":
+                    return 11;
+                case "LTW":
+                    return 12;
+                case "MCH":
+                    return 31;
+                case "MIN":
+                    return 16;
+                case "MNK":
+                    return 20;
+                case "MRD":
+                    return 3;
+                case "NIN":
+                    return 30;
+                case "PGL":
+                    return 2;
+                case "PLD":
+                    return 19;
+                case "RDM":
+                    return 35;
+                case "ROG":
+                    return 29;
+                case "RPR":
+                    return 39;
+                case "SAM":
+                    return 34;
+                case "SCH":
+                    return 28;
+                case "SGE":
+                    return 40;
+                case "SMN":
+                    return 27;
+                case "THM":
+                    return 7;
+                case "WAR":
+                    return 21;
+                case "WHM":
+                    return 24;
+                case "WVR":
+                    return 13;
+                default:
+                    return 0;
+            }
+        }
+
+        public static ClassJob ClassJobFromAccronym(string classJob)
+        {
+            ClassJob cj = new ClassJob();
+
+            cj.ClassId = ClassJobIdFromAccronym(classJob);
+            cj.Name = classJob;
+
+            return cj;
         }
     }
 }

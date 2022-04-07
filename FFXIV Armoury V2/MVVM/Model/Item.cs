@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,14 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                 {
                     return "";
                 }
+            }
+        }
+
+        public ObservableCollection<ClassJob> AvailableJobs
+        {
+            get
+            {
+                return ClassJobCategory.AvailableClassJobs();
             }
         }
     }
