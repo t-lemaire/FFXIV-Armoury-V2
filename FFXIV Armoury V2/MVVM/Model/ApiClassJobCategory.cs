@@ -11,7 +11,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
     public class ApiClassJobCategory
     {
         public int Acn { get; set; }
-        public int Adv { get; set; }
+        //public int Adv { get; set; }
         public int Alc { get; set; }
         public int Arc { get; set; }
         public int Arm { get; set; }
@@ -60,7 +60,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             {
                 if (propertyInfo.GetValue(this) is int && (int)propertyInfo.GetValue(this) == 1)
                 {
-                    classJobs.Add(ClassJob.ClassJobFromAccronym((string)propertyInfo.Name));
+                    classJobs.Add(ClassJob.InstanciateClassJob((string)propertyInfo.Name));
                 }
             }
 

@@ -101,5 +101,31 @@ namespace FFXIV_Armoury_V2.Core
                 }
             }
         }
+
+        public static async Task<List<ApiClassJobInfo>> LoadClassJobs(int page = 1)
+        {
+            if (page < 1)
+            {
+                page = 1;
+            }
+
+            string url = $"{_baseUrl}/classjob?page={page}";
+
+            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    ApiClassJobsInfoResults loadedClassJobsInfo = await response.Content.ReadAsAsync<ApiClassJobsInfoResults>();
+
+                    return loadedClassJobsInfo.Results;
+
+                    //return new List<ApiClassJobInfo>();
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
     }
 }

@@ -126,6 +126,11 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                     }
                 }
             });
+
+            Task.Run(async () =>
+            {
+                ClassJobHelper.LoadClassJobs();
+            });
         }
     }
 }

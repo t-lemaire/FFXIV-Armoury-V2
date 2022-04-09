@@ -23,237 +23,68 @@
             <ColumnDefinition Width="350" />
         </Grid.ColumnDefinitions>
 
-        <!--#region Jobs-->
-        <Grid Grid.Row="0"
-              Grid.Column="0"
-              Grid.RowSpan="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            
-            <!--#region Tanks-->
-            <Grid Grid.Column="0">
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0">
+            <Border Background="#555555"
+                    CornerRadius="10"
+                    BorderThickness="1"
+                    Margin="20, 0, 0, 0"
+                    Height="30"
+                    Grid.Row="0"
+                    Grid.Column="0">
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0.5,0"
+                                     EndPoint="0.5,1">
+                        <GradientStop Color="#222222" Offset="0.0" />
+                        <GradientStop Color="#949494" Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+                <TextBox x:Name="SearchTerm"
+                     Margin="10, 0, 10, 0"
+                     Foreground="White"
+                     BorderThickness="0"
+                     Background="Transparent"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Stretch"
+                     Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </Border>
+
+            <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20" />
                 </Grid.RowDefinitions>
-                <Image Grid.Column="0"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Tanks/DarkKnight.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Tanks/Gladiator.png" />
-                <Image Grid.Column="2"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Tanks/Gunbreaker.png" />
-                <Image Grid.Column="3"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Tanks/Marauder.png" />
-                
-                <Image Grid.Column="0"
-                       Grid.Row="1"
-                       Source="/Images/Icons/Tanks/Paladin.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="1"
-                       Source="/Images/Icons/Tanks/Warrior.png" />
-            </Grid>
-            <!--#endregion Tanks-->
 
-            <!--#region Healers-->
-            <Grid Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Image Grid.Column="0"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Healers/Astrologian.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Healers/Conjurer.png" />
-                <Image Grid.Column="2"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Healers/Sage.png" />
-                <Image Grid.Column="3"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Healers/Scholar.png" />
-                
-                <Image Grid.Column="0"
-                       Grid.Row="1"
-                       Source="/Images/Icons/Healers/WhiteMage.png" />
+                <ItemsControl ItemsSource="{Binding TankClassJobs, Mode=OneWay}"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              Grid.Column="0"
+                              Grid.Row="0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding JobIcon}"
+                                               Width="20"
+                                               Height="20">
+                                <Image.ToolTip>
+                                    <ToolTip Content="{Binding Name}" />
+                                </Image.ToolTip>
+                            </Image>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </Grid>
-            <!--#endregion Healers-->
-
-            <!--#region DPS-->
-            <Grid Grid.Column="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Image Grid.Column="0"
-                       Grid.Row="0"
-                       Source="/Images/Icons/DPS/Arcanist.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="0"
-                       Source="/Images/Icons/DPS/Archer.png" />
-                <Image Grid.Column="2"
-                       Grid.Row="0"
-                       Source="/Images/Icons/DPS/Bard.png" />
-                <Image Grid.Column="3"
-                       Grid.Row="0"
-                       Source="/Images/Icons/DPS/BlackMage.png" />
-                
-                <Image Grid.Column="0"
-                       Grid.Row="1"
-                       Source="/Images/Icons/DPS/BlueMage.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="1"
-                       Source="/Images/Icons/DPS/Dancer.png" />
-                <Image Grid.Column="2"
-                       Grid.Row="1"
-                       Source="/Images/Icons/DPS/Dragoon.png" />
-                <Image Grid.Column="3"
-                       Grid.Row="1"
-                       Source="/Images/Icons/DPS/Lancer.png" />
-                
-                <Image Grid.Column="0"
-                       Grid.Row="2"
-                       Source="/Images/Icons/DPS/Machinist.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="2"
-                       Source="/Images/Icons/DPS/Monk.png" />
-                <Image Grid.Column="2"
-                       Grid.Row="2"
-                       Source="/Images/Icons/DPS/Ninja.png" />
-                <Image Grid.Column="3"
-                       Grid.Row="2"
-                       Source="/Images/Icons/DPS/Pugilist.png" />
-                
-                <Image Grid.Column="0"
-                       Grid.Row="3"
-                       Source="/Images/Icons/DPS/Reaper.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="3"
-                       Source="/Images/Icons/DPS/RedMage.png" />
-                <Image Grid.Column="2"
-                       Grid.Row="3"
-                       Source="/Images/Icons/DPS/Rogue.png" />
-                <Image Grid.Column="3"
-                       Grid.Row="3"
-                       Source="/Images/Icons/DPS/Samurai.png" />
-                
-                <Image Grid.Column="0"
-                       Grid.Row="4"
-                       Source="/Images/Icons/DPS/Summoner.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="4"
-                       Source="/Images/Icons/DPS/Thaumaturge.png" />
-            </Grid>
-            <!--#endregion DPS-->
-
-            <!--#region Gatherers-->
-            <Grid Grid.Column="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Image Grid.Column="0"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Gatherers/Botanist.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Gatherers/Fisher.png" />
-                <Image Grid.Column="2"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Gatherers/Miner.png" />
-            </Grid>
-            <!--#endregion Gatherers-->
-
-            <!--#region Crafters-->
-            <Grid Grid.Column="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Image Grid.Column="0"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Crafters/Alchemist.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Crafters/Armorer.png" />
-                <Image Grid.Column="2"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Crafters/Blacksmith.png" />
-                <Image Grid.Column="3"
-                       Grid.Row="0"
-                       Source="/Images/Icons/Crafters/Carpenter.png" />
-
-                <Image Grid.Column="0"
-                       Grid.Row="1"
-                       Source="/Images/Icons/Crafters/Culinarian.png" />
-                <Image Grid.Column="1"
-                       Grid.Row="1"
-                       Source="/Images/Icons/Crafters/Goldsmith.png" />
-                <Image Grid.Column="2"
-                       Grid.Row="1"
-                       Source="/Images/Icons/Crafters/Leatherworker.png" />
-                <Image Grid.Column="3"
-                       Grid.Row="1"
-                       Source="/Images/Icons/Crafters/Weaver.png" />
-            </Grid>
-            <!--#endregion Crafters-->
-        </Grid>
-        <!--#endregion Jobs-->
+        </StackPanel>
 
         <DataGrid Grid.Row="1"
                   HeadersVisibility="Column"
@@ -408,14 +239,12 @@
                         <GradientStop Color="#949494" Offset="1.0" />
                     </LinearGradientBrush>
                 </Border.BorderBrush>
-                <TextBox x:Name="SearchTerm"
-                     Margin="10, 0, 10, 0"
+                <TextBox Margin="10, 0, 10, 0"
                      Foreground="White"
                      BorderThickness="0"
                      Background="Transparent"
                      VerticalAlignment="Center"
-                     HorizontalAlignment="Stretch"
-                     Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                     HorizontalAlignment="Stretch"/>
             </Border>
             <Button Content="Search"
                     Margin="20, 0, 20, 0"

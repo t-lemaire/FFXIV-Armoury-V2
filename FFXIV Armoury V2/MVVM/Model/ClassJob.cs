@@ -548,6 +548,8 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                     return 37;
                 case "GSM":
                     return 11;
+                case "LNC":
+                    return 4;
                 case "LTW":
                     return 12;
                 case "MCH":
@@ -591,12 +593,21 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             }
         }
 
-        public static ClassJob ClassJobFromAccronym(string classJob)
+        public static ClassJob InstanciateClassJob(string classJob)
         {
             ClassJob cj = new ClassJob();
 
             cj.ClassId = ClassJobIdFromAccronym(classJob);
             cj.Name = classJob;
+
+            return cj;
+        }
+
+        public static ClassJob InstanciateClassJob(ApiClassJobInfo classJob)
+        {
+            ClassJob cj = new ClassJob();
+            cj.ClassId = classJob.Id;
+            cj.Name= classJob.Name;
 
             return cj;
         }

@@ -230,6 +230,152 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        private ObservableCollection<ApiClassJobInfo> _apiClassJobs;
+
+        public ObservableCollection<ApiClassJobInfo> ApiClassJobs
+        {
+            get { return _apiClassJobs; }
+            set { 
+                _apiClassJobs = value;
+                OnPropertyChanged();
+                OnPropertyChanged("ClassJobsInfo");
+            }
+        }
+
+
+        private ObservableCollection<ClassJob> _classJobsInfo;
+
+        public ObservableCollection<ClassJob> ClassJobsInfo
+        {
+            get {
+                ObservableCollection <ClassJob> cji = new ObservableCollection<ClassJob>();
+                if (_apiClassJobs != null && _apiClassJobs.Count > 0)
+                {
+                    foreach (ApiClassJobInfo classJobInfo in _apiClassJobs)
+                    {
+                        cji.Add(ClassJob.InstanciateClassJob(classJobInfo));
+                    }
+                }
+
+                return cji;
+            }
+            set { 
+                _classJobsInfo = value;
+                OnPropertyChanged();
+                OnPropertyChanged("TankClassJobs");
+                OnPropertyChanged("HealerClassJobs");
+                OnPropertyChanged("MeeleeDpsClassJobs");
+                OnPropertyChanged("RangedDpsClassJobs");
+                OnPropertyChanged("CasterDpsClassJobs");
+                OnPropertyChanged("CrafterClassJobs");
+                OnPropertyChanged("GathererClassJobs");
+            }
+        }
+
+        public ObservableCollection<ClassJob> TankClassJobs {
+            get
+            {
+                if (ClassJobsInfo == null || ClassJobsInfo.Count == 0)
+                {
+                    return new ObservableCollection<ClassJob>();
+                } else
+                {
+                    return new ObservableCollection<ClassJob>(ClassJobsInfo.Where(c => c.IsTank));
+                }
+            }
+        }
+
+        public ObservableCollection<ClassJob> HealerClassJobs
+        {
+            get
+            {
+                if (ClassJobsInfo == null || ClassJobsInfo.Count == 0)
+                {
+                    return new ObservableCollection<ClassJob>();
+                }
+                else
+                {
+                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsHealer);
+                }
+            }
+        }
+
+        public ObservableCollection<ClassJob> MeeleeDpsClassJobs
+        {
+            get
+            {
+                if (ClassJobsInfo == null || ClassJobsInfo.Count == 0)
+                {
+                    return new ObservableCollection<ClassJob>();
+                }
+                else
+                {
+                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsMeeleeDps);
+                }
+            }
+        }
+
+        public ObservableCollection<ClassJob> RangedDpsClassJobs
+        {
+            get
+            {
+                if (ClassJobsInfo == null || ClassJobsInfo.Count == 0)
+                {
+                    return new ObservableCollection<ClassJob>();
+                }
+                else
+                {
+                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsPhysicalRangedDps);
+                }
+            }
+        }
+
+        public ObservableCollection<ClassJob> CasterDpsClassJobs
+        {
+            get
+            {
+                if (ClassJobsInfo == null || ClassJobsInfo.Count == 0)
+                {
+                    return new ObservableCollection<ClassJob>();
+                }
+                else
+                {
+                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsMagicalRangedDps);
+                }
+            }
+        }
+
+        public ObservableCollection<ClassJob> CrafterClassJobs
+        {
+            get
+            {
+                if (ClassJobsInfo == null || ClassJobsInfo.Count == 0)
+                {
+                    return new ObservableCollection<ClassJob>();
+                }
+                else
+                {
+                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsCrafter);
+                }
+            }
+        }
+
+        public ObservableCollection<ClassJob> GathererClassJobs
+        {
+            get
+            {
+                if (ClassJobsInfo == null || ClassJobsInfo.Count == 0)
+                {
+                    return new ObservableCollection<ClassJob>();
+                }
+                else
+                {
+                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsGatherer);
+                }
+            }
+        }
+
+
         public RelayCommand SearchItemCmd { get; set; }
         public RelayCommand SearchItemNextCmd { get; set; }
         public RelayCommand SearchItemPrevCmd { get; set; }
@@ -292,6 +438,8 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 ItemHelper.SaveItems(CurrentCharacter);
                 OnPropertyChanged("Items");
             });
+
+            ApiClassJobs = ClassJobHelper.ClassJobsInfo;
         }
 
         public async Task SearchItems(string searchTerm, int page = 1)
