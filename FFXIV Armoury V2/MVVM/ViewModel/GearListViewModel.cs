@@ -295,7 +295,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 }
                 else
                 {
-                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsHealer);
+                    return new ObservableCollection<ClassJob>(ClassJobsInfo.Where(c => c.IsHealer));
                 }
             }
         }
@@ -310,7 +310,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 }
                 else
                 {
-                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsMeeleeDps);
+                    return new ObservableCollection<ClassJob>(ClassJobsInfo.Where(c => c.IsMeeleeDps));
                 }
             }
         }
@@ -325,7 +325,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 }
                 else
                 {
-                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsPhysicalRangedDps);
+                    return new ObservableCollection<ClassJob>(ClassJobsInfo.Where(c => c.IsPhysicalRangedDps));
                 }
             }
         }
@@ -340,7 +340,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 }
                 else
                 {
-                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsMagicalRangedDps);
+                    return new ObservableCollection<ClassJob>(ClassJobsInfo.Where(c => c.IsMagicalRangedDps));
                 }
             }
         }
@@ -355,7 +355,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 }
                 else
                 {
-                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsCrafter);
+                    return new ObservableCollection<ClassJob>(ClassJobsInfo.Where(c => c.IsCrafter));
                 }
             }
         }
@@ -370,7 +370,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 }
                 else
                 {
-                    return (ObservableCollection<ClassJob>)ClassJobsInfo.Where(c => c.IsGatherer);
+                    return new ObservableCollection<ClassJob>(ClassJobsInfo.Where(c => c.IsGatherer));
                 }
             }
         }

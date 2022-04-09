@@ -83,6 +83,144 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+
+                <ItemsControl ItemsSource="{Binding HealerClassJobs, Mode=OneWay}"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              Grid.Column="1"
+                              Grid.Row="0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding JobIcon}"
+                                               Width="20"
+                                               Height="20">
+                                <Image.ToolTip>
+                                    <ToolTip Content="{Binding Name}" />
+                                </Image.ToolTip>
+                            </Image>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <ItemsControl ItemsSource="{Binding GathererClassJobs, Mode=OneWay}"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              Grid.Column="2"
+                              Grid.Row="0">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding JobIcon}"
+                                               Width="20"
+                                               Height="20">
+                                <Image.ToolTip>
+                                    <ToolTip Content="{Binding Name}" />
+                                </Image.ToolTip>
+                            </Image>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <ItemsControl ItemsSource="{Binding MeeleeDpsClassJobs, Mode=OneWay}"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              Grid.Column="0"
+                              Grid.Row="1">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding JobIcon}"
+                                               Width="20"
+                                               Height="20">
+                                <Image.ToolTip>
+                                    <ToolTip Content="{Binding Name}" />
+                                </Image.ToolTip>
+                            </Image>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <ItemsControl ItemsSource="{Binding RangedDpsClassJobs, Mode=OneWay}"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              Grid.Column="1"
+                              Grid.Row="1">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding JobIcon}"
+                                               Width="20"
+                                               Height="20">
+                                <Image.ToolTip>
+                                    <ToolTip Content="{Binding Name}" />
+                                </Image.ToolTip>
+                            </Image>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <ItemsControl ItemsSource="{Binding CrafterClassJobs, Mode=OneWay}"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              Grid.Column="2"
+                              Grid.Row="1">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding JobIcon}"
+                                               Width="20"
+                                               Height="20">
+                                <Image.ToolTip>
+                                    <ToolTip Content="{Binding Name}" />
+                                </Image.ToolTip>
+                            </Image>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <ItemsControl ItemsSource="{Binding CasterDpsClassJobs, Mode=OneWay}"
+                              Background="Transparent"
+                              BorderThickness="0"
+                              Grid.Column="0"
+                              Grid.Row="2">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding JobIcon}"
+                                               Width="20"
+                                               Height="20">
+                                <Image.ToolTip>
+                                    <ToolTip Content="{Binding Name}" />
+                                </Image.ToolTip>
+                            </Image>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </Grid>
         </StackPanel>
 
