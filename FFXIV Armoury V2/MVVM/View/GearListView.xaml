@@ -6,7 +6,9 @@
              xmlns:fModel="clr-namespace:FFXIV_Armoury_V2.MVVM.Model"
              xmlns:local="clr-namespace:FFXIV_Armoury_V2.MVVM.View"
              xmlns:fCore="clr-namespace:FFXIV_Armoury_V2.Core"
-             xmlns:viewModel="clr-namespace:FFXIV_Armoury_V2.MVVM.ViewModel" xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:viewModel="clr-namespace:FFXIV_Armoury_V2.MVVM.ViewModel"
+             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:userControls="clr-namespace:FFXIV_Armoury_V2.UserControls"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="GearListViewControl">
@@ -54,16 +56,18 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="20" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
 
                 <ItemsControl ItemsSource="{Binding TankClassJobs, Mode=OneWay}"
                               Background="Transparent"
                               BorderThickness="0"
                               Grid.Column="0"
-                              Grid.Row="0">
+                              Grid.Row="0"
+                              Margin="0"
+                              Padding="0">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -71,13 +75,8 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding JobIcon}"
-                                               Width="20"
-                                               Height="20">
-                                <Image.ToolTip>
-                                    <ToolTip Content="{Binding Name}" />
-                                </Image.ToolTip>
-                            </Image>
+                            <userControls:ImageToggle UntoggledImage="{Binding JobIcon}"
+                                                      Tooltip="{Binding Name}"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -86,7 +85,9 @@
                               Background="Transparent"
                               BorderThickness="0"
                               Grid.Column="1"
-                              Grid.Row="0">
+                              Grid.Row="0"
+                              Margin="0"
+                              Padding="0">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -94,13 +95,15 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding JobIcon}"
-                                               Width="20"
-                                               Height="20">
-                                <Image.ToolTip>
-                                    <ToolTip Content="{Binding Name}" />
-                                </Image.ToolTip>
-                            </Image>
+                            <ToggleButton Height="20"
+                                          Width="20"
+                                          Padding="0">
+                                <Image Source="{Binding JobIcon}">
+                                    <Image.ToolTip>
+                                        <ToolTip Content="{Binding Name}" />
+                                    </Image.ToolTip>
+                                </Image>
+                            </ToggleButton>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -109,7 +112,9 @@
                               Background="Transparent"
                               BorderThickness="0"
                               Grid.Column="2"
-                              Grid.Row="0">
+                              Grid.Row="0"
+                              Margin="0"
+                              Padding="0">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -117,13 +122,15 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding JobIcon}"
-                                               Width="20"
-                                               Height="20">
-                                <Image.ToolTip>
-                                    <ToolTip Content="{Binding Name}" />
-                                </Image.ToolTip>
-                            </Image>
+                            <ToggleButton Height="20"
+                                          Width="20"
+                                          Padding="0">
+                                <Image Source="{Binding JobIcon}">
+                                    <Image.ToolTip>
+                                        <ToolTip Content="{Binding Name}" />
+                                    </Image.ToolTip>
+                                </Image>
+                            </ToggleButton>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -132,7 +139,9 @@
                               Background="Transparent"
                               BorderThickness="0"
                               Grid.Column="0"
-                              Grid.Row="1">
+                              Grid.Row="1"
+                              Margin="0"
+                              Padding="0">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -140,13 +149,15 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding JobIcon}"
-                                               Width="20"
-                                               Height="20">
-                                <Image.ToolTip>
-                                    <ToolTip Content="{Binding Name}" />
-                                </Image.ToolTip>
-                            </Image>
+                            <ToggleButton Height="20"
+                                          Width="20"
+                                          Padding="0">
+                                <Image Source="{Binding JobIcon}">
+                                    <Image.ToolTip>
+                                        <ToolTip Content="{Binding Name}" />
+                                    </Image.ToolTip>
+                                </Image>
+                            </ToggleButton>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -155,7 +166,9 @@
                               Background="Transparent"
                               BorderThickness="0"
                               Grid.Column="1"
-                              Grid.Row="1">
+                              Grid.Row="1"
+                              Margin="0"
+                              Padding="0">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -163,13 +176,15 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding JobIcon}"
-                                               Width="20"
-                                               Height="20">
-                                <Image.ToolTip>
-                                    <ToolTip Content="{Binding Name}" />
-                                </Image.ToolTip>
-                            </Image>
+                            <ToggleButton Height="20"
+                                          Width="20"
+                                          Padding="0">
+                                <Image Source="{Binding JobIcon}">
+                                    <Image.ToolTip>
+                                        <ToolTip Content="{Binding Name}" />
+                                    </Image.ToolTip>
+                                </Image>
+                            </ToggleButton>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -178,7 +193,9 @@
                               Background="Transparent"
                               BorderThickness="0"
                               Grid.Column="2"
-                              Grid.Row="1">
+                              Grid.Row="1"
+                              Margin="0"
+                              Padding="0">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -186,13 +203,15 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding JobIcon}"
-                                               Width="20"
-                                               Height="20">
-                                <Image.ToolTip>
-                                    <ToolTip Content="{Binding Name}" />
-                                </Image.ToolTip>
-                            </Image>
+                            <ToggleButton Height="20"
+                                          Width="20"
+                                          Padding="0">
+                                <Image Source="{Binding JobIcon}">
+                                    <Image.ToolTip>
+                                        <ToolTip Content="{Binding Name}" />
+                                    </Image.ToolTip>
+                                </Image>
+                            </ToggleButton>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -201,7 +220,9 @@
                               Background="Transparent"
                               BorderThickness="0"
                               Grid.Column="0"
-                              Grid.Row="2">
+                              Grid.Row="2"
+                              Margin="0"
+                              Padding="0">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel />
@@ -209,13 +230,15 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding JobIcon}"
-                                               Width="20"
-                                               Height="20">
-                                <Image.ToolTip>
-                                    <ToolTip Content="{Binding Name}" />
-                                </Image.ToolTip>
-                            </Image>
+                            <ToggleButton Height="20"
+                                          Width="20"
+                                          Padding="0">
+                                <Image Source="{Binding JobIcon}">
+                                    <Image.ToolTip>
+                                        <ToolTip Content="{Binding Name}" />
+                                    </Image.ToolTip>
+                                </Image>
+                            </ToggleButton>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
