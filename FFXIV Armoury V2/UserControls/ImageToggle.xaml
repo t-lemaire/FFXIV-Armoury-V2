@@ -7,11 +7,35 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              x:Name="imageToggle">
+    <UserControl.Resources>
+        <Style x:Key="ImageToggleButton" TargetType="{x:Type ToggleButton}">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ToggleButton">
+                            <Image Source="{Binding ElementName=imageToggle, Path=UntoggledImage}" Stretch="Uniform" />
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+
+            <Style.Triggers>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ToggleButton">
+                                <Image Source="{Binding ElementName=imageToggle, Path=ToggledImage}" Stretch="Uniform" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
-        <Image Name="ToggleImage"
-               Source="{Binding ElementName=imageToggle, Path=UntoggledImage}"
-               Width="20"
-               Height="20"
-               ToolTip="{Binding ElementName=imageToggle, Path=Tooltip}"/>
+        <ToggleButton Style="{DynamicResource ImageToggleButton}" Padding="0">
+            <Image Source="{Binding ElementName=imageToggle, Path=UntoggledImage}" Stretch="Uniform" />
+        </ToggleButton>
     </Grid>
 </UserControl>

@@ -20,13 +20,19 @@ namespace FFXIV_Armoury_V2.UserControls
     /// </summary>
     public partial class ImageToggle : UserControl
     {
-        /*private string _toggledImage;
+        private static DependencyProperty _toggledImage = DependencyProperty.Register("ToggledImage", typeof(string), typeof(ImageToggle));
 
         public string ToggledImage
         {
-            get { return _toggledImage; }
-            set { _toggledImage = value; }
-        }*/
+            get
+            {
+                return (string)GetValue(_toggledImage);
+            }
+            set
+            {
+                SetValue(_toggledImage, value);
+            }
+        }
 
         private static DependencyProperty _untoggledImage = DependencyProperty.Register("UntoggledImage", typeof(string), typeof(ImageToggle));
 

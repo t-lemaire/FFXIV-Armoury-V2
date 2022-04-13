@@ -75,8 +75,11 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <userControls:ImageToggle UntoggledImage="{Binding JobIcon}"
-                                                      Tooltip="{Binding Name}"/>
+                            <userControls:ImageToggle UntoggledImage="{Binding JobLogo}"
+                                                      ToggledImage="{Binding JobIcon}"
+                                                      Tooltip="{Binding Name}"
+                                                      Width="20"
+                                                      Height="20"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
