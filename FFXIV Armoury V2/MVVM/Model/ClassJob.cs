@@ -244,15 +244,15 @@ namespace FFXIV_Armoury_V2.MVVM.Model
                     case 13:
                         return "/Images/Logos/Weaver.png";
                     case 14:
-                        return "/Images/Icons/Crafters/Alchemist.png";
+                        return "/Images/Logos/Alchemist.png";
                     case 15:
-                        return "/Images/Icons/Crafters/Culinarian.png";
+                        return "/Images/Logos/Culinarian.png";
                     case 16:
-                        return "/Images/Icons/Gatherers/Miner.png";
+                        return "/Images/Logos/Miner.png";
                     case 17:
-                        return "/Images/Icons/Gatherers/Botanist.png";
+                        return "/Images/Logos/Botanist.png";
                     case 18:
-                        return "/Images/Icons/Gatherers/Fisher.png";
+                        return "/Images/Logos/Fisher.png";
                     case 19:
                         return "/Images/Logos/Paladin.png";
                     case 20:

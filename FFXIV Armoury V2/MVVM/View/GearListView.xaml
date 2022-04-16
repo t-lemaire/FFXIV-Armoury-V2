@@ -100,15 +100,13 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ToggleButton Height="20"
-                                          Width="20"
-                                          Padding="0">
-                                <Image Source="{Binding JobIcon}">
-                                    <Image.ToolTip>
-                                        <ToolTip Content="{Binding Name}" />
-                                    </Image.ToolTip>
-                                </Image>
-                            </ToggleButton>
+                            <userControls:ImageToggle UntoggledImage="{Binding JobLogo}"
+                                                      ToggledImage="{Binding JobIcon}"
+                                                      Tooltip="{Binding Name}"
+                                                      ToggleButtonCommand="{Binding DataContext.ToggleJobFilterCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                      ToggleButtonParam="{Binding ClassId}"
+                                                      Width="20"
+                                                      Height="20"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -127,15 +125,13 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ToggleButton Height="20"
-                                          Width="20"
-                                          Padding="0">
-                                <Image Source="{Binding JobIcon}">
-                                    <Image.ToolTip>
-                                        <ToolTip Content="{Binding Name}" />
-                                    </Image.ToolTip>
-                                </Image>
-                            </ToggleButton>
+                            <userControls:ImageToggle UntoggledImage="{Binding JobLogo}"
+                                                      ToggledImage="{Binding JobIcon}"
+                                                      Tooltip="{Binding Name}"
+                                                      ToggleButtonCommand="{Binding DataContext.ToggleJobFilterCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                      ToggleButtonParam="{Binding ClassId}"
+                                                      Width="20"
+                                                      Height="20"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -154,15 +150,13 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ToggleButton Height="20"
-                                          Width="20"
-                                          Padding="0">
-                                <Image Source="{Binding JobIcon}">
-                                    <Image.ToolTip>
-                                        <ToolTip Content="{Binding Name}" />
-                                    </Image.ToolTip>
-                                </Image>
-                            </ToggleButton>
+                            <userControls:ImageToggle UntoggledImage="{Binding JobLogo}"
+                                                      ToggledImage="{Binding JobIcon}"
+                                                      Tooltip="{Binding Name}"
+                                                      ToggleButtonCommand="{Binding DataContext.ToggleJobFilterCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                      ToggleButtonParam="{Binding ClassId}"
+                                                      Width="20"
+                                                      Height="20"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -181,15 +175,13 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ToggleButton Height="20"
-                                          Width="20"
-                                          Padding="0">
-                                <Image Source="{Binding JobIcon}">
-                                    <Image.ToolTip>
-                                        <ToolTip Content="{Binding Name}" />
-                                    </Image.ToolTip>
-                                </Image>
-                            </ToggleButton>
+                            <userControls:ImageToggle UntoggledImage="{Binding JobLogo}"
+                                                      ToggledImage="{Binding JobIcon}"
+                                                      Tooltip="{Binding Name}"
+                                                      ToggleButtonCommand="{Binding DataContext.ToggleJobFilterCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                      ToggleButtonParam="{Binding ClassId}"
+                                                      Width="20"
+                                                      Height="20"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -208,15 +200,13 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ToggleButton Height="20"
-                                          Width="20"
-                                          Padding="0">
-                                <Image Source="{Binding JobIcon}">
-                                    <Image.ToolTip>
-                                        <ToolTip Content="{Binding Name}" />
-                                    </Image.ToolTip>
-                                </Image>
-                            </ToggleButton>
+                            <userControls:ImageToggle UntoggledImage="{Binding JobLogo}"
+                                                      ToggledImage="{Binding JobIcon}"
+                                                      Tooltip="{Binding Name}"
+                                                      ToggleButtonCommand="{Binding DataContext.ToggleJobFilterCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                      ToggleButtonParam="{Binding ClassId}"
+                                                      Width="20"
+                                                      Height="20"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -235,15 +225,13 @@
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <ToggleButton Height="20"
-                                          Width="20"
-                                          Padding="0">
-                                <Image Source="{Binding JobIcon}">
-                                    <Image.ToolTip>
-                                        <ToolTip Content="{Binding Name}" />
-                                    </Image.ToolTip>
-                                </Image>
-                            </ToggleButton>
+                            <userControls:ImageToggle UntoggledImage="{Binding JobLogo}"
+                                                      ToggledImage="{Binding JobIcon}"
+                                                      Tooltip="{Binding Name}"
+                                                      ToggleButtonCommand="{Binding DataContext.ToggleJobFilterCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                                      ToggleButtonParam="{Binding ClassId}"
+                                                      Width="20"
+                                                      Height="20"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
@@ -259,17 +247,6 @@
                   EnableRowVirtualization="True"
                   VirtualizingPanel.IsVirtualizingWhenGrouping="True"
                   ItemsSource="{Binding FilteredItemsList, Mode=TwoWay}">
-            <!-- <DataGrid.Resources>
-                <CollectionViewSource x:Key="FilteredItems"
-                                      Source="{Binding FilteredItemsList, Mode=TwoWay}">
-                    <CollectionViewSource.GroupDescriptions>
-                        <PropertyGroupDescription PropertyName="GearItem.EquipSlotCategory.SlotName" />
-                    </CollectionViewSource.GroupDescriptions>
-                </CollectionViewSource>
-            </DataGrid.Resources>
-            <DataGrid.ItemsSource>
-                <Binding Source="{StaticResource FilteredItems}" />
-            </DataGrid.ItemsSource> -->
 
             <DataGrid.GroupStyle>
                 <GroupStyle>

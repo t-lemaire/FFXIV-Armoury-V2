@@ -476,8 +476,6 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 FilteredItemsList.GroupDescriptions.Clear();
                 FilteredItemsList.GroupDescriptions.Add(new PropertyGroupDescription("GearItem.EquipSlotCategory.SlotName"));
             }
-
-            //FilteredItemsList.GroupDescriptions.Add("GearItem.EquipSlotCategory.SlotName");
         }
 
         public async Task SearchItems(string searchTerm, int page = 1)
