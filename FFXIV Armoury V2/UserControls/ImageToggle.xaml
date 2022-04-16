@@ -40,7 +40,7 @@
                       Padding="0"
                       Command="{Binding ElementName=imageToggle, Path=ToggleButtonCommand}"
                       CommandParameter="{Binding ElementName=imageToggle, Path=ToggleButtonParam}">
-            <Image Source="{Binding ElementName=imageToggle, Path=UntoggledImage}" Stretch="Uniform"
+            <Image Stretch="Uniform"
                    RenderOptions.BitmapScalingMode="Fant"/>
         </ToggleButton>
     </Grid>
