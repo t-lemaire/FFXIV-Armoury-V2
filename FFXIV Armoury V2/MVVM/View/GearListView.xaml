@@ -46,7 +46,8 @@
                      BorderThickness="0"
                      Background="Transparent"
                      VerticalAlignment="Center"
-                     HorizontalAlignment="Stretch"/>
+                     HorizontalAlignment="Stretch"
+                     Text="{Binding GearSearchString, UpdateSourceTrigger=PropertyChanged}"/>
             </Border>
 
             <Grid>

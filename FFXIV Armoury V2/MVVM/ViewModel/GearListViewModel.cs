@@ -231,6 +231,19 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        private string _gearSearchString;
+
+        public string GearSearchString
+        {
+            get { return _gearSearchString; }
+            set { 
+                _gearSearchString = value;
+                OnPropertyChanged();
+                FilteredItemsList.Filter = FilterGearList;
+            }
+        }
+
+
         private ObservableCollection<ApiClassJobInfo> _apiClassJobs;
 
         public ObservableCollection<ApiClassJobInfo> ApiClassJobs
@@ -518,7 +531,16 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 jobFilterFound = true;
             }
 
-            return jobFilterFound;
+            bool nameMatchesSearchString = false;
+            if (String.IsNullOrEmpty(GearSearchString))
+            {
+                nameMatchesSearchString = true;
+            } else
+            {
+                nameMatchesSearchString = gearItem.GearItem.Name.Contains(GearSearchString, StringComparison.OrdinalIgnoreCase);
+            }
+
+            return jobFilterFound && nameMatchesSearchString;
         }
     }
 }
