@@ -40,6 +40,11 @@ namespace FFXIV_Armoury_V2.Core
             return GetFilePath($"GearList_{selectedCharacter.Id}.json");
         }
 
+        public static string GetLogFilePath()
+        {
+            return GetFilePath($"FFXIVArmoury_{DateTime.Now.ToString("yyyy-MM-dd")}.log");
+        }
+
         public static string GetCharacterGearFilePath(int characterId)
         {
             return GetFilePath($"GearList_{characterId}.json");

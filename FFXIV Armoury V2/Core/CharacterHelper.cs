@@ -43,7 +43,14 @@ namespace FFXIV_Armoury_V2.Core
                 return new Character();
             }
 
-            return JsonSerializer.Deserialize<Character>(fileContents);
+            try
+            {
+                return JsonSerializer.Deserialize<Character>(fileContents);
+            } catch (Exception ex)
+            {
+                Log.Write(Log.LogEvent.Critical, $"An error occurred while loading current character file from its contents.{ex.Message} -> {ex.StackTrace}");
+                return null;
+            }
         }
 
         public static ObservableCollection<Character>? FetchCharactersList()
