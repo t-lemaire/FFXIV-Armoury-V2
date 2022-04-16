@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -375,12 +376,24 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        private ICollectionView _filteredItemsList;
+
+        public ICollectionView FilteredItemsList
+        {
+            get { return _filteredItemsList; }
+            set { _filteredItemsList = value; }
+        }
+
+
 
         public RelayCommand SearchItemCmd { get; set; }
         public RelayCommand SearchItemNextCmd { get; set; }
         public RelayCommand SearchItemPrevCmd { get; set; }
         public RelayCommand AddItem { get; set; }
         public RelayCommand SaveItems { get; set; }
+
+        public RelayCommand ToggleJobFilterCommand { get; set; }
+        public ObservableCollection<int> JobFilter { get; set; } = new ObservableCollection<int>();
 
         public GearListViewModel()
         {
@@ -440,6 +453,31 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             });
 
             ApiClassJobs = ClassJobHelper.ClassJobsInfo;
+
+            ToggleJobFilterCommand = new RelayCommand(async o =>
+            {
+                int jobId = Convert.ToInt32(o);
+                if (JobFilter.Contains(jobId))
+                {
+                    JobFilter.Remove(jobId);
+                } else
+                {
+                    JobFilter.Add(jobId);
+                }
+
+                FilteredItemsList.Filter = FilterGearList;
+            });
+
+            FilteredItemsList = CollectionViewSource.GetDefaultView(Items);
+            FilteredItemsList.Filter = FilterGearList;
+
+            using (FilteredItemsList.DeferRefresh())
+            {
+                FilteredItemsList.GroupDescriptions.Clear();
+                FilteredItemsList.GroupDescriptions.Add(new PropertyGroupDescription("GearItem.EquipSlotCategory.SlotName"));
+            }
+
+            //FilteredItemsList.GroupDescriptions.Add("GearItem.EquipSlotCategory.SlotName");
         }
 
         public async Task SearchItems(string searchTerm, int page = 1)
@@ -455,6 +493,34 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             {
                 SearchResults.Add(result);
             }
+        }
+
+        private bool FilterGearList(object gItem)
+        {
+            InventoryItem? gearItem = gItem as InventoryItem;
+
+            if (gearItem == null)
+            {
+                return true;
+            }
+
+            bool jobFilterFound = false;
+            if (JobFilter != null && JobFilter.Count > 0)
+            {
+                foreach (ClassJob cj in gearItem.GearItem.AvailableJobs)
+                {
+                    if (JobFilter.Contains((int)cj.ClassId))
+                    {
+                        jobFilterFound = true;
+                        break;
+                    }
+                }
+            } else
+            {
+                jobFilterFound = true;
+            }
+
+            return jobFilterFound;
         }
     }
 }

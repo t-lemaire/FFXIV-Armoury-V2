@@ -13,7 +13,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ToggleButton">
-                            <Image Source="{Binding ElementName=imageToggle, Path=UntoggledImage}" Stretch="Uniform" />
+                            <Image Source="{Binding ElementName=imageToggle, Path=UntoggledImage}" Stretch="Uniform"
+                                   RenderOptions.BitmapScalingMode="Fant"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -24,7 +25,8 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ToggleButton">
-                                <Image Source="{Binding ElementName=imageToggle, Path=ToggledImage}" Stretch="Uniform" />
+                                <Image Source="{Binding ElementName=imageToggle, Path=ToggledImage}" Stretch="Uniform"
+                                       RenderOptions.BitmapScalingMode="Fant"/>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -34,8 +36,12 @@
     </UserControl.Resources>
     
     <Grid>
-        <ToggleButton Style="{DynamicResource ImageToggleButton}" Padding="0">
-            <Image Source="{Binding ElementName=imageToggle, Path=UntoggledImage}" Stretch="Uniform" />
+        <ToggleButton Style="{DynamicResource ImageToggleButton}" 
+                      Padding="0"
+                      Command="{Binding ElementName=imageToggle, Path=ToggleButtonCommand}"
+                      CommandParameter="{Binding ElementName=imageToggle, Path=ToggleButtonParam}">
+            <Image Source="{Binding ElementName=imageToggle, Path=UntoggledImage}" Stretch="Uniform"
+                   RenderOptions.BitmapScalingMode="Fant"/>
         </ToggleButton>
     </Grid>
 </UserControl>

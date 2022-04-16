@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FFXIV_Armoury_V2.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -67,6 +68,33 @@ namespace FFXIV_Armoury_V2.UserControls
             get { return _isToggled; }
             set { _isToggled = value; }
         }*/
+
+        private static DependencyProperty _toggleButtonCommand = DependencyProperty.Register("ToggleButtonCommand", typeof(RelayCommand), typeof(ImageToggle));
+
+        public RelayCommand ToggleButtonCommand
+        {
+            get {
+                return (RelayCommand)GetValue(_toggleButtonCommand);
+            }
+            set { 
+                SetValue(_toggleButtonCommand, value);
+            }
+        }
+
+        private static DependencyProperty _toggleButtonCommandParam = DependencyProperty.Register("ToggleButtonParam", typeof(string), typeof(ImageToggle));
+
+        public string ToggleButtonParam
+        {
+            get
+            {
+                return (string)GetValue(_toggleButtonCommandParam);
+            }
+            set
+            {
+                SetValue(_toggleButtonCommandParam, value);
+            }
+        }
+
 
 
         public ImageToggle()
