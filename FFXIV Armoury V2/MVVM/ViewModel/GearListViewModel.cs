@@ -483,6 +483,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
 
             FilteredItemsList = CollectionViewSource.GetDefaultView(Items);
             FilteredItemsList.Filter = FilterGearList;
+            FilteredItemsList.SortDescriptions.Add(new SortDescription("GearItem.EquipSlotCategory.SlotName", ListSortDirection.Ascending));
+            FilteredItemsList.SortDescriptions.Add(new SortDescription("GearItem.Name", ListSortDirection.Ascending));
+            FilteredItemsList.SortDescriptions.Add(new SortDescription("GearInventory.NameLabel", ListSortDirection.Ascending));
 
             using (FilteredItemsList.DeferRefresh())
             {

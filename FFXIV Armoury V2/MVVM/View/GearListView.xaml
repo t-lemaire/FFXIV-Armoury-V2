@@ -302,7 +302,7 @@
                                     IsReadOnly="True"/>
                 <DataGridTextColumn Header="Min Level"
                                     Binding="{Binding GearItem.LevelEquip}"
-                                    IsReadOnly="True"/>
+                                    IsReadOnly="True" />
                 <DataGridTemplateColumn Header="Location">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -327,7 +327,8 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="Classes/Jobs"
-                                        IsReadOnly="True">
+                                        IsReadOnly="True"
+                                        Width="250">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ItemsControl ItemsSource="{Binding GearItem.AvailableJobs, Mode=OneWay}"
