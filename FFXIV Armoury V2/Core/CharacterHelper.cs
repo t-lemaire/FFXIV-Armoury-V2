@@ -228,5 +228,21 @@ namespace FFXIV_Armoury_V2.Core
                 SaveRetainersList();
             }
         }
+
+        public static void RemoveCharacterRetainers(Character character)
+        {
+            if (retainersList != null && retainersList.Count > 0)
+            {
+                IEnumerable<Inventory> retainers = retainersList.Where(i => i.CharacterId == character.Id).ToList();
+
+                if (retainers != null)
+                {
+                    foreach (Inventory item in retainers)
+                    {
+                        RemoveRetainer(item);
+                    }
+                }
+            }
+        }
     }
 }

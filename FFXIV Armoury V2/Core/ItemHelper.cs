@@ -72,5 +72,15 @@ namespace FFXIV_Armoury_V2.Core
 
             SaveItems(selectedCharacter);
         }
+
+        public static void ClearInventory(Character selectedCharacter)
+        {
+            if (CharacterHelper.CurrentCharacter != null && selectedCharacter.Id == CharacterHelper.CurrentCharacter.Id)
+            {
+                Items.Clear();
+            }
+
+            FileHelper.DeleteFile(FileHelper.GetFilePath(FileHelper.GetCharacterGearFilePath(selectedCharacter)));
+        }
     }
 }

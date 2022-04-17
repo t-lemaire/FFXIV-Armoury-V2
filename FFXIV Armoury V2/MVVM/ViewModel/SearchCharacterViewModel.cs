@@ -186,6 +186,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             {
                 CharacterHelper.SaveCurrentCharacter(CharacterHelper.CharactersList.First());
             }
+
+            CharacterHelper.RemoveCharacterRetainers(character);
+            ItemHelper.ClearInventory(character);
         }
     }
 }
