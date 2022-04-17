@@ -51,6 +51,18 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        private Visibility _searchProgressBarVisibility;
+
+        public Visibility SearchProgressBarVisibility
+        {
+            get { return _searchProgressBarVisibility; }
+            set { 
+                _searchProgressBarVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private bool _isNextPageEnabled;
 
         public bool IsNextPageEnabled
@@ -98,6 +110,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             CurrentPage = 1;
             IsSearchEnabled = false;
             IsNextPageEnabled = false;
+            SearchProgressBarVisibility = Visibility.Collapsed;
 
             SearchCharacterCmd = new RelayCommand(async o =>
             {
@@ -105,7 +118,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 IsNextPageEnabled = false;
                 IsPrevPageEnabled = false;
                 CurrentPage = 1;
+                SearchProgressBarVisibility = Visibility.Visible;
                 await SearchCharacters(o.ToString());
+                SearchProgressBarVisibility = Visibility.Collapsed;
                 IsSearchEnabled = true;
             });
 
@@ -115,7 +130,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 IsNextPageEnabled = false;
                 IsPrevPageEnabled = false;
                 CurrentPage++;
+                SearchProgressBarVisibility = Visibility.Visible;
                 await SearchCharacters(o.ToString(), CurrentPage);
+                SearchProgressBarVisibility = Visibility.Collapsed;
                 IsSearchEnabled = true;
             });
 
@@ -125,7 +142,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 IsNextPageEnabled = false;
                 IsPrevPageEnabled = false;
                 CurrentPage--;
+                SearchProgressBarVisibility = Visibility.Visible;
                 await SearchCharacters(o.ToString(), CurrentPage);
+                SearchProgressBarVisibility = Visibility.Collapsed;
                 IsSearchEnabled = true;
             });
 
