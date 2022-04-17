@@ -64,7 +64,15 @@ namespace FFXIV_Armoury_V2.Core
                 return new ObservableCollection<Character>();
             }
 
-            return JsonSerializer.Deserialize<ObservableCollection<Character>>(fileContents);
+            try
+            {
+                return JsonSerializer.Deserialize<ObservableCollection<Character>>(fileContents);
+            }
+            catch (Exception ex)
+            {
+                Log.Write(Log.LogEvent.Critical, $"An error occurred while loading characters list file from its contents.{ex.Message} -> {ex.StackTrace}");
+                return null;
+            }
         }
 
         public static async void SaveCurrentCharacter(ApiCharacterSearchResultProfile characterProfile)
@@ -86,7 +94,7 @@ namespace FFXIV_Armoury_V2.Core
             CurrentCharacter.ClassJobs = character.ClassJobs;
             CurrentCharacter.ActiveClassJob = character.ActiveClassJob;
 
-            FileHelper.WriteFile(FileHelper.GetFilePath(_currentCharacterFileName), JsonSerializer.Serialize(character));
+            await FileHelper.WriteFile(FileHelper.GetFilePath(_currentCharacterFileName), JsonSerializer.Serialize(character));
 
             AddCharacterToList(character);
         }
@@ -170,7 +178,15 @@ namespace FFXIV_Armoury_V2.Core
                 return new ObservableCollection<Inventory>();
             }
 
-            return JsonSerializer.Deserialize<ObservableCollection<Inventory>>(fileContents);
+            try
+            {
+                return JsonSerializer.Deserialize<ObservableCollection<Inventory>>(fileContents);
+            }
+            catch (Exception ex)
+            {
+                Log.Write(Log.LogEvent.Critical, $"An error occurred while loading retainers list file from its contents.{ex.Message} -> {ex.StackTrace}");
+                return null;
+            }
         }
 
         public static void SaveRetainersList()
