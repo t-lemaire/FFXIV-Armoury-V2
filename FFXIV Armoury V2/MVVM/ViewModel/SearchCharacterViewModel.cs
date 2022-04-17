@@ -138,6 +138,8 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 {
                     SelectCharacter((ApiCharacterSearchResultProfile)o);
                 }
+
+                ItemHelper.FetchItems(CharacterHelper.CurrentCharacter);
             });
 
             RemoveCharacter = new RelayCommand(o =>

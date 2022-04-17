@@ -20,7 +20,8 @@ namespace FFXIV_Armoury_V2.Core
 
             if (String.IsNullOrEmpty(fileContents))
             {
-                return new ObservableCollection<InventoryItem>();
+                Items.Clear();
+                return Items;
             }
 
             ObservableCollection<InventoryItem>? TmpItems = new ObservableCollection<InventoryItem>();
