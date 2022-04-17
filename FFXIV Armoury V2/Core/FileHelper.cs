@@ -62,14 +62,29 @@ namespace FFXIV_Armoury_V2.Core
                 return "";
             }
 
-            return File.ReadAllText(filePath);
+            try
+            {
+                return File.ReadAllText(filePath);
+            }
+            catch (Exception ex)
+            {
+                Log.Write(Log.LogEvent.Critical, $"An error occurred while loading file \"{filePath}\"'s contents.{ex.Message} -> {ex.StackTrace}");
+                return "";
+            }
         }
 
         public static void DeleteFile(string filePath)
         {
             if (File.Exists(filePath))
             {
-                File.Delete(filePath);
+                try
+                {
+                    File.Delete(filePath);
+                }
+                catch (Exception ex)
+                {
+                    Log.Write(Log.LogEvent.Critical, $"An error occurred while deleting file \"{filePath}\". {ex.Message} -> {ex.StackTrace}");
+                }
             }
         }
     }

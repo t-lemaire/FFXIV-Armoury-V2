@@ -23,7 +23,27 @@ namespace FFXIV_Armoury_V2.Core
                 return new ObservableCollection<InventoryItem>();
             }
 
-            Items =  JsonSerializer.Deserialize<ObservableCollection<InventoryItem>>(fileContents);
+            ObservableCollection<InventoryItem>? TmpItems = new ObservableCollection<InventoryItem>();
+
+            try
+            {
+                TmpItems = JsonSerializer.Deserialize<ObservableCollection<InventoryItem>>(fileContents);
+
+                if (TmpItems != null)
+                {
+                    Items.Clear();
+                    
+                    foreach (InventoryItem item in TmpItems)
+                    {
+                        Items.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Write(Log.LogEvent.Critical, $"An error occurred while loading character's inventory file's contents.{ex.Message} -> {ex.StackTrace}");
+                return new ObservableCollection<InventoryItem>();
+            }
 
             return Items;
         }
@@ -31,7 +51,15 @@ namespace FFXIV_Armoury_V2.Core
         public static void SaveItems(Character selectedCharacter)
         {
             string inventoryFilePath = FileHelper.GetCharacterGearFilePath(selectedCharacter);
-            FileHelper.WriteFile(FileHelper.GetFilePath(inventoryFilePath), JsonSerializer.Serialize(Items));
+            
+            try
+            {
+                FileHelper.WriteFile(FileHelper.GetFilePath(inventoryFilePath), JsonSerializer.Serialize(Items));
+            }
+            catch (Exception ex)
+            {
+                Log.Write(Log.LogEvent.Critical, $"An error occurred while saving character's inventory file's contents.{ex.Message} -> {ex.StackTrace}");
+            }
         }
 
         public static void AddItem(InventoryItem newItem, Character selectedCharacter)
