@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using FFXIV_Armoury_V2.Core;
 using FFXIV_Armoury_V2.MVVM.Model;
@@ -88,6 +89,18 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             set
             {
                 _isSearchEnabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Visibility _searchProgressBarVisibility;
+
+        public Visibility SearchProgressBarVisibility
+        {
+            get { return _searchProgressBarVisibility; }
+            set
+            {
+                _searchProgressBarVisibility = value;
                 OnPropertyChanged();
             }
         }
@@ -415,6 +428,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             Items = ItemHelper.FetchItems(CurrentCharacter);
             _itemsCharacterId = CurrentCharacter.Id;
             SearchResults = new ObservableCollection<Item>();
+            SearchProgressBarVisibility = Visibility.Collapsed;
 
             SearchItemCmd = new RelayCommand(async o =>
             {
@@ -422,7 +436,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 IsNextPageEnabled = false;
                 IsPrevPageEnabled = false;
                 CurrentPage = 1;
+                SearchProgressBarVisibility = Visibility.Visible;
                 await SearchItems(o.ToString());
+                SearchProgressBarVisibility = Visibility.Collapsed;
                 IsSearchEnabled = true;
             });
 
@@ -432,7 +448,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 IsNextPageEnabled = false;
                 IsPrevPageEnabled = false;
                 CurrentPage++;
+                SearchProgressBarVisibility = Visibility.Visible;
                 await SearchItems(o.ToString(), CurrentPage);
+                SearchProgressBarVisibility = Visibility.Collapsed;
                 IsSearchEnabled = true;
             });
 
@@ -442,7 +460,9 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 IsNextPageEnabled = false;
                 IsPrevPageEnabled = false;
                 CurrentPage--;
+                SearchProgressBarVisibility = Visibility.Visible;
                 await SearchItems(o.ToString(), CurrentPage);
+                SearchProgressBarVisibility = Visibility.Collapsed;
                 IsSearchEnabled = true;
             });
 
