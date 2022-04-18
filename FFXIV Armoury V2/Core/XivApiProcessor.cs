@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -66,21 +67,23 @@ namespace FFXIV_Armoury_V2.Core
                 page = 1;
             }
 
-            string url = $"{_baseUrl}/search?indexes=item&string={searchText}&page={page}";
+            int perPage = 100;
+            int from = (page - 1) * perPage;
 
-            using (HttpResponseMessage response = await ApiHelper.ApiClient.GetAsync(url))
+            string url = $"{_baseUrl}/search";
+            string content = $"{{\"indexes\":\"item\",\"columns\":\"\",\"page\":{page},\"body\":{{\"query\":{{\"bool\":{{\"must\":[{{\"wildcard\":{{\"NameCombined_en\":\"*{searchText}*\"}}}}],\"filter\":[{{\"bool\":{{\"should\":[{{\"term\":{{\"EquipSlotCategory.Body\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.Ears\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.Feet\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.FingerL\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.FingerR\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.Gloves\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.Head\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.Legs\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.MainHand\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.Neck\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.OffHand\":{{\"value\":\"1\"}}}}}},{{\"term\":{{\"EquipSlotCategory.Wrists\":{{\"value\":\"1\"}}}}}}]}}}}]}}}},\"from\":{from},\"size\":{perPage}}}}}";
+
+            var request = new HttpRequestMessage
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    ApiItemSearchResult loadedCharacterResult = await response.Content.ReadAsAsync<ApiItemSearchResult>();
+                Method = HttpMethod.Get,
+                RequestUri = new Uri(url),
+                Content = new StringContent(content, Encoding.UTF8, MediaTypeNames.Application.Json)
+            };
 
-                    return loadedCharacterResult;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
-            }
+            var responses = await ApiHelper.ApiClient.SendAsync(request).ConfigureAwait(false);
+            responses.EnsureSuccessStatusCode();
+
+            return await responses.Content.ReadAsAsync<ApiItemSearchResult>();
         }
 
         public static async Task<Item> LoadItem(int lodestoneId)
