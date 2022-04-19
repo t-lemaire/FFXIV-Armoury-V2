@@ -36,6 +36,7 @@ namespace FFXIV_Armoury_V2.MVVM.Model
         public int Mch { get; set; }
         public int Min { get; set; }
         public int Mnk { get; set; }
+        public int Mrd { get; set; }
         public int Prd { get; set; }
         public int Nin { get; set; }
         public int Pgl { get; set; }
