@@ -12,7 +12,7 @@ namespace FFXIV_Armoury_V2.Core
     {
         private static string GetBasePath()
         {
-            return Path.GetDirectoryName(Path.Combine(@Path.GetDirectoryName(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)), "FFXIV Armory Manager", "test.json"));
+            return Path.GetDirectoryName(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FFXIV Armory Manager", "test.json"));
         }
 
         public static string GetFilePath(string filename)
