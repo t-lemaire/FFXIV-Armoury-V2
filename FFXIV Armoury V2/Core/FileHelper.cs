@@ -52,6 +52,13 @@ namespace FFXIV_Armoury_V2.Core
 
         public async static Task WriteFile(string filePath, string content)
         {
+            string ffxivPath = Path.GetDirectoryName(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FFXIV Armory Manager", "test.json"));
+
+            if (!Directory.Exists(ffxivPath))
+            {
+                Directory.CreateDirectory(ffxivPath);
+            }
+
             await File.WriteAllTextAsync(filePath, content);
         }
 
