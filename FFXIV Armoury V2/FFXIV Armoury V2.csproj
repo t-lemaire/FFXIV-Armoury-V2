@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Images\Icons\FFXIV Armoury.ico</ApplicationIcon>
-    <AssemblyVersion>0.4.2</AssemblyVersion>
+    <AssemblyVersion>0.5.0</AssemblyVersion>
     <PackageIcon>FFXIV Armoury.png</PackageIcon>
     <Authors>Terry Lemaire</Authors>
     <Product>FFXIV Armoury</Product>
