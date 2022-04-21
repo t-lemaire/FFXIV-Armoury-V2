@@ -575,6 +575,11 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 jobFilterFound = true;
             }
 
+            if (!jobFilterFound)
+            {
+                return false;
+            }
+
             bool nameMatchesSearchString = false;
             if (String.IsNullOrEmpty(GearSearchString))
             {
@@ -584,13 +589,23 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 nameMatchesSearchString = gearItem.GearItem.Name.Contains(GearSearchString, StringComparison.OrdinalIgnoreCase);
             }
 
+            if (!nameMatchesSearchString)
+            {
+                return false;
+            }
+
             bool showBasedOnLevel = true;
             if (ExcludeHighLevelGearItems && !gearItem.GearItem.IsLowLevel)
             {
                 showBasedOnLevel = false;
             }
 
-            return jobFilterFound && nameMatchesSearchString && showBasedOnLevel;
+            if (!showBasedOnLevel)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
