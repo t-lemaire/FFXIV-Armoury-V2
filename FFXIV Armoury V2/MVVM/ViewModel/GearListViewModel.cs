@@ -104,6 +104,18 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        private bool _showOnlyEquipable;
+
+        public bool ShowOnlyEquipable
+        {
+            get { return _showOnlyEquipable; }
+            set { 
+                _showOnlyEquipable = value;
+                OnPropertyChanged();
+            }
+        }
+
+
 
         private Visibility _searchProgressBarVisibility;
 
@@ -430,6 +442,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public RelayCommand AddItem { get; set; }
         public RelayCommand SaveItems { get; set; }
         public RelayCommand ToggleLowLevelGear { get; set; }
+        public RelayCommand ToggleEquipableGear { get; set; }
 
         public RelayCommand ToggleJobFilterCommand { get; set; }
         public ObservableCollection<int> JobFilter { get; set; } = new ObservableCollection<int>();
@@ -443,6 +456,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             SearchResults = new ObservableCollection<Item>();
             SearchProgressBarVisibility = Visibility.Collapsed;
             ExcludeHighLevelGearItems = false;
+            ShowOnlyEquipable = false;
 
             SearchItemCmd = new RelayCommand(async o =>
             {
@@ -522,6 +536,13 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 FilteredItemsList.Filter = FilterGearList;
             });
 
+            ToggleEquipableGear = new RelayCommand(async o =>
+            {
+                ShowOnlyEquipable = !ShowOnlyEquipable;
+
+                FilteredItemsList.Filter = FilterGearList;
+            });
+
             FilteredItemsList = CollectionViewSource.GetDefaultView(Items);
             FilteredItemsList.Filter = FilterGearList;
             FilteredItemsList.SortDescriptions.Add(new SortDescription("GearItem.EquipSlotCategory.SlotName", ListSortDirection.Ascending));
@@ -595,12 +616,60 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
 
             bool showBasedOnLevel = true;
-            if (ExcludeHighLevelGearItems && !gearItem.GearItem.IsLowLevel)
+            if (ExcludeHighLevelGearItems && gearItem.GearItem != null && CurrentCharacter.ClassJobs != null)
             {
-                showBasedOnLevel = false;
+                if (gearItem.GearItem.AvailableJobs.Count > 0)
+                {
+                    bool hasHigherLevel = false;
+                    
+                    foreach (ClassJob itemJob in gearItem.GearItem.AvailableJobs)
+                    {
+                        foreach (ClassJob characterJob in CurrentCharacter.ClassJobs)
+                        {
+                            if (itemJob.ClassId == characterJob.ClassId && gearItem.GearItem.LevelEquip >= characterJob.Level)
+                            {
+                                hasHigherLevel = true;
+                                showBasedOnLevel = false;
+                                break;
+                            }
+                        }
+
+                        if (hasHigherLevel)
+                        {
+                            break;
+                        }
+                    }
+                }
             }
 
             if (!showBasedOnLevel)
+            {
+                return false;
+            }
+
+            bool showBasedOnEquipable = true;
+            if (ShowOnlyEquipable)
+            {
+                showBasedOnEquipable = false;
+                foreach (ClassJob cj in gearItem.GearItem.AvailableJobs)
+                {
+                    if (JobFilter != null && JobFilter.Count > 0 && !JobFilter.Contains((int)cj.ClassId))
+                    {
+                        continue;
+                    }
+
+                    foreach (ClassJob characterJob in CurrentCharacter.ClassJobs)
+                    {
+                        if (cj.ClassId == characterJob.ClassId && gearItem.GearItem.LevelEquip <= characterJob.Level)
+                        {
+                            showBasedOnEquipable = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (!showBasedOnEquipable)
             {
                 return false;
             }
