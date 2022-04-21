@@ -93,6 +93,18 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        private bool _showLowLevelItems;
+
+        public bool ExcludeHighLevelGearItems
+        {
+            get { return _showLowLevelItems; }
+            set { 
+                _showLowLevelItems = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private Visibility _searchProgressBarVisibility;
 
         public Visibility SearchProgressBarVisibility
@@ -417,6 +429,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public RelayCommand SearchItemPrevCmd { get; set; }
         public RelayCommand AddItem { get; set; }
         public RelayCommand SaveItems { get; set; }
+        public RelayCommand ToggleLowLevelGear { get; set; }
 
         public RelayCommand ToggleJobFilterCommand { get; set; }
         public ObservableCollection<int> JobFilter { get; set; } = new ObservableCollection<int>();
@@ -429,6 +442,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             _itemsCharacterId = CurrentCharacter.Id;
             SearchResults = new ObservableCollection<Item>();
             SearchProgressBarVisibility = Visibility.Collapsed;
+            ExcludeHighLevelGearItems = false;
 
             SearchItemCmd = new RelayCommand(async o =>
             {
@@ -501,6 +515,13 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 FilteredItemsList.Filter = FilterGearList;
             });
 
+            ToggleLowLevelGear = new RelayCommand(async o =>
+            {
+                ExcludeHighLevelGearItems = !ExcludeHighLevelGearItems;
+
+                FilteredItemsList.Filter = FilterGearList;
+            });
+
             FilteredItemsList = CollectionViewSource.GetDefaultView(Items);
             FilteredItemsList.Filter = FilterGearList;
             FilteredItemsList.SortDescriptions.Add(new SortDescription("GearItem.EquipSlotCategory.SlotName", ListSortDirection.Ascending));
@@ -563,7 +584,13 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 nameMatchesSearchString = gearItem.GearItem.Name.Contains(GearSearchString, StringComparison.OrdinalIgnoreCase);
             }
 
-            return jobFilterFound && nameMatchesSearchString;
+            bool showBasedOnLevel = true;
+            if (ExcludeHighLevelGearItems && !gearItem.GearItem.IsLowLevel)
+            {
+                showBasedOnLevel = false;
+            }
+
+            return jobFilterFound && nameMatchesSearchString && showBasedOnLevel;
         }
     }
 }

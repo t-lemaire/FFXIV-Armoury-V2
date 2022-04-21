@@ -236,6 +236,19 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+
+                <userControls:ImageToggle UntoggledImage="/Images/Icons/Sprout.png"
+                                          ToggledImage="/Images/Icons/Returning Sprout.png"
+                                          Tooltip="Low level gear"
+                                          ToggleButtonCommand="{Binding ToggleLowLevelGear}"
+                                          ToggleButtonParam="lowlevel"
+                                          Width="20"
+                                          Height="20"
+                                          Grid.Column="2"
+                                          Grid.Row="2"
+                                          HorizontalAlignment="Left"
+                                          Margin="0"
+                                          Padding="0"/>
             </Grid>
         </StackPanel>
 

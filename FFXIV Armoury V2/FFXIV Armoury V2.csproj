@@ -54,12 +54,14 @@
     <None Remove="Images\Icons\Healers\Scholar.png" />
     <None Remove="Images\Icons\Healers\WhiteMage.png" />
     <None Remove="Images\Icons\meteor_flat.png" />
+    <None Remove="Images\Icons\Returning Sprout.png" />
     <None Remove="Images\Icons\Roles\DPSRole.png" />
     <None Remove="Images\Icons\Roles\HealerRole.png" />
     <None Remove="Images\Icons\Roles\Magic Ranged DPS.png" />
     <None Remove="Images\Icons\Roles\Meelee DPS.png" />
     <None Remove="Images\Icons\Roles\Ranged DPS.png" />
     <None Remove="Images\Icons\Roles\TankRole.png" />
+    <None Remove="Images\Icons\Sprout.png" />
     <None Remove="Images\Icons\Tanks\DarkKnight.png" />
     <None Remove="Images\Icons\Tanks\Gladiator.png" />
     <None Remove="Images\Icons\Tanks\Gunbreaker.png" />
@@ -149,6 +151,8 @@
     <Resource Include="Images\Icons\Gatherers\Botanist.png" />
     <Resource Include="Images\Icons\Gatherers\Fisher.png" />
     <Resource Include="Images\Icons\Gatherers\Miner.png" />
+    <Resource Include="Images\Icons\Returning Sprout.png" />
+    <Resource Include="Images\Icons\Sprout.png" />
     <Resource Include="Images\Logos\Alchemist.png" />
     <Resource Include="Images\Logos\Arcanist.png" />
     <Resource Include="Images\Logos\Archer.png" />

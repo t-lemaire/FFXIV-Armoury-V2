@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FFXIV_Armoury_V2.Core;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -42,6 +43,44 @@ namespace FFXIV_Armoury_V2.MVVM.Model
             get
             {
                 return ClassJobCategory.AvailableClassJobs();
+            }
+        }
+
+        public bool IsLowLevel
+        {
+            get
+            {
+                if (AvailableJobs.Count > 0)
+                {
+                    bool hasHigherLevel = false;
+                    Character? character = CharacterHelper.CurrentCharacter;
+
+                    if (character == null)
+                    {
+                        return false;
+                    }
+
+                    foreach (ClassJob itemJob in AvailableJobs)
+                    {
+                        foreach (ClassJob characterJob in character.ClassJobs)
+                        {
+                            if (itemJob.ClassId == characterJob.ClassId && LevelEquip >= characterJob.Level)
+                            {
+                                hasHigherLevel = true;
+                                break;
+                            }
+                        }
+
+                        if (hasHigherLevel)
+                        {
+                            break;
+                        }
+                    }
+
+                    return !hasHigherLevel;
+                }
+
+                return false;
             }
         }
     }
