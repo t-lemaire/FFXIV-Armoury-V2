@@ -220,4 +220,11 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Theme\DarkGreyToggleButton.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

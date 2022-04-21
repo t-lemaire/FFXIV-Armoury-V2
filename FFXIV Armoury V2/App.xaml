@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MainMenuButton.xaml" />
                 <ResourceDictionary Source="Theme/DarkGreyButton.xaml" />
+                <ResourceDictionary Source="Theme/DarkGreyToggleButton.xaml" />
                 <ResourceDictionary Source="Theme/DarkDataGrid.xaml" />
                 <ResourceDictionary Source="Theme/GoldProgressbar.xaml" />
             </ResourceDictionary.MergedDictionaries>
