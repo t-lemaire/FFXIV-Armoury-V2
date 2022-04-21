@@ -382,6 +382,7 @@
               Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
                 <RowDefinition />
                 <RowDefinition Height="30" />
             </Grid.RowDefinitions>
@@ -423,7 +424,15 @@
                     Grid.Row="0"
                     IsEnabled="{Binding IsSearchEnabled}"/>
 
-            <DataGrid Grid.Row="1"
+            <ComboBox ItemsSource="{Binding CurrentCharacterInventories}"
+                      SelectedValue="{Binding DefaultInventory, UpdateSourceTrigger=PropertyChanged}"
+                      Grid.Column="0"
+                      Grid.ColumnSpan="2"
+                      Grid.Row="1"
+                      Margin="20, 5, 20, 5"
+                      DisplayMemberPath="NameLabel" />
+
+            <DataGrid Grid.Row="2"
                       Grid.ColumnSpan="2"
                       ItemsSource="{Binding SearchResults}"
                       HeadersVisibility="Column"
@@ -481,10 +490,10 @@
                      Style="{StaticResource GoldProgressbar}"
                      Grid.Column="0"
                      Grid.ColumnSpan="2"
-                     Grid.Row="1"/>
+                     Grid.Row="2"/>
 
             <StackPanel Orientation="Horizontal"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
                     FlowDirection="RightToLeft">

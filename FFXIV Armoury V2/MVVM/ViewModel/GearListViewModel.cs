@@ -167,6 +167,18 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             }
         }
 
+        private Inventory? _defaultInventory;
+
+        public Inventory? DefaultInventory
+        {
+            get { return _defaultInventory; }
+            set { 
+                _defaultInventory = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private ObservableCollection<Inventory> _retainers;
 
         public ObservableCollection<Inventory> Retainers
@@ -502,6 +514,11 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 InventoryItem newInventoryItem = new InventoryItem();
                 newInventoryItem.GearItem = selectedItem;
                 newInventoryItem.GearInventory = new Inventory();
+
+                if (DefaultInventory != null)
+                {
+                    newInventoryItem.GearInventory = DefaultInventory;
+                }
 
                 ItemHelper.AddItem(newInventoryItem, CurrentCharacter);
                 OnPropertyChanged("Items");
