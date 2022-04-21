@@ -411,7 +411,13 @@
                      Background="Transparent"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Stretch"
-                     Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <TextBox.InputBindings>
+                        <KeyBinding Command="{Binding SearchItemCmd}"
+                                    CommandParameter="{Binding ElementName=SearchTerm, Path=Text}"
+                                    Key="Return" />
+                    </TextBox.InputBindings>
+                </TextBox>
             </Border>
             <Button Content="Search"
                     Margin="20, 0, 20, 0"
