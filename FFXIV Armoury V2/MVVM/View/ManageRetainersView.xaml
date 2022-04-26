@@ -29,7 +29,9 @@
                   Style="{StaticResource DarkDataGrid}"
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
+                  CanUserDeleteRows="True"
                   Grid.Row="1">
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Retainer Name"
                                     Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" />
@@ -60,7 +62,6 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-            
         </DataGrid>
     </Grid>
 </UserControl>

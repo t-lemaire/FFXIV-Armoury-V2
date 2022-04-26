@@ -443,7 +443,10 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public ICollectionView FilteredItemsList
         {
             get { return _filteredItemsList; }
-            set { _filteredItemsList = value; }
+            set { 
+                _filteredItemsList = value;
+                OnPropertyChanged();
+            }
         }
 
 
@@ -452,6 +455,7 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
         public RelayCommand SearchItemNextCmd { get; set; }
         public RelayCommand SearchItemPrevCmd { get; set; }
         public RelayCommand AddItem { get; set; }
+        public RelayCommand RemoveItem { get; set; }
         public RelayCommand SaveItems { get; set; }
         public RelayCommand ToggleLowLevelGear { get; set; }
         public RelayCommand ToggleEquipableGear { get; set; }
@@ -521,6 +525,14 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
                 }
 
                 ItemHelper.AddItem(newInventoryItem, CurrentCharacter);
+                OnPropertyChanged("Items");
+            });
+
+            RemoveItem = new RelayCommand(async o =>
+            {
+                InventoryItem item = (InventoryItem)o;
+
+                ItemHelper.RemoveItem(item, CurrentCharacter);
                 OnPropertyChanged("Items");
             });
 

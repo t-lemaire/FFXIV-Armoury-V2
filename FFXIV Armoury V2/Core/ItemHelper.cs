@@ -73,6 +73,16 @@ namespace FFXIV_Armoury_V2.Core
             SaveItems(selectedCharacter);
         }
 
+        public static void RemoveItem(InventoryItem item, Character selectedCharacter)
+        {
+            if (Items.Count > 0 || Items.Contains(item))
+            {
+                Items.Remove(item);
+            }
+
+            SaveItems(selectedCharacter);
+        }
+
         public static void ClearInventory(Character selectedCharacter)
         {
             if (CharacterHelper.CurrentCharacter != null && selectedCharacter.Id == CharacterHelper.CurrentCharacter.Id)
