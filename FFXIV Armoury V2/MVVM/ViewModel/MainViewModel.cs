@@ -3,8 +3,10 @@ using FFXIV_Armoury_V2.MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace FFXIV_Armoury_V2.MVVM.ViewModel
 {
@@ -130,6 +132,26 @@ namespace FFXIV_Armoury_V2.MVVM.ViewModel
             Task.Run(async () =>
             {
                 ClassJobHelper.LoadClassJobs();
+            });
+
+            Task.Run(async () =>
+            {
+                GitHubRelease release = await GithubHelper.GetLatestRelease();
+
+                Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+
+                if (release.Tag_Name > currentVersion)
+                {
+                    if (MessageBox.Show(
+                        $"Version {release.Tag_Name.ToString()} is now available. Download now?",
+                        "New Release Available",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Information
+                        ) == MessageBoxResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start("explorer.exe", release.Html_Url);
+                    }
+                }
             });
         }
     }

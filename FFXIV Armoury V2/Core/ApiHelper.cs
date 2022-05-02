@@ -17,6 +17,7 @@ namespace FFXIV_Armoury_V2.Core
             ApiClient = new HttpClient();
             ApiClient.DefaultRequestHeaders.Accept.Clear();
             ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            ApiClient.DefaultRequestHeaders.UserAgent.TryParseAdd("request");
         }
 
     }
